@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cathy Song · Senior Data Scientist</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
+
   :root {
     --bg: #080c10;
     --bg2: #0d1117;
@@ -24,7 +27,13 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    /* 防止移动端字体自动缩放导致变形 */
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 
   body {
     background: var(--bg);
@@ -32,6 +41,13 @@
     font-family: 'JetBrains Mono', monospace;
     overflow-x: hidden;
     cursor: none;
+    /* 字体渲染优化，解决压扁问题 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1;
+    /* 统一行高基准 */
+    line-height: 1.5;
   }
 
   /* Custom cursor */
@@ -187,6 +203,16 @@
   }
   .hero-desc .hl { color: var(--cyan); }
 
+  .hero-slogan {
+    font-size: 0.7rem;
+    color: var(--text2);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.6;
+    font-style: italic;
+  }
+
   .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
   .btn-primary {
@@ -334,7 +360,7 @@
   .skills-grid {
     max-width: 1200px;
     margin: 48px auto 0;
-    padding: 0 48px;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1px;
@@ -402,7 +428,7 @@
   .projects-grid {
     max-width: 1200px;
     margin: 48px auto 0;
-    padding: 0 48px;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 1px;
@@ -485,7 +511,7 @@
   #experience { padding-bottom: 80px; }
 
   .timeline {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 48px auto 0;
     padding: 0 48px;
     position: relative;
@@ -493,7 +519,7 @@
   .timeline::before {
     content: '';
     position: absolute;
-    left: 68px;
+    left: 140px;
     top: 0; bottom: 0;
     width: 1px;
     background: linear-gradient(to bottom, var(--green), transparent);
@@ -547,10 +573,12 @@
   .stack-grid {
     max-width: 1200px;
     margin: 48px auto 0;
-    padding: 0 48px;
+    padding: 32px 32px;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
   }
 
   .stack-badge {
@@ -571,7 +599,7 @@
   #demo { padding-bottom: 100px; }
 
   .demo-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 48px auto 0;
     padding: 0 48px;
   }
@@ -748,7 +776,7 @@
   .contact-grid {
     max-width: 1200px;
     margin: 48px auto 0;
-    padding: 0 48px;
+    padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1px;
@@ -847,20 +875,142 @@
     color: var(--text2);
   }
 
-  /* Responsive */
+  /* =====================
+     响应式适配 Responsive
+  ===================== */
+
+  /* 大屏幕 Large Desktop ≥ 1400px */
+  @media (min-width: 1400px) {
+    #hero { max-width: 1400px; padding: 140px 80px 100px; }
+    .section-header { max-width: 1400px; padding: 100px 80px 0; }
+    .skills-grid, .projects-grid { max-width: 1400px; padding: 0; }
+    .stack-grid { max-width: 1400px; padding: 32px 80px; }
+    .demo-container { max-width: 1200px; }
+    .contact-grid { max-width: 1400px; }
+    footer { max-width: 1400px; }
+  }
+
+  /* 中等屏幕 Medium Desktop 1024–1400px */
+  @media (max-width: 1400px) and (min-width: 1024px) {
+    .terminal { width: 340px; right: 30px; }
+    .hero-name { font-size: clamp(2.8rem, 5vw, 4.5rem); }
+  }
+
+  /* 小笔记本 Small Laptop 768–1024px */
+  @media (max-width: 1024px) {
+    .terminal { display: none; }
+    #hero { padding: 110px 36px 70px; }
+    .hero-name { font-size: clamp(2.5rem, 6vw, 4rem); }
+    .hero-stats { grid-template-columns: repeat(4, 1fr); }
+    .section-header { padding: 70px 36px 0; }
+    .skills-grid, .projects-grid { padding: 0; grid-template-columns: repeat(2, 1fr); }
+    .timeline { padding: 0 36px; }
+    .stack-grid { padding: 24px 36px; }
+    .demo-container { padding: 0 36px; }
+    .contact-grid { max-width: 1200px; padding: 0; margin-top: 48px; }
+    footer { padding: 24px 36px; }
+  }
+
+  /* 平板横屏 Tablet Landscape 600–768px */
   @media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor, .cursor-ring { display: none; }
     nav { padding: 14px 20px; }
     .nav-links { display: none; }
-    #hero { padding: 100px 20px 60px; }
-    .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+
+    #hero { padding: 90px 20px 50px; }
+    .hero-tag { font-size: 0.65rem; }
+    .hero-name { font-size: clamp(2.2rem, 8vw, 3.2rem); letter-spacing: -1px; }
+    .hero-title { font-size: 1rem; }
+    .hero-desc { font-size: 0.78rem; }
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 100%;
+      margin-top: 40px;
+    }
+    .stat-num { font-size: 1.6rem; }
+
     .section-header { padding: 60px 20px 0; }
-    .skills-grid, .projects-grid { padding: 0 20px; }
+    .section-title { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+
+    .skills-grid { padding: 0; grid-template-columns: 1fr; }
+    .projects-grid { padding: 0; grid-template-columns: 1fr; }
     .timeline { padding: 0 20px; }
-    .stack-grid { padding: 0 20px; }
+    .timeline::before { left: 124px; }
+    .tl-year { min-width: 48px; font-size: 0.6rem; }
+    .stack-grid { padding: 20px 20px; }
     .demo-container { padding: 0 20px; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .contact-info, .contact-links { padding: 28px; }
-    footer { padding: 20px; flex-direction: column; gap: 8px; }
+    .demo-chat { min-height: 260px; padding: 16px; }
+    .demo-suggestions { padding: 10px 16px; }
+    .demo-input-row { padding: 12px 16px; }
+
+    .contact-grid { grid-template-columns: 1fr; margin: 32px auto 0; }
+    .contact-info, .contact-links { padding: 28px 24px; }
+    .contact-tagline { font-size: 1.5rem; }
+
+    footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  /* 手机竖屏 Mobile Portrait ≤ 480px */
+  @media (max-width: 480px) {
+    nav { padding: 12px 16px; }
+    .nav-logo { font-size: 1rem; }
+
+    #hero { padding: 80px 16px 40px; }
+    .hero-name { font-size: clamp(1.9rem, 9vw, 2.6rem); letter-spacing: -0.5px; }
+    .hero-title { font-size: 0.9rem; }
+    .hero-desc { font-size: 0.74rem; line-height: 1.8; }
+    .btn-primary, .btn-ghost { font-size: 0.68rem; padding: 10px 20px; }
+    .hero-ctas { gap: 10px; }
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 32px;
+    }
+    .stat { padding: 14px 16px; }
+    .stat-num { font-size: 1.4rem; }
+    .stat-label { font-size: 0.56rem; }
+
+    .section-header { padding: 48px 16px 0; }
+    .section-title { font-size: 1.7rem; letter-spacing: -0.5px; }
+    .section-tag { font-size: 0.6rem; }
+
+    .skills-grid, .projects-grid { padding: 0; }
+    .skill-card, .project-card { padding: 20px; }
+    .project-title { font-size: 1rem; }
+    .project-desc { font-size: 0.68rem; }
+
+    .timeline { padding: 0 16px; }
+    .timeline::before { left: 96px; }
+    .tl-item { gap: 16px; }
+    .tl-year { min-width: 40px; font-size: 0.56rem; }
+    .tl-role { font-size: 0.85rem; }
+    .tl-desc { font-size: 0.66rem; }
+
+    .stack-grid { padding: 0 16px; gap: 6px; }
+    .stack-badge { font-size: 0.65rem; padding: 8px 12px; }
+
+    .demo-container { padding: 0 16px; }
+    .demo-title { font-size: 0.78rem; }
+    .chat-bubble { font-size: 0.7rem; padding: 10px 12px; }
+    .demo-input { font-size: 0.72rem; }
+    .suggestion-btn { font-size: 0.6rem; padding: 5px 10px; }
+
+    .contact-grid { margin: 28px auto 0; }
+    .contact-info, .contact-links { padding: 22px 18px; }
+    .contact-tagline { font-size: 1.3rem; }
+    .open-row { font-size: 0.65rem; }
+    .contact-link-item { padding: 12px; font-size: 0.68rem; }
+    .link-value { font-size: 0.7rem; }
+
+    footer { padding: 16px; font-size: 0.6rem; }
+  }
+
+  /* 超小屏 XS ≤ 360px */
+  @media (max-width: 360px) {
+    .hero-name { font-size: 1.7rem; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+    .stat-num { font-size: 1.2rem; }
+    .section-title { font-size: 1.5rem; }
   }
 
   /* Animate on scroll */
@@ -873,6 +1023,7 @@
     opacity: 1;
     transform: translateY(0);
   }
+
 </style>
 </head>
 <body>
@@ -897,20 +1048,24 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
 <section id="hero">
   <div style="position: relative; width: 100%;">
     <div class="hero-content">
-      <div class="hero-tag">⬡ Senior Data Scientist · 15 Years</div>
+      <div class="hero-tag">⬡ Senior Data Scientist · AI Engineer · 15 Years</div>
       <h1 class="hero-name">
-        Turning Data<br>into <span class="accent">Decisions.</span>
+        Don't Guess.<br><span class="accent">Measure.</span>
       </h1>
-      <p class="hero-title">AI / ML · Healthcare Intelligence · Predictive Systems</p>
+      <div class="hero-slogan">// Don't guess. Measure. Decide. Repeat.</div>
+      <p class="hero-title">Forecasting · Growth Analytics · GenAI · Ads Strategy · A/B</p>
       <p class="hero-desc">
-        15 years building ML infrastructure, predictive models, and AI-driven platforms across 
-        <span class="hl">healthcare</span>, fintech, and enterprise. Specializing in autonomous 
-        agent architectures, clinical AI, and scalable data pipelines. Recently leading 
-        <span class="hl">S2Y Health</span> — an AI-powered Long COVID recovery engine.
+        15 years turning data into decisions at scale — across <span class="hl">ads platforms</span>,
+        growth analytics, and GenAI. Expert in A/B experimentation, customer segmentation,
+        recommendation systems, and revenue forecasting consumed by executive leadership.
+        End-to-end ownership from pipeline to boardroom. Native Chinese, professional English.
+        Also leading <span class="hl">S2Y Health</span> — an AI-driven Long COVID recovery engine.
       </p>
       <div class="hero-ctas">
         <a href="#projects" class="btn-primary">View My Work</a>
@@ -923,16 +1078,16 @@
           <span class="stat-label">Years Exp.</span>
         </div>
         <div class="stat">
-          <span class="stat-num" data-target="40">0</span>
+          <span class="stat-num" data-target="20">0</span>
           <span class="stat-label">Models Deployed</span>
         </div>
         <div class="stat">
-          <span class="stat-num" data-target="8">0</span>
+          <span class="stat-num" data-target="5">0</span>
           <span class="stat-label">Industries</span>
         </div>
         <div class="stat">
-          <span class="stat-num" data-target="3">0</span>
-          <span class="stat-label">Patents Filed</span>
+          <span class="stat-num" data-target="17">0</span>
+          <span class="stat-label">K+ Enterprise Clients</span>
         </div>
       </div>
     </div>
@@ -943,20 +1098,20 @@
         <div class="t-dot t-red"></div>
         <div class="t-dot t-yellow"></div>
         <div class="t-dot t-green"></div>
-        <span class="t-title">cs@ds-portfolio ~ zsh</span>
+        <span class="t-title">cathy@ds-portfolio ~ zsh</span>
       </div>
       <div class="terminal-body">
         <div><span class="t-prompt">❯ </span><span class="t-cmd">whoami</span></div>
         <div class="t-out">Senior Data Scientist | AI Engineer</div>
         <br>
         <div><span class="t-prompt">❯ </span><span class="t-cmd">cat expertise.txt</span></div>
-        <div class="t-hl">Machine Learning · Deep Learning</div>
-        <div class="t-hl">NLP · Computer Vision · MLOps</div>
-        <div class="t-hl">Healthcare AI · Agent Frameworks</div>
+        <div class="t-hl">Ads Analytics · A/B Testing · Segmentation</div>
+        <div class="t-hl">Forecasting · LLM Agents · Recommendation</div>
+        <div class="t-hl">SQL · Python · dbt · Decision Science</div>
         <br>
         <div><span class="t-prompt">❯ </span><span class="t-cmd">python train_model.py --data all</span></div>
         <div class="t-out">Loading 15 years of experience...</div>
-        <div class="t-out">Accuracy: <span style="color:var(--green)">97.4%</span> ✓</div>
+        <div class="t-out">Accuracy: <span style="color:var(--green)">99.0%</span> ✓</div>
         <div class="t-out">Status: <span style="color:var(--green)">Ready to deploy</span></div>
         <br>
         <div><span class="t-prompt">❯ </span><div class="t-cursor" style="display:inline-block"></div></div>
@@ -965,57 +1120,60 @@
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ═══════════════════════════════════════════
+     SKILLS
+════════════════════════════════════════════ -->
 <section id="skills">
   <div class="section-header fade-up">
     <div class="section-tag">02 // Core Competencies</div>
-    <h2 class="section-title">Skills &<br>Expertise</h2>
+    <h2 class="section-title">Skills &amp;<br>Expertise</h2>
   </div>
   <div class="skills-grid">
+
     <div class="skill-card fade-up">
       <div class="skill-header">
-        <div class="skill-icon">🧠</div>
+        <div class="skill-icon">📈</div>
         <div>
-          <div class="skill-name">Machine Learning</div>
-          <div class="skill-sub">Supervised · Unsupervised · RL</div>
+          <div class="skill-name">Forecasting &amp; ML</div>
+          <div class="skill-sub">Time Series · Regression · Anomaly</div>
         </div>
       </div>
       <div class="skill-bars">
         <div class="skill-item">
-          <div class="skill-row"><span>Deep Learning / Neural Nets</span><span class="skill-pct">96%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="96"></div></div>
+          <div class="skill-row"><span>XGBoost / GBDT / Prophet</span><span class="skill-pct">97%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="97"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>Classical ML (sklearn, XGBoost)</span><span class="skill-pct">98%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="98"></div></div>
+          <div class="skill-row"><span>ARIMA / Time Series (SARIMA)</span><span class="skill-pct">95%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="95"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>Reinforcement Learning</span><span class="skill-pct">82%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="82"></div></div>
+          <div class="skill-row"><span>Anomaly Detection / SHAP</span><span class="skill-pct">93%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="93"></div></div>
         </div>
       </div>
     </div>
 
     <div class="skill-card fade-up">
       <div class="skill-header">
-        <div class="skill-icon">💬</div>
+        <div class="skill-icon">🤖</div>
         <div>
-          <div class="skill-name">NLP & LLMs</div>
-          <div class="skill-sub">Transformers · Agents · RAG</div>
+          <div class="skill-name">GenAI &amp; LLM Agents</div>
+          <div class="skill-sub">Narrative AI · RAG · Agentic Pipelines</div>
         </div>
       </div>
       <div class="skill-bars">
         <div class="skill-item">
-          <div class="skill-row"><span>LLM Fine-tuning & Prompting</span><span class="skill-pct">94%</span></div>
+          <div class="skill-row"><span>LLM Prompt Engineering</span><span class="skill-pct">94%</span></div>
           <div class="bar-bg"><div class="bar-fill" data-width="94"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>RAG & Agentic Pipelines</span><span class="skill-pct">91%</span></div>
+          <div class="skill-row"><span>AI Agent Workflows (RAG / Tool Use)</span><span class="skill-pct">91%</span></div>
           <div class="bar-bg"><div class="bar-fill" data-width="91"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>Text Classification / NER</span><span class="skill-pct">97%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="97"></div></div>
+          <div class="skill-row"><span>GenAI Narrative / Insight Generation</span><span class="skill-pct">90%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="90"></div></div>
         </div>
       </div>
     </div>
@@ -1030,39 +1188,15 @@
       </div>
       <div class="skill-bars">
         <div class="skill-item">
-          <div class="skill-row"><span>Spark / Kafka / Airflow</span><span class="skill-pct">88%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="88"></div></div>
+          <div class="skill-row"><span>SQL / Python (Advanced)</span><span class="skill-pct">98%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="98"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>SQL / NoSQL Databases</span><span class="skill-pct">95%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="95"></div></div>
+          <div class="skill-row"><span>dbt / Airflow / Snowflake</span><span class="skill-pct">93%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="93"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>dbt / Snowflake / BigQuery</span><span class="skill-pct">87%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="87"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skill-card fade-up">
-      <div class="skill-header">
-        <div class="skill-icon">🚀</div>
-        <div>
-          <div class="skill-name">MLOps & Cloud</div>
-          <div class="skill-sub">Deploy · Monitor · Scale</div>
-        </div>
-      </div>
-      <div class="skill-bars">
-        <div class="skill-item">
-          <div class="skill-row"><span>AWS / GCP / Azure</span><span class="skill-pct">92%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="92"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>Docker / Kubernetes / CI-CD</span><span class="skill-pct">85%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="85"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>MLflow / Weights & Biases</span><span class="skill-pct">90%</span></div>
+          <div class="skill-row"><span>Databricks / ETL / ELT Pipelines</span><span class="skill-pct">90%</span></div>
           <div class="bar-bg"><div class="bar-fill" data-width="90"></div></div>
         </div>
       </div>
@@ -1070,24 +1204,24 @@
 
     <div class="skill-card fade-up">
       <div class="skill-header">
-        <div class="skill-icon">🏥</div>
+        <div class="skill-icon">💰</div>
         <div>
-          <div class="skill-name">Healthcare AI</div>
-          <div class="skill-sub">Clinical · Biomedical · Digital Health</div>
+          <div class="skill-name">Financial Forecasting</div>
+          <div class="skill-sub">Revenue · Rolling Forecast · Variance</div>
         </div>
       </div>
       <div class="skill-bars">
         <div class="skill-item">
-          <div class="skill-row"><span>Clinical NLP / EHR Analysis</span><span class="skill-pct">89%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="89"></div></div>
+          <div class="skill-row"><span>Sales / Revenue Forecasting (P&amp;L)</span><span class="skill-pct">96%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="96"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>Medical Evidence Synthesis</span><span class="skill-pct">91%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="91"></div></div>
+          <div class="skill-row"><span>Rolling Forecast / Reforecast Cycles</span><span class="skill-pct">94%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="94"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>FDA / HIPAA Compliance</span><span class="skill-pct">84%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="84"></div></div>
+          <div class="skill-row"><span>Forecast Bias Detection / Variance</span><span class="skill-pct">92%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="92"></div></div>
         </div>
       </div>
     </div>
@@ -1096,206 +1230,302 @@
       <div class="skill-header">
         <div class="skill-icon">📊</div>
         <div>
-          <div class="skill-name">Data Visualization</div>
-          <div class="skill-sub">Dashboards · Storytelling · BI</div>
+          <div class="skill-name">BI &amp; Executive Reporting</div>
+          <div class="skill-sub">KPI Design · Tableau · Power BI</div>
         </div>
       </div>
       <div class="skill-bars">
         <div class="skill-item">
-          <div class="skill-row"><span>D3.js / Plotly / Recharts</span><span class="skill-pct">93%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="93"></div></div>
+          <div class="skill-row"><span>Tableau / Power BI Dashboards</span><span class="skill-pct">95%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="95"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>Tableau / Power BI / Looker</span><span class="skill-pct">87%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="87"></div></div>
+          <div class="skill-row"><span>KPI Design &amp; Financial Metric Tracking</span><span class="skill-pct">97%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="97"></div></div>
         </div>
         <div class="skill-item">
-          <div class="skill-row"><span>Streamlit / Dash / React</span><span class="skill-pct">88%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="88"></div></div>
+          <div class="skill-row"><span>Executive Reporting (C-Suite)</span><span class="skill-pct">94%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="94"></div></div>
         </div>
       </div>
     </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-icon">🧪</div>
+        <div>
+          <div class="skill-name">Growth &amp; Experimentation</div>
+          <div class="skill-sub">A/B Testing · 2C Products · User Science</div>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-item">
+          <div class="skill-row"><span>A/B &amp; Multivariate Testing</span><span class="skill-pct">96%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="96"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Customer Segmentation (RFM, Clustering)</span><span class="skill-pct">94%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="94"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Funnel Analysis / Causal Inference</span><span class="skill-pct">91%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="91"></div></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- PROJECTS -->
+<!-- ═══════════════════════════════════════════
+     PROJECTS
+════════════════════════════════════════════ -->
 <section id="projects">
   <div class="section-header fade-up">
     <div class="section-tag">03 // Featured Work</div>
     <h2 class="section-title">Selected<br>Projects</h2>
   </div>
   <div class="projects-grid">
+
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_01</div>
-      <div class="project-title">S2Y Health — Long COVID AI Recovery Engine</div>
+      <div class="project-title">CertiK — Real-Time Blockchain Security ML Platform</div>
       <p class="project-desc">
-        Built an evidence-based AI consultation platform for Long COVID recovery, combining LLM-powered symptom analysis with taVNS neuromodulation and HOCL device protocols. Developed full-stack agent framework processing peer-reviewed medical literature.
+        Built CertiK's entire data/ML organization from 0 to 10. Designed and productionized
+        real-time ML systems — Security Score and Social Sentiment engines — running on TB-scale
+        blockchain data. Owned full pipeline: API ingestion → dbt/Airflow orchestration →
+        feature engineering → model deployment and monitoring.
       </p>
       <div class="project-tags">
-        <span class="tag">LLM</span>
-        <span class="tag">RAG</span>
-        <span class="tag">Healthcare</span>
-        <span class="tag">Agents</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">React</span>
+        <span class="tag">XGBoost</span><span class="tag">Anomaly Detection</span>
+        <span class="tag">dbt</span><span class="tag">Airflow</span>
+        <span class="tag">Blockchain</span><span class="tag">TB-scale</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> AI platform serving global Long COVID patients with personalized recovery protocols — 94% symptom relevance accuracy in clinical validation.
+        <strong>Impact:</strong> Improved anomaly-detection coverage and platform trust across
+        a <strong>17,000-client</strong> enterprise base. Built ML org from scratch in 3 years.
       </div>
     </div>
 
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_02</div>
-      <div class="project-title">Data Science Labor Market Dashboard</div>
+      <div class="project-title">CertiK — LLM-Powered AI Intelligence Workflow</div>
       <p class="project-desc">
-        Comprehensive React data visualization dashboard analyzing data scientist hiring trends and H1B sponsorship patterns from 50K+ job postings. Features interactive geographic maps, role-level breakdowns, and predictive modeling through 2027.
+        Architected an AI intelligence pipeline combining news analytics, social sentiment scoring,
+        and LLM-driven entity extraction to generate high-value security alerts and insights.
+        Designed multi-source ingestion with structured output for enterprise clients needing
+        real-time market and risk intelligence.
       </p>
       <div class="project-tags">
-        <span class="tag">React</span>
-        <span class="tag">D3.js</span>
-        <span class="tag">Predictive ML</span>
-        <span class="tag">H1B Data</span>
+        <span class="tag">LLM Agents</span><span class="tag">NLP</span>
+        <span class="tag">Sentiment Analysis</span><span class="tag">News Analytics</span>
         <span class="tag">Python</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> Predictive model with <strong>89% accuracy</strong> on 2024 hiring trends; used by 500+ job seekers for strategic career planning.
+        <strong>Impact:</strong> Automated insight generation serving <strong>17K+ enterprise clients</strong>;
+        reduced analyst manual review time by 70%+.
       </div>
     </div>
 
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_03</div>
-      <div class="project-title">Real-Time Anomaly Detection for FinTech</div>
+      <div class="project-title">Baidu — Large-Scale Ads Analytics &amp; Strategy Platform</div>
       <p class="project-desc">
-        Designed and deployed a streaming anomaly detection system processing 2M+ transactions/day. Custom ensemble model combining Isolation Forest, LSTM autoencoders, and statistical control charts with sub-100ms inference latency.
+        Designed and owned end-to-end ads performance analytics at Baidu — one of the world's
+        largest search ad platforms. Built monetization measurement frameworks covering CTR/CVR
+        modeling, bid strategy evaluation, and ad quality scoring. Developed data-driven
+        recommendations that directly shaped product and pricing strategy decisions at executive level.
       </p>
       <div class="project-tags">
-        <span class="tag">Kafka</span>
-        <span class="tag">LSTM</span>
-        <span class="tag">Spark</span>
-        <span class="tag">Redis</span>
-        <span class="tag">Kubernetes</span>
+        <span class="tag">Ads Analytics</span><span class="tag">CTR/CVR Modeling</span>
+        <span class="tag">Bid Strategy</span><span class="tag">SQL</span>
+        <span class="tag">A/B Testing</span><span class="tag">Strategy Design</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> Reduced false positives by <strong>67%</strong> vs previous rule-based system. $2.4M annual fraud loss prevention.
+        <strong>Impact:</strong> Forecasting systems reached <strong>~99% accuracy</strong> on
+        core monetization; insights directly influenced multi-hundred-million dollar annual ad revenue strategy at Baidu (NASDAQ: BIDU).
       </div>
     </div>
 
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_04</div>
-      <div class="project-title">Enterprise NLP Platform for Clinical Trials</div>
+      <div class="project-title">2C Product Experimentation &amp; Customer Segmentation</div>
       <p class="project-desc">
-        Built an end-to-end NLP pipeline for extracting structured data from 800K+ unstructured clinical trial documents. Fine-tuned BioBERT for medical NER, relation extraction, and adverse event classification.
+        Led A/B and multivariate experiment frameworks for large-scale consumer products across
+        Baidu, Qunar, and TAL. Built customer segmentation systems using RFM analysis, behavioral
+        clustering, and propensity scoring to drive personalization, retention, and growth.
+        Designed experiment governance pipelines with guardrail metrics and causal inference.
       </p>
       <div class="project-tags">
-        <span class="tag">BioBERT</span>
-        <span class="tag">NER</span>
-        <span class="tag">FHIR</span>
-        <span class="tag">AWS</span>
-        <span class="tag">Airflow</span>
+        <span class="tag">A/B Testing</span><span class="tag">Customer Segmentation</span>
+        <span class="tag">RFM</span><span class="tag">Clustering</span>
+        <span class="tag">Causal Inference</span><span class="tag">Growth Analytics</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> Reduced manual data extraction time by <strong>82%</strong>. Deployed at 3 pharmaceutical companies, covering 800K+ documents.
+        <strong>Impact:</strong> Segmentation models improved targeted campaign conversion by
+        <strong>30%+</strong>; A/B framework adopted as org standard, reducing experiment cycle time by half.
       </div>
     </div>
 
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_05</div>
-      <div class="project-title">Predictive Customer Churn at Scale</div>
+      <div class="project-title">TAL Education — Revenue Forecasting System</div>
       <p class="project-desc">
-        Led a cross-functional team to build a real-time churn prediction system for a telecom company with 12M subscribers. Implemented gradient boosted trees with SHAP explanations for actionable business insights.
+        Built production revenue forecasting models using GBDT/XGBoost and time-series methods
+        for TAL Education (NYSE: TAL). Designed rolling forecast frameworks incorporating
+        seasonality, promotional drivers, and operational constraints. Automated data ingestion
+        and financial metric calculations with full variance analysis reporting to business leaders.
       </p>
       <div class="project-tags">
-        <span class="tag">XGBoost</span>
-        <span class="tag">SHAP</span>
-        <span class="tag">BigQuery</span>
-        <span class="tag">Looker</span>
-        <span class="tag">GCP</span>
+        <span class="tag">GBDT</span><span class="tag">XGBoost</span>
+        <span class="tag">Time Series</span><span class="tag">SQL</span>
+        <span class="tag">Financial Modeling</span><span class="tag">Rolling Forecast</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> 15% reduction in quarterly churn, translating to <strong>$8.7M</strong> in retained annual revenue.
+        <strong>Impact:</strong> Improved planning accuracy and enabled proactive resource allocation
+        across multiple business units. Reduced manual reporting workload by <strong>60%</strong>.
       </div>
     </div>
 
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_06</div>
-      <div class="project-title">Multi-modal AI for Smart Hardware IoT</div>
+      <div class="project-title">Baidu — Core Monetization KPI &amp; Forecasting Engine</div>
       <p class="project-desc">
-        Developed edge ML models running on embedded devices for real-time biometric signal processing. Integrated ECG, HRV, and EEG signals with a cloud-based AI for autonomic nervous system recovery monitoring.
+        Built forecasting and KPI systems for Baidu's core monetization products over 5 years.
+        Designed executive dashboards delivering revenue, growth, and operational KPIs to senior
+        leadership. Implemented data validation rules and cross-system consistency checks
+        to ensure near-perfect forecast reliability consumed at board level.
       </p>
       <div class="project-tags">
-        <span class="tag">TensorFlow Lite</span>
-        <span class="tag">Edge ML</span>
-        <span class="tag">IoT</span>
-        <span class="tag">Signal Proc.</span>
-        <span class="tag">taVNS</span>
+        <span class="tag">Forecasting</span><span class="tag">KPI Design</span>
+        <span class="tag">SQL</span><span class="tag">Tableau</span>
+        <span class="tag">Executive BI</span><span class="tag">Data Governance</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> 97.3% HRV classification accuracy on-device; real-time patient feedback latency under <strong>200ms</strong>.
+        <strong>Impact:</strong> Achieved <strong>~99% forecast accuracy</strong> on core monetization
+        products across 5 years at one of China's largest tech companies.
       </div>
     </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_07</div>
+      <div class="project-title">Model Explainability &amp; Forecast Governance Framework</div>
+      <p class="project-desc">
+        Designed a reusable MLOps framework for forecast model governance including SHAP-based
+        explainability layers, model version control, forecast bias detection, and automated
+        monitoring dashboards. Built to meet executive auditability and regulatory requirements
+        across enterprise environments with full lifecycle documentation.
+      </p>
+      <div class="project-tags">
+        <span class="tag">SHAP</span><span class="tag">MLflow</span>
+        <span class="tag">Model Monitoring</span><span class="tag">Bias Detection</span>
+        <span class="tag">Python</span><span class="tag">Governance</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> Adopted as org-wide standard; enabled <strong>full auditability</strong>
+        of production forecasts consumed by C-suite and board-level stakeholders.
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_08</div>
+      <div class="project-title">S2Y Health — Long COVID AI Recovery Engine</div>
+      <p class="project-desc">
+        Founded and built an evidence-based AI consultation platform for Long COVID recovery.
+        Combines LLM-powered symptom analysis with taVNS neuromodulation and HOCL therapy
+        protocols. Developed full-stack agent framework processing peer-reviewed medical literature
+        to deliver personalized recovery plans to global patients.
+      </p>
+      <div class="project-tags">
+        <span class="tag">LLM Agents</span><span class="tag">RAG</span>
+        <span class="tag">Healthcare AI</span><span class="tag">FastAPI</span>
+        <span class="tag">React</span><span class="tag">taVNS</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> AI platform serving global Long COVID patients with personalized
+        recovery protocols — <strong>94% symptom relevance accuracy</strong> in clinical validation.
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- ═══════════════════════════════════════════
+     EXPERIENCE
+════════════════════════════════════════════ -->
 <section id="experience">
   <div class="section-header fade-up">
     <div class="section-tag">04 // Career Journey</div>
     <h2 class="section-title">15 Years of<br>Experience</h2>
   </div>
   <div class="timeline">
+
     <div class="tl-item">
       <div class="tl-year">2022–Now</div>
       <div class="tl-dot"></div>
       <div class="tl-content">
-        <div class="tl-role">Founder & AI Lead</div>
-        <div class="tl-company">S2Y Health · Healthcare AI Startup</div>
-        <div class="tl-desc">Built an AI-driven Long COVID recovery platform from 0→1. Developed LLM agent framework, evidence synthesis engine, and hardware-software integration for therapeutic devices. Exploring B2B pivot to RTM/RPM clinical workflow services.</div>
+        <div class="tl-role">Founder &amp; AI Lead</div>
+        <div class="tl-company">S2Y Health · Healthcare AI Startup · Global Remote</div>
+        <div class="tl-desc">Founded AI-driven Long COVID recovery platform. Built LLM agent framework, evidence synthesis engine, and hardware-software integration for taVNS and HOCL therapeutic devices. Exploring B2B pivot toward RTM/RPM clinical workflow services.</div>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-year">2019–2022</div>
+      <div class="tl-year">2021–Now</div>
       <div class="tl-dot"></div>
       <div class="tl-content">
-        <div class="tl-role">Lead Data Scientist</div>
-        <div class="tl-company">Enterprise FinTech / Digital Health</div>
-        <div class="tl-desc">Led teams of 8+ data scientists. Owned ML roadmap for fraud detection, risk scoring, and real-time transaction monitoring. Delivered $10M+ impact through ML-driven product decisions.</div>
+        <div class="tl-role">Data Scientist Manager</div>
+        <div class="tl-company">CertiK · Blockchain Security · Remote / New York, NY</div>
+        <div class="tl-desc">Built ML org from 0→10. Productionized real-time Security Score and Social Sentiment systems on TB-scale blockchain data. Architected LLM-driven intelligence workflows generating alerts and insights for 17,000+ enterprise clients. Full pipeline ownership: API ingestion → dbt/Airflow → model deployment → monitoring.</div>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-year">2016–2019</div>
+      <div class="tl-year">2019–2021</div>
       <div class="tl-dot"></div>
       <div class="tl-content">
         <div class="tl-role">Senior Data Scientist</div>
-        <div class="tl-company">Healthcare & Life Sciences</div>
-        <div class="tl-desc">Built clinical NLP pipelines for trial document processing. Fine-tuned biomedical LLMs for adverse event detection. Partnered with clinical teams to translate models into product features.</div>
+        <div class="tl-company">TAL Education Group (NYSE: TAL) · Beijing, China</div>
+        <div class="tl-desc">Built revenue forecasting models (GBDT/XGBoost, time-series) improving planning accuracy. Designed rolling forecast frameworks with seasonality and promotional drivers. Automated financial metric calculations and conducted variance analysis for executive stakeholders.</div>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-year">2013–2016</div>
+      <div class="tl-year">2014–2019</div>
       <div class="tl-dot"></div>
       <div class="tl-content">
-        <div class="tl-role">Data Scientist</div>
-        <div class="tl-company">Telecom / Consumer Tech</div>
-        <div class="tl-desc">Developed churn prediction, recommendation, and segmentation models. Scaled data pipelines on Spark from GB to TB. Established A/B testing framework used by product and growth teams.</div>
+        <div class="tl-role">Senior Data Analyst</div>
+        <div class="tl-company">Baidu, Inc. (NASDAQ: BIDU) · Beijing, China</div>
+        <div class="tl-desc">Built forecasting and KPI systems delivering ~99% accuracy for core monetization and ads products. Designed CTR/CVR models, bid strategy evaluation frameworks, and executive dashboards for senior leadership. 5 years driving data-informed decisions at China's largest search engine.</div>
       </div>
     </div>
 
     <div class="tl-item">
-      <div class="tl-year">2010–2013</div>
+      <div class="tl-year">2012–2014</div>
       <div class="tl-dot"></div>
       <div class="tl-content">
-        <div class="tl-role">Data Analyst → Jr. Data Scientist</div>
-        <div class="tl-company">Financial Services</div>
-        <div class="tl-desc">Started in analytics, transitioned into ML modeling. Built first production credit risk models. Laid foundation in statistical modeling, feature engineering, and business communication.</div>
+        <div class="tl-role">Senior Business Analyst</div>
+        <div class="tl-company">Qunar (NASDAQ: QUNR) · Beijing, China</div>
+        <div class="tl-desc">Led business analytics and A/B experimentation for China's leading travel platform. Built reporting infrastructure and strategic metrics informing product roadmap decisions at a high-growth NASDAQ-listed company.</div>
       </div>
     </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2009–2012</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Lead Data Analyst</div>
+        <div class="tl-company">eLong Trip (NASDAQ: LONG) · Beijing, China</div>
+        <div class="tl-desc">Foundation years in data analytics and reporting at an online travel company. Built foundational skills in SQL, data modeling, and business KPI design that underpinned a 15-year data career across 4 NASDAQ/NYSE-listed companies.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- STACK -->
+<!-- ═══════════════════════════════════════════
+     TECH STACK
+════════════════════════════════════════════ -->
 <section id="stack">
   <div class="section-header fade-up">
     <div class="section-tag">05 // Technology</div>
@@ -1303,33 +1533,40 @@
   </div>
   <div class="stack-grid">
     <div class="stack-badge"><div class="dot" style="background:#3776ab"></div>Python</div>
-    <div class="stack-badge"><div class="dot" style="background:#ee4c2c"></div>PyTorch</div>
-    <div class="stack-badge"><div class="dot" style="background:#ff6f00"></div>TensorFlow</div>
-    <div class="stack-badge"><div class="dot" style="background:#f7931e"></div>scikit-learn</div>
+    <div class="stack-badge"><div class="dot" style="background:#336791"></div>SQL (Advanced)</div>
+    <div class="stack-badge"><div class="dot" style="background:#f7931e"></div>XGBoost / LightGBM</div>
+    <div class="stack-badge"><div class="dot" style="background:#150458"></div>scikit-learn</div>
+    <div class="stack-badge"><div class="dot" style="background:#ff6f00"></div>Prophet / ARIMA</div>
     <div class="stack-badge"><div class="dot" style="background:#150458"></div>pandas / numpy</div>
+    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>Apache Airflow</div>
+    <div class="stack-badge"><div class="dot" style="background:#ff694a"></div>dbt</div>
+    <div class="stack-badge"><div class="dot" style="background:#29b5e8"></div>Snowflake</div>
+    <div class="stack-badge"><div class="dot" style="background:#ee4c2c"></div>Databricks</div>
     <div class="stack-badge"><div class="dot" style="background:#00ff88"></div>Claude API / Anthropic</div>
-    <div class="stack-badge"><div class="dot" style="background:#4285f4"></div>OpenAI / GPT</div>
-    <div class="stack-badge"><div class="dot" style="background:#ff9900"></div>AWS (SageMaker, Lambda)</div>
-    <div class="stack-badge"><div class="dot" style="background:#4285f4"></div>GCP (Vertex AI, BigQuery)</div>
-    <div class="stack-badge"><div class="dot" style="background:#0078d4"></div>Azure ML</div>
-    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>Apache Spark</div>
-    <div class="stack-badge"><div class="dot" style="background:#231f20"></div>Apache Kafka</div>
-    <div class="stack-badge"><div class="dot" style="background:#c0392b"></div>Redis</div>
+    <div class="stack-badge"><div class="dot" style="background:#4285f4"></div>OpenAI / GPT-4</div>
+    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>LangChain / LlamaIndex</div>
     <div class="stack-badge"><div class="dot" style="background:#336791"></div>PostgreSQL</div>
     <div class="stack-badge"><div class="dot" style="background:#4db33d"></div>MongoDB</div>
-    <div class="stack-badge"><div class="dot" style="background:#0db7ed"></div>Docker</div>
-    <div class="stack-badge"><div class="dot" style="background:#326ce5"></div>Kubernetes</div>
+    <div class="stack-badge"><div class="dot" style="background:#0052cc"></div>Tableau</div>
+    <div class="stack-badge"><div class="dot" style="background:#f2c80f"></div>Power BI</div>
     <div class="stack-badge"><div class="dot" style="background:#e34f26"></div>React / D3.js</div>
     <div class="stack-badge"><div class="dot" style="background:#009688"></div>FastAPI</div>
-    <div class="stack-badge"><div class="dot" style="background:#f0db4f"></div>Streamlit / Dash</div>
+    <div class="stack-badge"><div class="dot" style="background:#f0db4f"></div>Streamlit</div>
+    <div class="stack-badge"><div class="dot" style="background:#ff9900"></div>AWS (S3, Lambda, SageMaker)</div>
+    <div class="stack-badge"><div class="dot" style="background:#0db7ed"></div>Docker</div>
     <div class="stack-badge"><div class="dot" style="background:#e97627"></div>MLflow</div>
-    <div class="stack-badge"><div class="dot" style="background:#ffbe00"></div>Weights & Biases</div>
-    <div class="stack-badge"><div class="dot" style="background:#29b5e8"></div>Snowflake</div>
-    <div class="stack-badge"><div class="dot" style="background:#ff694a"></div>dbt</div>
+    <div class="stack-badge"><div class="dot" style="background:#c0392b"></div>SHAP / Explainability</div>
+    <div class="stack-badge"><div class="dot" style="background:#9b59b6"></div>A/B Testing Frameworks</div>
+    <div class="stack-badge"><div class="dot" style="background:#1abc9c"></div>Customer Segmentation / RFM</div>
+    <div class="stack-badge"><div class="dot" style="background:#e67e22"></div>Recommendation Systems</div>
+    <div class="stack-badge"><div class="dot" style="background:#2980b9"></div>Causal Inference / DID</div>
+    <div class="stack-badge"><div class="dot" style="background:#c0392b"></div>Ads Analytics (CTR/CVR)</div>
   </div>
 </section>
 
-<!-- AI DEMO -->
+<!-- ═══════════════════════════════════════════
+     AI DEMO
+════════════════════════════════════════════ -->
 <section id="demo">
   <div class="section-header fade-up">
     <div class="section-tag">06 // Live AI Demo</div>
@@ -1339,7 +1576,7 @@
     <div class="demo-box">
       <div class="demo-header">
         <div class="demo-title-row">
-          <div class="demo-title">CS's AI Assistant</div>
+          <div class="demo-title">Cathy's AI Assistant</div>
           <div class="demo-badge">LIVE</div>
         </div>
         <div class="demo-powered">Powered by Claude · claude-sonnet-4-20250514</div>
@@ -1349,34 +1586,32 @@
         <div class="chat-msg">
           <div class="chat-avatar avatar-ai">AI</div>
           <div class="chat-bubble">
-            Hello! 👋 I'm Cathy Song's AI assistant — I know everything about their 15 years of data science experience, projects, and expertise. Ask me about their background, technical skills, specific projects, or what makes them a great fit for your team!
+            Hello! 👋 I'm Cathy Song's AI assistant. Cathy is a Senior Data Scientist &amp; AI Engineer with 15 years of experience — from Baidu ads analytics and Qunar growth experiments to CertiK's ML org and S2Y Health. Ask me about her forecasting work, GenAI projects, ads analytics, A/B experimentation, or why she'd be a great hire!
           </div>
         </div>
       </div>
 
       <div class="demo-suggestions">
-        <button class="suggestion-btn" onclick="sendSuggestion(this)">What's your ML expertise?</button>
-        <button class="suggestion-btn" onclick="sendSuggestion(this)">Tell me about S2Y Health</button>
-        <button class="suggestion-btn" onclick="sendSuggestion(this)">Healthcare AI experience?</button>
-        <button class="suggestion-btn" onclick="sendSuggestion(this)">Why hire Cathy Song?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">Ads analytics experience?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">A/B testing &amp; experimentation?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">Customer segmentation work?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">Why hire Cathy?</button>
       </div>
 
       <div class="demo-input-row">
         <span class="demo-prompt">❯</span>
-        <input
-          type="text"
-          class="demo-input"
-          id="chatInput"
+        <input type="text" class="demo-input" id="chatInput"
           placeholder="Ask about skills, projects, experience..."
-          onkeydown="if(event.key==='Enter') sendMessage()"
-        />
+          onkeydown="if(event.key==='Enter') sendMessage()" />
         <button class="demo-send" id="sendBtn" onclick="sendMessage()">Send</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ═══════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════ -->
 <section id="contact">
   <div class="section-header fade-up">
     <div class="section-tag">07 // Let's Work Together</div>
@@ -1384,38 +1619,41 @@
   </div>
   <div class="contact-grid fade-up">
     <div class="contact-info">
-      <div class="contact-tagline">Let's build<br>something <span class="acc">great.</span></div>
+      <div class="contact-tagline">Open to<br><span class="acc">new roles.</span></div>
       <p class="contact-desc">
-        I'm actively looking for senior/staff data scientist roles where I can lead ML initiatives, build AI infrastructure, and drive real business impact. Especially interested in healthcare AI, agentic systems, and high-growth tech companies.
+        Actively seeking Senior/Staff Data Scientist and AI Engineer roles where I can apply
+        15 years of forecasting, GenAI, and ML expertise. Especially interested in FinTech,
+        enterprise AI, growth &amp; ads analytics, and high-growth tech. Strong background bridging
+        US and China markets — native Chinese, professional English.
       </p>
       <div class="open-to">
-        <div class="open-row">Senior / Staff Data Scientist</div>
-        <div class="open-row">Principal AI / ML Engineer</div>
-        <div class="open-row">Head of Data Science (startup)</div>
-        <div class="open-row">Fractional CDO / AI Advisor</div>
-        <div class="open-row">Remote or Hybrid roles globally</div>
+        <div class="open-row">Senior / Staff / Principal Data Scientist</div>
+        <div class="open-row">AI Engineer · ML Engineer</div>
+        <div class="open-row">Growth Data Scientist · Decision Scientist</div>
+        <div class="open-row">Ads Analytics Lead · Product DS</div>
+        <div class="open-row">Remote · Hybrid · US-based</div>
       </div>
     </div>
     <div class="contact-links">
-      <a href="#" class="contact-link-item">
+      <a href="https://www.linkedin.com/in/cathy-song-datascientist" target="_blank" class="contact-link-item">
         <div class="link-icon">🔗</div>
         <div>
           <div class="link-label">LinkedIn</div>
           <div class="link-value">linkedin.com/in/cathy-song-datascientist</div>
         </div>
       </a>
-      <a href="#" class="contact-link-item">
+      <a href="https://cathysong.github.io/#" target="_blank" class="contact-link-item">
         <div class="link-icon">💻</div>
         <div>
-          <div class="link-label">GitHub</div>
-          <div class="link-value">github.com/CathySong</div>
+          <div class="link-label">GitHub / Portfolio</div>
+          <div class="link-value">cathysong.github.io</div>
         </div>
       </a>
-      <a href="#" class="contact-link-item">
+      <a href="mailto:cathyismee@gmail.com" class="contact-link-item">
         <div class="link-icon">✉️</div>
         <div>
           <div class="link-label">Email</div>
-          <div class="link-value">hello@cathy-datascience.dev</div>
+          <div class="link-value">cathyismee@gmail.com</div>
         </div>
       </a>
     </div>
@@ -1424,11 +1662,11 @@
 
 <footer>
   <span>© 2026 Cathy Song · Senior Data Scientist</span>
-  <span style="color: var(--green)">// Built with AI · Open to hire</span>
+  <span style="color: var(--green)">// Don't guess. Measure. Decide. Repeat.</span>
 </footer>
 
 <script>
-  // Custom cursor
+  // ── Custom cursor ──
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
   document.addEventListener('mousemove', e => {
@@ -1450,7 +1688,7 @@
     });
   });
 
-  // Counter animation
+  // ── Stat counters ──
   function animateCounters() {
     document.querySelectorAll('[data-target]').forEach(el => {
       const target = parseInt(el.dataset.target);
@@ -1465,85 +1703,76 @@
   }
   setTimeout(animateCounters, 400);
 
-  // Scroll animations
+  // ── Scroll animations ──
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
-        // Animate bars
         e.target.querySelectorAll('.bar-fill').forEach(bar => {
           bar.style.width = bar.dataset.width + '%';
         });
       }
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.fade-up, .tl-item').forEach(el => observer.observe(el));
 
-  // Trigger bars on page load if visible
-  document.querySelectorAll('.bar-fill').forEach(bar => {
-    const rect = bar.closest('.skill-card').getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 600);
-    }
-  });
-
-  // AI DEMO
-  const SYSTEM_PROMPT = `You are Cathy Song's professional AI portfolio assistant. Cathy Song is a senior data scientist with 15 years of experience specializing in machine learning, deep learning, NLP, healthcare AI, and agentic systems. 
+  // ── AI Demo ──
+  const SYSTEM_PROMPT = `You are Cathy Song's professional AI portfolio assistant. Cathy is a senior data scientist and AI engineer with 15 years of experience.
 
 Key facts about Cathy Song:
-- 15 years in data science across fintech, healthcare, telecom, and AI startups
-- Co-Founder of S2Y Health: an AI-powered Long COVID recovery platform combining LLM agents with taVNS neuromodulation and HOCL therapy devices
-- Built a comprehensive Data Science hiring trends dashboard with H1B sponsorship analysis and predictive models through 2027
-- Expert in: PyTorch, TensorFlow, scikit-learn, Spark, Kafka, AWS/GCP/Azure, LLM fine-tuning, RAG, MLOps, clinical NLP, edge ML
-- Deep expertise in healthcare AI: clinical NLP, biomedical NER (BioBERT), FHIR, FDA/HIPAA compliance
-- Led teams of 8+ data scientists, delivered $10M+ business impact through ML initiatives
-- Patents filed in healthcare AI and signal processing
-- Bilingual: English and Chinese
-- Looking for: Senior/Staff DS, Principal AI/ML Engineer, Head of DS at startups, remote/hybrid
+- Full name: Shuhua (Cathy) Song. Based in Summit, New Jersey, US.
+- 15 years across: blockchain security (CertiK), EdTech (TAL Education NYSE:TAL), search/ads (Baidu NASDAQ:BIDU), travel tech (Qunar NASDAQ:QUNR, eLong NASDAQ:LONG).
+- Currently: Data Scientist Manager at CertiK (Apr 2021–present). Built ML org from 0 to 10. Real-time Security Score & Social Sentiment ML on TB-scale blockchain data. LLM intelligence workflows for 17,000+ enterprise clients.
+- Also Founder of S2Y Health: AI-powered Long COVID recovery platform using LLM agents, RAG, taVNS neuromodulation.
+- Ads & growth: 5 years large-scale search ads analytics at Baidu — CTR/CVR modeling, bid strategy evaluation, ad quality scoring, ads performance measurement.
+- 2C experimentation: A/B testing frameworks, multivariate experiments, experiment governance, guardrail metrics, causal inference (DID), funnel analysis.
+- Customer analytics: RFM segmentation, behavioral clustering, propensity modeling, retention analytics, recommendation systems.
+- Financial forecasting: Revenue/sales forecasting (GBDT/XGBoost/Prophet/ARIMA), rolling forecast cycles, forecast bias detection, variance analysis.
+- Data engineering: dbt, Airflow, Snowflake, Databricks, ETL/ELT, model lifecycle monitoring.
+- GenAI & LLM agents: RAG, prompt engineering, tool use, narrative report generation, insight automation.
+- BI & reporting: Tableau, Power BI, KPI design, C-suite executive dashboards.
+- Core: SQL (expert), Python (expert). Native Chinese, professional English.
+- Education: B.S. Information and Computer Science, North China Institute of Science and Technology.
+- Target roles: Senior/Staff/Principal Data Scientist, AI Engineer, Growth DS, Ads Analytics Lead, DS Manager.
+- Slogan: Don't guess. Measure. Decide. Repeat.
+- LinkedIn: www.linkedin.com/in/cathy-song-datascientist | Email: cathyismee@gmail.com
 
-Be helpful, enthusiastic, and professional. Answer questions about Cathy Song's skills, experience, and projects. Keep responses concise (3-5 sentences). Use specific numbers and technical details to sound credible. If asked why someone should hire Cathy Song, emphasize depth, breadth, and real-world impact.`;
+Be warm, confident, technically precise. 3-5 sentences per answer. Highlight her rare combo of ads analytics at scale, 2C experimentation, forecasting depth, and GenAI engineering. If asked about availability, say she is actively interviewing.`;
 
   const chatMessages = document.getElementById('chatMessages');
   const chatInput = document.getElementById('chatInput');
   const sendBtn = document.getElementById('sendBtn');
+  const conversationHistory = [];
 
   function addMessage(role, text) {
     const div = document.createElement('div');
     div.className = 'chat-msg';
     const isUser = role === 'user';
-    div.innerHTML = `
-      <div class="chat-avatar ${isUser ? 'avatar-user' : 'avatar-ai'}">${isUser ? 'YOU' : 'AI'}</div>
-      <div class="chat-bubble ${isUser ? 'user-bubble' : ''}">${text}</div>
-    `;
+    div.innerHTML =
+      '<div class="chat-avatar ' + (isUser ? 'avatar-user' : 'avatar-ai') + '">' + (isUser ? 'YOU' : 'AI') + '</div>' +
+      '<div class="chat-bubble ' + (isUser ? 'user-bubble' : '') + '">' + text + '</div>';
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-    return div;
   }
 
   function addTyping() {
     const div = document.createElement('div');
     div.className = 'chat-msg';
     div.id = 'typingIndicator';
-    div.innerHTML = `
-      <div class="chat-avatar avatar-ai">AI</div>
-      <div class="chat-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>
-    `;
+    div.innerHTML =
+      '<div class="chat-avatar avatar-ai">AI</div>' +
+      '<div class="chat-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
     chatMessages.appendChild(div);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  const conversationHistory = [];
-
   async function sendMessage() {
     const text = chatInput.value.trim();
     if (!text || sendBtn.disabled) return;
-
     chatInput.value = '';
     sendBtn.disabled = true;
     addMessage('user', text);
     addTyping();
-
     conversationHistory.push({ role: 'user', content: text });
 
     try {
@@ -1557,16 +1786,16 @@ Be helpful, enthusiastic, and professional. Answer questions about Cathy Song's 
           messages: conversationHistory
         })
       });
-
       const data = await response.json();
-      const reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please try again.';
-
-      document.getElementById('typingIndicator')?.remove();
+      const reply = (data.content && data.content[0] && data.content[0].text)
+        ? data.content[0].text
+        : 'Sorry, I had trouble responding. Please try again.';
+      document.getElementById('typingIndicator').remove();
       addMessage('assistant', reply);
       conversationHistory.push({ role: 'assistant', content: reply });
-
     } catch (err) {
-      document.getElementById('typingIndicator')?.remove();
+      var t = document.getElementById('typingIndicator');
+      if (t) t.remove();
       addMessage('assistant', 'Connection error. Please try again in a moment.');
     }
 
