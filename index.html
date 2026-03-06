@@ -1770,7 +1770,7 @@ Be warm, confident, technically precise. 3-5 sentences per answer. Highlight her
     addTyping();
     conversationHistory.push({ role: 'user', content: question });
     try {
-      var response = await fetch('https://api.anthropic.com/v1/messages', {
+      var response = await fetch('/api/chats', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
