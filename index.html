@@ -400,7 +400,6 @@
   .skill-sub { font-size: 0.65rem; color: var(--text2); margin-top: 2px; }
 
   .skill-bars { display: flex; flex-direction: column; gap: 10px; }
-  .skill-item { }
   .skill-row {
     display: flex;
     justify-content: space-between;
@@ -507,6 +506,29 @@
     line-height: 1.6;
   }
   .project-impact strong { color: var(--amber); }
+
+  /* Company logos (inline SVG sprite) */
+  .logo-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 14px;
+  }
+  .logo-mark {
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .logo-mark svg { width: 100%; height: 100%; display: block; }
+  .logo-mark img { width: 100%; height: 100%; display: block; object-fit: contain; }
+  .logo-text {
+    font-size: 0.62rem;
+    color: var(--text2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
 
   /* TIMELINE */
   #experience { padding-bottom: 80px; }
@@ -1025,6 +1047,97 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
+<!-- Logo sprite (replaceable with real assets) -->
+<svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true" focusable="false">
+  <symbol id="logo-s2y" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-s2y" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#00ff88"/>
+        <stop offset="1" stop-color="#00d4ff"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-s2y)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">S2Y</text>
+  </symbol>
+
+  <symbol id="logo-certik" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-certik" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8a5cff"/>
+        <stop offset="1" stop-color="#00d4ff"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-certik)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">CK</text>
+  </symbol>
+
+  <symbol id="logo-baidu" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-baidu" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#4285f4"/>
+        <stop offset="1" stop-color="#00d4ff"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-baidu)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">BD</text>
+  </symbol>
+
+  <symbol id="logo-tal" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-tal" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ffb700"/>
+        <stop offset="1" stop-color="#00ff88"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-tal)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">TAL</text>
+  </symbol>
+
+  <symbol id="logo-qunar" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-qunar" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#00d4ff"/>
+        <stop offset="1" stop-color="#00cc6a"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-qunar)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">QN</text>
+  </symbol>
+
+  <symbol id="logo-elong" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-elong" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff4444"/>
+        <stop offset="1" stop-color="#ffb700"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-elong)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">EL</text>
+  </symbol>
+
+  <symbol id="logo-multi" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-multi" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8b949e"/>
+        <stop offset="1" stop-color="#00d4ff"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-multi)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="11" font-weight="800" fill="#05080c">MIX</text>
+  </symbol>
+
+  <symbol id="logo-framework" viewBox="0 0 32 32">
+    <defs>
+      <linearGradient id="g-framework" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#00ff88"/>
+        <stop offset="1" stop-color="#8a5cff"/>
+      </linearGradient>
+    </defs>
+    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-framework)" />
+    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="10.5" font-weight="800" fill="#05080c">OPS</text>
+  </symbol>
+</svg>
+
 <!-- Nav -->
 <nav>
   <div class="nav-logo">CS<span>.ds</span></div>
@@ -1283,6 +1396,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_01</div>
       <div class="project-title">CertiK — Real-Time Blockchain Security ML Platform</div>
+      <div class="logo-row" aria-label="CertiK">
+        <span class="logo-mark" title="CertiK">
+          <img src="assets/logos/certik.jpeg" alt="CertiK logo" loading="lazy" decoding="async" />
+        </span>
+        <span class="logo-text">CertiK</span>
+      </div>
       <p class="project-desc">
         Built CertiK's entire data/ML organization from 0 to 10. Designed and productionized
         real-time ML systems — Security Score and Social Sentiment engines — running on TB-scale
@@ -1303,6 +1422,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_02</div>
       <div class="project-title">CertiK — LLM-Powered AI Intelligence Workflow</div>
+      <div class="logo-row" aria-label="CertiK">
+        <span class="logo-mark" title="CertiK">
+          <img src="assets/logos/certik.jpeg" alt="CertiK logo" loading="lazy" decoding="async" />
+        </span>
+        <span class="logo-text">CertiK</span>
+      </div>
       <p class="project-desc">
         Architected an AI intelligence pipeline combining news analytics, social sentiment scoring,
         and LLM-driven entity extraction to generate high-value security alerts and insights.
@@ -1323,6 +1448,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_03</div>
       <div class="project-title">Baidu — Large-Scale Ads Analytics &amp; Strategy Platform</div>
+      <div class="logo-row" aria-label="Baidu">
+        <span class="logo-mark" title="Baidu">
+          <img src="assets/logos/baidu.jpeg" alt="Baidu logo" loading="lazy" decoding="async" />
+        </span>
+        <span class="logo-text">Baidu</span>
+      </div>
       <p class="project-desc">
         Designed and owned end-to-end ads performance analytics at Baidu — one of the world's
         largest search ad platforms. Built monetization measurement frameworks covering CTR/CVR
@@ -1343,6 +1474,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_04</div>
       <div class="project-title">2C Product Experimentation &amp; Customer Segmentation</div>
+      <div class="logo-row" aria-label="Multiple companies">
+        <span class="logo-mark" title="Multi-company">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-multi" xlink:href="#logo-multi"></use></svg>
+        </span>
+        <span class="logo-text">Baidu · Qunar · TAL</span>
+      </div>
       <p class="project-desc">
         Led A/B and multivariate experiment frameworks for large-scale consumer products across
         Baidu, Qunar, and TAL. Built customer segmentation systems using RFM analysis, behavioral
@@ -1363,6 +1500,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_05</div>
       <div class="project-title">TAL Education — Revenue Forecasting System</div>
+      <div class="logo-row" aria-label="TAL Education">
+        <span class="logo-mark" title="TAL Education">
+          <img src="assets/logos/tal.jpeg" alt="TAL Education logo" loading="lazy" decoding="async" />
+        </span>
+        <span class="logo-text">TAL Education</span>
+      </div>
       <p class="project-desc">
         Built production revenue forecasting models using GBDT/XGBoost and time-series methods
         for TAL Education (NYSE: TAL). Designed rolling forecast frameworks incorporating
@@ -1383,6 +1526,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_06</div>
       <div class="project-title">Baidu — Core Monetization KPI &amp; Forecasting Engine</div>
+      <div class="logo-row" aria-label="Baidu">
+        <span class="logo-mark" title="Baidu">
+          <img src="assets/logos/baidu.jpeg" alt="Baidu logo" loading="lazy" decoding="async" />
+        </span>
+        <span class="logo-text">Baidu</span>
+      </div>
       <p class="project-desc">
         Built forecasting and KPI systems for Baidu's core monetization products over 5 years.
         Designed executive dashboards delivering revenue, growth, and operational KPIs to senior
@@ -1403,6 +1552,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_07</div>
       <div class="project-title">Model Explainability &amp; Forecast Governance Framework</div>
+      <div class="logo-row" aria-label="MLOps / Governance framework">
+        <span class="logo-mark" title="Framework">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-framework" xlink:href="#logo-framework"></use></svg>
+        </span>
+        <span class="logo-text">Framework</span>
+      </div>
       <p class="project-desc">
         Designed a reusable MLOps framework for forecast model governance including SHAP-based
         explainability layers, model version control, forecast bias detection, and automated
@@ -1423,6 +1578,12 @@
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_08</div>
       <div class="project-title">S2Y Health — Long COVID AI Recovery Engine</div>
+      <div class="logo-row" aria-label="S2Y Health">
+        <span class="logo-mark" title="S2Y Health">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-s2y" xlink:href="#logo-s2y"></use></svg>
+        </span>
+        <span class="logo-text">S2Y Health</span>
+      </div>
       <p class="project-desc">
         Founded and built an evidence-based AI consultation platform for Long COVID recovery.
         Combines LLM-powered symptom analysis with taVNS neuromodulation and HOCL therapy
@@ -1459,6 +1620,12 @@
       <div class="tl-content">
         <div class="tl-role">Founder &amp; AI Lead</div>
         <div class="tl-company">S2Y Health · Healthcare AI Startup · Global Remote</div>
+        <div class="logo-row" aria-label="S2Y Health">
+          <span class="logo-mark" title="S2Y Health">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-s2y" xlink:href="#logo-s2y"></use></svg>
+          </span>
+          <span class="logo-text">S2Y Health</span>
+        </div>
         <div class="tl-desc">Founded AI-driven Long COVID recovery platform. Built LLM agent framework, evidence synthesis engine, and hardware-software integration for taVNS and HOCL therapeutic devices. Exploring B2B pivot toward RTM/RPM clinical workflow services.</div>
       </div>
     </div>
@@ -1469,6 +1636,12 @@
       <div class="tl-content">
         <div class="tl-role">Data Scientist Manager</div>
         <div class="tl-company">CertiK · Blockchain Security · Remote / New York, NY</div>
+        <div class="logo-row" aria-label="CertiK">
+          <span class="logo-mark" title="CertiK">
+            <img src="assets/logos/certik.jpeg" alt="CertiK logo" loading="lazy" decoding="async" />
+          </span>
+          <span class="logo-text">CertiK</span>
+        </div>
         <div class="tl-desc">Built ML org from 0→10. Productionized real-time Security Score and Social Sentiment systems on TB-scale blockchain data. Architected LLM-driven intelligence workflows generating alerts and insights for 17,000+ enterprise clients. Full pipeline ownership: API ingestion → dbt/Airflow → model deployment → monitoring.</div>
       </div>
     </div>
@@ -1479,6 +1652,12 @@
       <div class="tl-content">
         <div class="tl-role">Senior Data Scientist</div>
         <div class="tl-company">TAL Education Group (NYSE: TAL) · Beijing, China</div>
+        <div class="logo-row" aria-label="TAL Education">
+          <span class="logo-mark" title="TAL Education">
+            <img src="assets/logos/tal.jpeg" alt="TAL Education logo" loading="lazy" decoding="async" />
+          </span>
+          <span class="logo-text">TAL Education</span>
+        </div>
         <div class="tl-desc">Built revenue forecasting models (GBDT/XGBoost, time-series) improving planning accuracy. Designed rolling forecast frameworks with seasonality and promotional drivers. Automated financial metric calculations and conducted variance analysis for executive stakeholders.</div>
       </div>
     </div>
@@ -1489,6 +1668,12 @@
       <div class="tl-content">
         <div class="tl-role">Senior Data Analyst</div>
         <div class="tl-company">Baidu, Inc. (NASDAQ: BIDU) · Beijing, China</div>
+        <div class="logo-row" aria-label="Baidu">
+          <span class="logo-mark" title="Baidu">
+            <img src="assets/logos/baidu.jpeg" alt="Baidu logo" loading="lazy" decoding="async" />
+          </span>
+          <span class="logo-text">Baidu</span>
+        </div>
         <div class="tl-desc">Built forecasting and KPI systems delivering ~99% accuracy for core monetization and ads products. Designed CTR/CVR models, bid strategy evaluation frameworks, and executive dashboards for senior leadership. 5 years driving data-informed decisions at China's largest search engine.</div>
       </div>
     </div>
@@ -1499,6 +1684,12 @@
       <div class="tl-content">
         <div class="tl-role">Senior Business Analyst</div>
         <div class="tl-company">Qunar (NASDAQ: QUNR) · Beijing, China</div>
+        <div class="logo-row" aria-label="Qunar">
+          <span class="logo-mark" title="Qunar">
+            <img src="assets/logos/qunar.jpeg" alt="Qunar logo" loading="lazy" decoding="async" />
+          </span>
+          <span class="logo-text">Qunar</span>
+        </div>
         <div class="tl-desc">Led business analytics and A/B experimentation for China's leading travel platform. Built reporting infrastructure and strategic metrics informing product roadmap decisions at a high-growth NASDAQ-listed company.</div>
       </div>
     </div>
@@ -1509,6 +1700,12 @@
       <div class="tl-content">
         <div class="tl-role">Lead Data Analyst</div>
         <div class="tl-company">eLong Trip (NASDAQ: LONG) · Beijing, China</div>
+        <div class="logo-row" aria-label="eLong">
+          <span class="logo-mark" title="eLong">
+            <img src="assets/logos/elong.jpeg" alt="eLong logo" loading="lazy" decoding="async" />
+          </span>
+          <span class="logo-text">eLong</span>
+        </div>
         <div class="tl-desc">Foundation years in data analytics and reporting at an online travel company. Built foundational skills in SQL, data modeling, and business KPI design that underpinned a 15-year data career across 4 NASDAQ/NYSE-listed companies.</div>
       </div>
     </div>
@@ -1635,11 +1832,11 @@
           <div class="link-value">cathysong.github.io</div>
         </div>
       </a>
-      <a href="/cdn-cgi/l/email-protection#670406130f1e0e140a020227000a060e0b4904080a" class="contact-link-item">
+      <a href="mailto:cathyismee@gmail.com" class="contact-link-item">
         <div class="link-icon">✉️</div>
         <div>
           <div class="link-label">Email</div>
-          <div class="link-value"><span class="__cf_email__" data-cfemail="620103160a1b0b110f070722050f030b0e4c010d0f">[email&#160;protected]</span></div>
+          <div class="link-value">cathyismee@gmail.com</div>
         </div>
       </a>
     </div>
