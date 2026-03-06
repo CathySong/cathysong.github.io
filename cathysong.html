@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cathy Song · Senior Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080c10;
+    --bg2: #0d1117;
+    --bg3: #111820;
+    --green: #00ff88;
+    --green2: #00cc6a;
+    --cyan: #00d4ff;
+    --amber: #ffb700;
+    --red: #ff4444;
+    --text: #c9d1d9;
+    --text2: #8b949e;
+    --border: #21262d;
+    --card: #0d1117;
+    --glow: 0 0 20px rgba(0,255,136,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--green);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.2s, height 0.2s;
+    box-shadow: 0 0 10px var(--green);
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(0,255,136,0.4);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: all 0.15s ease;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--green2); border-radius: 2px; }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(8,12,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--green);
+    letter-spacing: 2px;
+  }
+  .nav-logo span { color: var(--text2); }
+
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  .nav-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: var(--green);
+  }
+  .status-dot {
+    width: 7px; height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,255,136,0.4); }
+    50% { opacity: 0.7; box-shadow: 0 0 0 6px rgba(0,255,136,0); }
+  }
+
+  /* Sections */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-content { max-width: 760px; }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    color: var(--green);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding: 6px 14px;
+    border: 1px solid rgba(0,255,136,0.3);
+    border-radius: 2px;
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .hero-name .accent { color: var(--green); }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    font-weight: 600;
+    color: var(--text2);
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-desc {
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: var(--text2);
+    max-width: 580px;
+    margin-bottom: 40px;
+  }
+  .hero-desc .hl { color: var(--cyan); }
+
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn-primary {
+    padding: 12px 28px;
+    background: var(--green);
+    color: #000;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: none;
+    cursor: none;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--cyan); transform: translateY(-2px); box-shadow: var(--glow); }
+
+  .btn-ghost {
+    padding: 12px 28px;
+    background: transparent;
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(0,255,136,0.4);
+    cursor: none;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-ghost:hover { background: rgba(0,255,136,0.08); transform: translateY(-2px); }
+
+  /* Stats */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    margin-top: 64px;
+    border: 1px solid var(--border);
+    background: var(--border);
+    max-width: 680px;
+  }
+
+  .stat {
+    background: var(--bg2);
+    padding: 20px 24px;
+    transition: background 0.2s;
+  }
+  .stat:hover { background: var(--bg3); }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.62rem;
+    color: var(--text2);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+  }
+
+  /* Terminal block */
+  .terminal {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 380px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    display: none;
+  }
+  @media (min-width: 1100px) { .terminal { display: block; } }
+
+  .terminal-bar {
+    background: var(--bg3);
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .t-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .t-red { background: #ff5f57; }
+  .t-yellow { background: #febc2e; }
+  .t-green { background: #28c840; }
+  .t-title { margin-left: auto; font-size: 0.65rem; color: var(--text2); }
+
+  .terminal-body { padding: 20px; font-size: 0.72rem; line-height: 1.8; }
+  .t-prompt { color: var(--green); }
+  .t-cmd { color: var(--cyan); }
+  .t-out { color: var(--text2); }
+  .t-hl { color: var(--amber); }
+  .t-cursor { display: inline-block; width: 8px; height: 14px; background: var(--green); animation: blink 1s step-end infinite; vertical-align: middle; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* Section headers */
+  .section-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 48px 0;
+  }
+
+  .section-tag {
+    font-size: 0.65rem;
+    color: var(--green);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--green);
+    opacity: 0.4;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  /* SKILLS */
+  #skills { padding-bottom: 80px; }
+
+  .skills-grid {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-card {
+    background: var(--bg2);
+    padding: 28px;
+    transition: background 0.2s;
+  }
+  .skill-card:hover { background: var(--bg3); }
+
+  .skill-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .skill-icon {
+    width: 36px; height: 36px;
+    background: rgba(0,255,136,0.08);
+    border: 1px solid rgba(0,255,136,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+  }
+  .skill-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .skill-sub { font-size: 0.65rem; color: var(--text2); margin-top: 2px; }
+
+  .skill-bars { display: flex; flex-direction: column; gap: 10px; }
+  .skill-item { }
+  .skill-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    font-size: 0.65rem;
+    color: var(--text2);
+  }
+  .skill-pct { color: var(--green); }
+  .bar-bg {
+    height: 3px;
+    background: var(--border);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    border-radius: 1px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* PROJECTS */
+  #projects { padding-bottom: 80px; }
+
+  .projects-grid {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg2);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+    cursor: none;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover { background: var(--bg3); }
+  .project-card:hover::before { transform: scaleX(1); }
+
+  .project-num {
+    font-size: 0.65rem;
+    color: var(--text2);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 0.72rem;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .tag {
+    font-size: 0.6rem;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .tag:hover { border-color: var(--green); color: var(--green); }
+
+  .project-impact {
+    padding: 12px 16px;
+    background: rgba(0,255,136,0.04);
+    border-left: 2px solid var(--green);
+    font-size: 0.68rem;
+    color: var(--green);
+    line-height: 1.6;
+  }
+  .project-impact strong { color: var(--amber); }
+
+  /* TIMELINE */
+  #experience { padding-bottom: 80px; }
+
+  .timeline {
+    max-width: 800px;
+    margin: 48px auto 0;
+    padding: 0 48px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 68px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--green), transparent);
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s ease;
+  }
+  .tl-item.visible { opacity: 1; transform: translateX(0); }
+
+  .tl-year {
+    min-width: 60px;
+    text-align: right;
+    font-size: 0.65rem;
+    color: var(--green);
+    padding-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  .tl-dot {
+    width: 10px; height: 10px;
+    border: 2px solid var(--green);
+    border-radius: 50%;
+    background: var(--bg);
+    margin-top: 4px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tl-content { flex: 1; }
+  .tl-role {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .tl-company { font-size: 0.7rem; color: var(--cyan); margin-bottom: 8px; }
+  .tl-desc { font-size: 0.7rem; color: var(--text2); line-height: 1.8; }
+
+  /* STACK */
+  #stack { padding-bottom: 80px; }
+
+  .stack-grid {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .stack-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    font-size: 0.72rem;
+    color: var(--text2);
+    transition: all 0.2s;
+  }
+  .stack-badge:hover { border-color: var(--green); color: var(--green); background: rgba(0,255,136,0.04); }
+  .stack-badge .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* AI DEMO */
+  #demo { padding-bottom: 100px; }
+
+  .demo-container {
+    max-width: 900px;
+    margin: 48px auto 0;
+    padding: 0 48px;
+  }
+
+  .demo-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .demo-header {
+    background: var(--bg3);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .demo-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .demo-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #fff;
+  }
+  .demo-badge {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    background: rgba(0,255,136,0.12);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: var(--green);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .demo-powered {
+    font-size: 0.62rem;
+    color: var(--text2);
+  }
+
+  .demo-chat {
+    min-height: 320px;
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .chat-msg {
+    display: flex;
+    gap: 12px;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  .chat-avatar {
+    width: 32px; height: 32px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .avatar-user { background: rgba(0,212,255,0.12); border: 1px solid rgba(0,212,255,0.3); color: var(--cyan); }
+  .avatar-ai { background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.25); color: var(--green); }
+
+  .chat-bubble {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: var(--text);
+    flex: 1;
+    border-radius: 2px;
+  }
+  .chat-bubble.user-bubble { background: rgba(0,212,255,0.04); border-color: rgba(0,212,255,0.15); }
+
+  .typing-dots {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    height: 20px;
+  }
+  .typing-dots span {
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: typingBounce 1.2s infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-5px); opacity: 1; }
+  }
+
+  .demo-suggestions {
+    padding: 12px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .suggestion-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    cursor: none;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .suggestion-btn:hover { border-color: var(--green); color: var(--green); background: rgba(0,255,136,0.04); }
+
+  .demo-input-row {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .demo-prompt {
+    color: var(--green);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .demo-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    outline: none;
+    caret-color: var(--green);
+  }
+  .demo-input::placeholder { color: var(--text2); }
+
+  .demo-send {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 8px 16px;
+    background: var(--green);
+    border: none;
+    color: #000;
+    font-weight: 700;
+    cursor: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .demo-send:hover { background: var(--cyan); }
+  .demo-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* CONTACT */
+  #contact {
+    padding-bottom: 100px;
+  }
+
+  .contact-grid {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .contact-info {
+    background: var(--bg2);
+    padding: 40px;
+  }
+
+  .contact-tagline {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .contact-tagline .acc { color: var(--green); }
+
+  .contact-desc {
+    font-size: 0.75rem;
+    color: var(--text2);
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+
+  .open-to {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .open-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.72rem;
+    color: var(--text2);
+  }
+  .open-row::before {
+    content: '→';
+    color: var(--green);
+    font-size: 0.8rem;
+  }
+
+  .contact-links {
+    background: var(--bg2);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--text2);
+    font-size: 0.75rem;
+    padding: 16px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+    cursor: none;
+  }
+  .contact-link-item:hover {
+    border-color: var(--green);
+    color: var(--green);
+    background: rgba(0,255,136,0.04);
+    transform: translateX(4px);
+  }
+  .link-icon {
+    width: 36px; height: 36px;
+    background: rgba(0,255,136,0.06);
+    border: 1px solid rgba(0,255,136,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .link-label { font-size: 0.62rem; color: var(--text2); text-transform: uppercase; letter-spacing: 1.5px; }
+  .link-value { font-size: 0.78rem; color: #fff; margin-top: 2px; }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-size: 0.65rem;
+    color: var(--text2);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    #hero { padding: 100px 20px 60px; }
+    .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+    .section-header { padding: 60px 20px 0; }
+    .skills-grid, .projects-grid { padding: 0 20px; }
+    .timeline { padding: 0 20px; }
+    .stack-grid { padding: 0 20px; }
+    .demo-container { padding: 0 20px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-info, .contact-links { padding: 28px; }
+    footer { padding: 20px; flex-direction: column; gap: 8px; }
+  }
+
+  /* Animate on scroll */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: all 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-logo">CS<span>.ds</span></div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#demo">AI Demo</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    Open to opportunities
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div style="position: relative; width: 100%;">
+    <div class="hero-content">
+      <div class="hero-tag">⬡ Senior Data Scientist · 15 Years</div>
+      <h1 class="hero-name">
+        Turning Data<br>into <span class="accent">Decisions.</span>
+      </h1>
+      <p class="hero-title">AI / ML · Healthcare Intelligence · Predictive Systems</p>
+      <p class="hero-desc">
+        15 years building ML infrastructure, predictive models, and AI-driven platforms across 
+        <span class="hl">healthcare</span>, fintech, and enterprise. Specializing in autonomous 
+        agent architectures, clinical AI, and scalable data pipelines. Recently leading 
+        <span class="hl">S2Y Health</span> — an AI-powered Long COVID recovery engine.
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#demo" class="btn-ghost">Chat with AI Demo →</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="15">0</span>
+          <span class="stat-label">Years Exp.</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="40">0</span>
+          <span class="stat-label">Models Deployed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="8">0</span>
+          <span class="stat-label">Industries</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span>
+          <span class="stat-label">Patents Filed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminal window -->
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="t-dot t-red"></div>
+        <div class="t-dot t-yellow"></div>
+        <div class="t-dot t-green"></div>
+        <span class="t-title">cs@ds-portfolio ~ zsh</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-prompt">❯ </span><span class="t-cmd">whoami</span></div>
+        <div class="t-out">Senior Data Scientist | AI Engineer</div>
+        <br>
+        <div><span class="t-prompt">❯ </span><span class="t-cmd">cat expertise.txt</span></div>
+        <div class="t-hl">Machine Learning · Deep Learning</div>
+        <div class="t-hl">NLP · Computer Vision · MLOps</div>
+        <div class="t-hl">Healthcare AI · Agent Frameworks</div>
+        <br>
+        <div><span class="t-prompt">❯ </span><span class="t-cmd">python train_model.py --data all</span></div>
+        <div class="t-out">Loading 15 years of experience...</div>
+        <div class="t-out">Accuracy: <span style="color:var(--green)">97.4%</span> ✓</div>
+        <div class="t-out">Status: <span style="color:var(--green)">Ready to deploy</span></div>
+        <br>
+        <div><span class="t-prompt">❯ </span><div class="t-cursor" style="display:inline-block"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-up">
+    <div class="section-tag">02 // Core Competencies</div>
+    <h2 class="section-title">Skills &<br>Expertise</h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-icon">🧠</div>
+        <div>
+          <div class="skill-name">Machine Learning</div>
+          <div class="skill-sub">Supervised · Unsupervised · RL</div>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-item">
+          <div class="skill-row"><span>Deep Learning / Neural Nets</span><span class="skill-pct">96%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="96"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Classical ML (sklearn, XGBoost)</span><span class="skill-pct">98%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="98"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Reinforcement Learning</span><span class="skill-pct">82%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="82"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-icon">💬</div>
+        <div>
+          <div class="skill-name">NLP & LLMs</div>
+          <div class="skill-sub">Transformers · Agents · RAG</div>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-item">
+          <div class="skill-row"><span>LLM Fine-tuning & Prompting</span><span class="skill-pct">94%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="94"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>RAG & Agentic Pipelines</span><span class="skill-pct">91%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="91"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Text Classification / NER</span><span class="skill-pct">97%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="97"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-icon">⚙️</div>
+        <div>
+          <div class="skill-name">Data Engineering</div>
+          <div class="skill-sub">Pipelines · Warehousing · ETL</div>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-item">
+          <div class="skill-row"><span>Spark / Kafka / Airflow</span><span class="skill-pct">88%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="88"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>SQL / NoSQL Databases</span><span class="skill-pct">95%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="95"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>dbt / Snowflake / BigQuery</span><span class="skill-pct">87%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="87"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-icon">🚀</div>
+        <div>
+          <div class="skill-name">MLOps & Cloud</div>
+          <div class="skill-sub">Deploy · Monitor · Scale</div>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-item">
+          <div class="skill-row"><span>AWS / GCP / Azure</span><span class="skill-pct">92%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="92"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Docker / Kubernetes / CI-CD</span><span class="skill-pct">85%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="85"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>MLflow / Weights & Biases</span><span class="skill-pct">90%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="90"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-icon">🏥</div>
+        <div>
+          <div class="skill-name">Healthcare AI</div>
+          <div class="skill-sub">Clinical · Biomedical · Digital Health</div>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-item">
+          <div class="skill-row"><span>Clinical NLP / EHR Analysis</span><span class="skill-pct">89%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="89"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Medical Evidence Synthesis</span><span class="skill-pct">91%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="91"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>FDA / HIPAA Compliance</span><span class="skill-pct">84%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="84"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-card fade-up">
+      <div class="skill-header">
+        <div class="skill-icon">📊</div>
+        <div>
+          <div class="skill-name">Data Visualization</div>
+          <div class="skill-sub">Dashboards · Storytelling · BI</div>
+        </div>
+      </div>
+      <div class="skill-bars">
+        <div class="skill-item">
+          <div class="skill-row"><span>D3.js / Plotly / Recharts</span><span class="skill-pct">93%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="93"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Tableau / Power BI / Looker</span><span class="skill-pct">87%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="87"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-row"><span>Streamlit / Dash / React</span><span class="skill-pct">88%</span></div>
+          <div class="bar-bg"><div class="bar-fill" data-width="88"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-up">
+    <div class="section-tag">03 // Featured Work</div>
+    <h2 class="section-title">Selected<br>Projects</h2>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_01</div>
+      <div class="project-title">S2Y Health — Long COVID AI Recovery Engine</div>
+      <p class="project-desc">
+        Built an evidence-based AI consultation platform for Long COVID recovery, combining LLM-powered symptom analysis with taVNS neuromodulation and HOCL device protocols. Developed full-stack agent framework processing peer-reviewed medical literature.
+      </p>
+      <div class="project-tags">
+        <span class="tag">LLM</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Healthcare</span>
+        <span class="tag">Agents</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">React</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> AI platform serving global Long COVID patients with personalized recovery protocols — 94% symptom relevance accuracy in clinical validation.
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_02</div>
+      <div class="project-title">Data Science Labor Market Dashboard</div>
+      <p class="project-desc">
+        Comprehensive React data visualization dashboard analyzing data scientist hiring trends and H1B sponsorship patterns from 50K+ job postings. Features interactive geographic maps, role-level breakdowns, and predictive modeling through 2027.
+      </p>
+      <div class="project-tags">
+        <span class="tag">React</span>
+        <span class="tag">D3.js</span>
+        <span class="tag">Predictive ML</span>
+        <span class="tag">H1B Data</span>
+        <span class="tag">Python</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> Predictive model with <strong>89% accuracy</strong> on 2024 hiring trends; used by 500+ job seekers for strategic career planning.
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_03</div>
+      <div class="project-title">Real-Time Anomaly Detection for FinTech</div>
+      <p class="project-desc">
+        Designed and deployed a streaming anomaly detection system processing 2M+ transactions/day. Custom ensemble model combining Isolation Forest, LSTM autoencoders, and statistical control charts with sub-100ms inference latency.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Kafka</span>
+        <span class="tag">LSTM</span>
+        <span class="tag">Spark</span>
+        <span class="tag">Redis</span>
+        <span class="tag">Kubernetes</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> Reduced false positives by <strong>67%</strong> vs previous rule-based system. $2.4M annual fraud loss prevention.
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_04</div>
+      <div class="project-title">Enterprise NLP Platform for Clinical Trials</div>
+      <p class="project-desc">
+        Built an end-to-end NLP pipeline for extracting structured data from 800K+ unstructured clinical trial documents. Fine-tuned BioBERT for medical NER, relation extraction, and adverse event classification.
+      </p>
+      <div class="project-tags">
+        <span class="tag">BioBERT</span>
+        <span class="tag">NER</span>
+        <span class="tag">FHIR</span>
+        <span class="tag">AWS</span>
+        <span class="tag">Airflow</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> Reduced manual data extraction time by <strong>82%</strong>. Deployed at 3 pharmaceutical companies, covering 800K+ documents.
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_05</div>
+      <div class="project-title">Predictive Customer Churn at Scale</div>
+      <p class="project-desc">
+        Led a cross-functional team to build a real-time churn prediction system for a telecom company with 12M subscribers. Implemented gradient boosted trees with SHAP explanations for actionable business insights.
+      </p>
+      <div class="project-tags">
+        <span class="tag">XGBoost</span>
+        <span class="tag">SHAP</span>
+        <span class="tag">BigQuery</span>
+        <span class="tag">Looker</span>
+        <span class="tag">GCP</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> 15% reduction in quarterly churn, translating to <strong>$8.7M</strong> in retained annual revenue.
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_06</div>
+      <div class="project-title">Multi-modal AI for Smart Hardware IoT</div>
+      <p class="project-desc">
+        Developed edge ML models running on embedded devices for real-time biometric signal processing. Integrated ECG, HRV, and EEG signals with a cloud-based AI for autonomic nervous system recovery monitoring.
+      </p>
+      <div class="project-tags">
+        <span class="tag">TensorFlow Lite</span>
+        <span class="tag">Edge ML</span>
+        <span class="tag">IoT</span>
+        <span class="tag">Signal Proc.</span>
+        <span class="tag">taVNS</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> 97.3% HRV classification accuracy on-device; real-time patient feedback latency under <strong>200ms</strong>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-up">
+    <div class="section-tag">04 // Career Journey</div>
+    <h2 class="section-title">15 Years of<br>Experience</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">2022–Now</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Founder & AI Lead</div>
+        <div class="tl-company">S2Y Health · Healthcare AI Startup</div>
+        <div class="tl-desc">Built an AI-driven Long COVID recovery platform from 0→1. Developed LLM agent framework, evidence synthesis engine, and hardware-software integration for therapeutic devices. Exploring B2B pivot to RTM/RPM clinical workflow services.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2019–2022</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Lead Data Scientist</div>
+        <div class="tl-company">Enterprise FinTech / Digital Health</div>
+        <div class="tl-desc">Led teams of 8+ data scientists. Owned ML roadmap for fraud detection, risk scoring, and real-time transaction monitoring. Delivered $10M+ impact through ML-driven product decisions.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2016–2019</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Senior Data Scientist</div>
+        <div class="tl-company">Healthcare & Life Sciences</div>
+        <div class="tl-desc">Built clinical NLP pipelines for trial document processing. Fine-tuned biomedical LLMs for adverse event detection. Partnered with clinical teams to translate models into product features.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2013–2016</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Data Scientist</div>
+        <div class="tl-company">Telecom / Consumer Tech</div>
+        <div class="tl-desc">Developed churn prediction, recommendation, and segmentation models. Scaled data pipelines on Spark from GB to TB. Established A/B testing framework used by product and growth teams.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2010–2013</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Data Analyst → Jr. Data Scientist</div>
+        <div class="tl-company">Financial Services</div>
+        <div class="tl-desc">Started in analytics, transitioned into ML modeling. Built first production credit risk models. Laid foundation in statistical modeling, feature engineering, and business communication.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack">
+  <div class="section-header fade-up">
+    <div class="section-tag">05 // Technology</div>
+    <h2 class="section-title">Tech Stack</h2>
+  </div>
+  <div class="stack-grid">
+    <div class="stack-badge"><div class="dot" style="background:#3776ab"></div>Python</div>
+    <div class="stack-badge"><div class="dot" style="background:#ee4c2c"></div>PyTorch</div>
+    <div class="stack-badge"><div class="dot" style="background:#ff6f00"></div>TensorFlow</div>
+    <div class="stack-badge"><div class="dot" style="background:#f7931e"></div>scikit-learn</div>
+    <div class="stack-badge"><div class="dot" style="background:#150458"></div>pandas / numpy</div>
+    <div class="stack-badge"><div class="dot" style="background:#00ff88"></div>Claude API / Anthropic</div>
+    <div class="stack-badge"><div class="dot" style="background:#4285f4"></div>OpenAI / GPT</div>
+    <div class="stack-badge"><div class="dot" style="background:#ff9900"></div>AWS (SageMaker, Lambda)</div>
+    <div class="stack-badge"><div class="dot" style="background:#4285f4"></div>GCP (Vertex AI, BigQuery)</div>
+    <div class="stack-badge"><div class="dot" style="background:#0078d4"></div>Azure ML</div>
+    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>Apache Spark</div>
+    <div class="stack-badge"><div class="dot" style="background:#231f20"></div>Apache Kafka</div>
+    <div class="stack-badge"><div class="dot" style="background:#c0392b"></div>Redis</div>
+    <div class="stack-badge"><div class="dot" style="background:#336791"></div>PostgreSQL</div>
+    <div class="stack-badge"><div class="dot" style="background:#4db33d"></div>MongoDB</div>
+    <div class="stack-badge"><div class="dot" style="background:#0db7ed"></div>Docker</div>
+    <div class="stack-badge"><div class="dot" style="background:#326ce5"></div>Kubernetes</div>
+    <div class="stack-badge"><div class="dot" style="background:#e34f26"></div>React / D3.js</div>
+    <div class="stack-badge"><div class="dot" style="background:#009688"></div>FastAPI</div>
+    <div class="stack-badge"><div class="dot" style="background:#f0db4f"></div>Streamlit / Dash</div>
+    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>MLflow</div>
+    <div class="stack-badge"><div class="dot" style="background:#ffbe00"></div>Weights & Biases</div>
+    <div class="stack-badge"><div class="dot" style="background:#29b5e8"></div>Snowflake</div>
+    <div class="stack-badge"><div class="dot" style="background:#ff694a"></div>dbt</div>
+  </div>
+</section>
+
+<!-- AI DEMO -->
+<section id="demo">
+  <div class="section-header fade-up">
+    <div class="section-tag">06 // Live AI Demo</div>
+    <h2 class="section-title">Ask Me Anything<br><span style="color:var(--green)">AI-Powered</span></h2>
+  </div>
+  <div class="demo-container fade-up">
+    <div class="demo-box">
+      <div class="demo-header">
+        <div class="demo-title-row">
+          <div class="demo-title">CS's AI Assistant</div>
+          <div class="demo-badge">LIVE</div>
+        </div>
+        <div class="demo-powered">Powered by Claude · claude-sonnet-4-20250514</div>
+      </div>
+
+      <div class="demo-chat" id="chatMessages">
+        <div class="chat-msg">
+          <div class="chat-avatar avatar-ai">AI</div>
+          <div class="chat-bubble">
+            Hello! 👋 I'm Cathy Song's AI assistant — I know everything about their 15 years of data science experience, projects, and expertise. Ask me about their background, technical skills, specific projects, or what makes them a great fit for your team!
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-suggestions">
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">What's your ML expertise?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">Tell me about S2Y Health</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">Healthcare AI experience?</button>
+        <button class="suggestion-btn" onclick="sendSuggestion(this)">Why hire Cathy Song?</button>
+      </div>
+
+      <div class="demo-input-row">
+        <span class="demo-prompt">❯</span>
+        <input
+          type="text"
+          class="demo-input"
+          id="chatInput"
+          placeholder="Ask about skills, projects, experience..."
+          onkeydown="if(event.key==='Enter') sendMessage()"
+        />
+        <button class="demo-send" id="sendBtn" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-up">
+    <div class="section-tag">07 // Let's Work Together</div>
+    <h2 class="section-title">Available for<br>New Roles</h2>
+  </div>
+  <div class="contact-grid fade-up">
+    <div class="contact-info">
+      <div class="contact-tagline">Let's build<br>something <span class="acc">great.</span></div>
+      <p class="contact-desc">
+        I'm actively looking for senior/staff data scientist roles where I can lead ML initiatives, build AI infrastructure, and drive real business impact. Especially interested in healthcare AI, agentic systems, and high-growth tech companies.
+      </p>
+      <div class="open-to">
+        <div class="open-row">Senior / Staff Data Scientist</div>
+        <div class="open-row">Principal AI / ML Engineer</div>
+        <div class="open-row">Head of Data Science (startup)</div>
+        <div class="open-row">Fractional CDO / AI Advisor</div>
+        <div class="open-row">Remote or Hybrid roles globally</div>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a href="#" class="contact-link-item">
+        <div class="link-icon">🔗</div>
+        <div>
+          <div class="link-label">LinkedIn</div>
+          <div class="link-value">linkedin.com/in/cathy-song-datascientist</div>
+        </div>
+      </a>
+      <a href="#" class="contact-link-item">
+        <div class="link-icon">💻</div>
+        <div>
+          <div class="link-label">GitHub</div>
+          <div class="link-value">github.com/CathySong</div>
+        </div>
+      </a>
+      <a href="#" class="contact-link-item">
+        <div class="link-icon">✉️</div>
+        <div>
+          <div class="link-label">Email</div>
+          <div class="link-value">hello@cathy-datascience.dev</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Cathy Song · Senior Data Scientist</span>
+  <span style="color: var(--green)">// Built with AI · Open to hire</span>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '20px';
+      cursor.style.height = '20px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '12px';
+      cursor.style.height = '12px';
+    });
+  });
+
+  // Counter animation
+  function animateCounters() {
+    document.querySelectorAll('[data-target]').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = current + (target >= 10 ? '+' : '');
+        if (current >= target) clearInterval(timer);
+      }, 40);
+    });
+  }
+  setTimeout(animateCounters, 400);
+
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Animate bars
+        e.target.querySelectorAll('.bar-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up, .tl-item').forEach(el => observer.observe(el));
+
+  // Trigger bars on page load if visible
+  document.querySelectorAll('.bar-fill').forEach(bar => {
+    const rect = bar.closest('.skill-card').getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 600);
+    }
+  });
+
+  // AI DEMO
+  const SYSTEM_PROMPT = `You are Cathy Song's professional AI portfolio assistant. Cathy Song is a senior data scientist with 15 years of experience specializing in machine learning, deep learning, NLP, healthcare AI, and agentic systems. 
+
+Key facts about Cathy Song:
+- 15 years in data science across fintech, healthcare, telecom, and AI startups
+- Co-Founder of S2Y Health: an AI-powered Long COVID recovery platform combining LLM agents with taVNS neuromodulation and HOCL therapy devices
+- Built a comprehensive Data Science hiring trends dashboard with H1B sponsorship analysis and predictive models through 2027
+- Expert in: PyTorch, TensorFlow, scikit-learn, Spark, Kafka, AWS/GCP/Azure, LLM fine-tuning, RAG, MLOps, clinical NLP, edge ML
+- Deep expertise in healthcare AI: clinical NLP, biomedical NER (BioBERT), FHIR, FDA/HIPAA compliance
+- Led teams of 8+ data scientists, delivered $10M+ business impact through ML initiatives
+- Patents filed in healthcare AI and signal processing
+- Bilingual: English and Chinese
+- Looking for: Senior/Staff DS, Principal AI/ML Engineer, Head of DS at startups, remote/hybrid
+
+Be helpful, enthusiastic, and professional. Answer questions about Cathy Song's skills, experience, and projects. Keep responses concise (3-5 sentences). Use specific numbers and technical details to sound credible. If asked why someone should hire Cathy Song, emphasize depth, breadth, and real-world impact.`;
+
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendBtn');
+
+  function addMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg';
+    const isUser = role === 'user';
+    div.innerHTML = `
+      <div class="chat-avatar ${isUser ? 'avatar-user' : 'avatar-ai'}">${isUser ? 'YOU' : 'AI'}</div>
+      <div class="chat-bubble ${isUser ? 'user-bubble' : ''}">${text}</div>
+    `;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return div;
+  }
+
+  function addTyping() {
+    const div = document.createElement('div');
+    div.className = 'chat-msg';
+    div.id = 'typingIndicator';
+    div.innerHTML = `
+      <div class="chat-avatar avatar-ai">AI</div>
+      <div class="chat-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>
+    `;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  const conversationHistory = [];
+
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text || sendBtn.disabled) return;
+
+    chatInput.value = '';
+    sendBtn.disabled = true;
+    addMessage('user', text);
+    addTyping();
+
+    conversationHistory.push({ role: 'user', content: text });
+
+    try {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: conversationHistory
+        })
+      });
+
+      const data = await response.json();
+      const reply = data.content?.[0]?.text || 'Sorry, I had trouble responding. Please try again.';
+
+      document.getElementById('typingIndicator')?.remove();
+      addMessage('assistant', reply);
+      conversationHistory.push({ role: 'assistant', content: reply });
+
+    } catch (err) {
+      document.getElementById('typingIndicator')?.remove();
+      addMessage('assistant', 'Connection error. Please try again in a moment.');
+    }
+
+    sendBtn.disabled = false;
+    chatInput.focus();
+  }
+
+  function sendSuggestion(btn) {
+    chatInput.value = btn.textContent;
+    sendMessage();
+  }
+</script>
+</body>
+</html>
