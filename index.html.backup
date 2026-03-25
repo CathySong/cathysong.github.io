@@ -1393,62 +1393,8 @@
   </div>
   <div class="projects-grid">
 
-    <!-- S2Y Health项目现在在最前面 -->
     <div class="project-card fade-up">
       <div class="project-num">// PROJECT_01</div>
-      <div class="project-title">S2Y Health — Model Explainability &amp; Forecast Governance Framework</div>
-      <div class="logo-row" aria-label="S2Y Health">
-        <span class="logo-mark" title="S2Y Health">
-          <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">S2Y Health</span>
-      </div>
-      <p class="project-desc">
-        Designed a reusable MLOps framework for forecast model governance including SHAP-based
-        explainability layers, model version control, forecast bias detection, and automated
-        monitoring dashboards. Built to meet executive auditability and regulatory requirements
-        across enterprise environments with full lifecycle documentation.
-      </p>
-      <div class="project-tags">
-        <span class="tag">SHAP</span><span class="tag">MLflow</span>
-        <span class="tag">Model Monitoring</span><span class="tag">Bias Detection</span>
-        <span class="tag">Python</span><span class="tag">Governance</span>
-      </div>
-      <div class="project-impact">
-        <strong>Impact:</strong> Adopted as org-wide standard; enabled <strong>full auditability</strong>
-        of production forecasts consumed by C-suite and board-level stakeholders.
-      </div>
-    </div>
-
-    <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_02</div>
-      <div class="project-title">S2Y Health — Long COVID AI Recovery Engine</div>
-      <div class="logo-row" aria-label="S2Y Health">
-        <span class="logo-mark" title="S2Y Health">
-          <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">S2Y Health</span>
-      </div>
-      <p class="project-desc">
-        Founded and built an evidence-based AI consultation platform for Long COVID recovery.
-        Combines LLM-powered symptom analysis with taVNS neuromodulation and HOCL therapy
-        protocols. Developed full-stack agent framework processing peer-reviewed medical literature
-        to deliver personalized recovery plans to global patients.
-      </p>
-      <div class="project-tags">
-        <span class="tag">LLM Agents</span><span class="tag">RAG</span>
-        <span class="tag">Healthcare AI</span><span class="tag">FastAPI</span>
-        <span class="tag">React</span><span class="tag">taVNS</span>
-      </div>
-      <div class="project-impact">
-        <strong>Impact:</strong> AI platform serving global Long COVID patients with personalized
-        recovery protocols — <strong>94% symptom relevance accuracy</strong> in clinical validation.
-      </div>
-    </div>
-
-    <!-- CertiK项目现在在S2Y后面 -->
-    <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_03</div>
       <div class="project-title">CertiK — Real-Time Blockchain Security ML Platform</div>
       <div class="logo-row" aria-label="CertiK">
         <span class="logo-mark" title="CertiK">
@@ -1474,7 +1420,7 @@
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_04</div>
+      <div class="project-num">// PROJECT_02</div>
       <div class="project-title">CertiK — LLM-Powered AI Intelligence Workflow</div>
       <div class="logo-row" aria-label="CertiK">
         <span class="logo-mark" title="CertiK">
@@ -1499,9 +1445,8 @@
       </div>
     </div>
 
-    <!-- 其他项目保持原顺序 -->
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_05</div>
+      <div class="project-num">// PROJECT_03</div>
       <div class="project-title">Baidu — Large-Scale Ads Analytics &amp; Strategy Platform</div>
       <div class="logo-row" aria-label="Baidu">
         <span class="logo-mark" title="Baidu">
@@ -1527,7 +1472,7 @@
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_06</div>
+      <div class="project-num">// PROJECT_04</div>
       <div class="project-title">2C Product Experimentation &amp; Customer Segmentation</div>
       <div class="logo-row" aria-label="Multiple companies">
         <span class="logo-mark" title="Multi-company">
@@ -1553,7 +1498,7 @@
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_07</div>
+      <div class="project-num">// PROJECT_05</div>
       <div class="project-title">TAL Education — Revenue Forecasting System</div>
       <div class="logo-row" aria-label="TAL Education">
         <span class="logo-mark" title="TAL Education">
@@ -1579,7 +1524,7 @@
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_08</div>
+      <div class="project-num">// PROJECT_06</div>
       <div class="project-title">Baidu — Core Monetization KPI &amp; Forecasting Engine</div>
       <div class="logo-row" aria-label="Baidu">
         <span class="logo-mark" title="Baidu">
@@ -1604,7 +1549,105 @@
       </div>
     </div>
 
-  </div>      <div class="tl-year">2019–2021</div>
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_07</div>
+      <div class="project-title">S2Y Health — Model Explainability &amp; Forecast Governance Framework</div>
+      <div class="logo-row" aria-label="S2Y Health">
+        <span class="logo-mark" title="S2Y Health">
+          <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
+        </span>
+        <span class="logo-text">S2Y Health</span>
+      </div>
+      <p class="project-desc">
+        Designed a reusable MLOps framework for forecast model governance including SHAP-based
+        explainability layers, model version control, forecast bias detection, and automated
+        monitoring dashboards. Built to meet executive auditability and regulatory requirements
+        across enterprise environments with full lifecycle documentation.
+      </p>
+      <div class="project-tags">
+        <span class="tag">SHAP</span><span class="tag">MLflow</span>
+        <span class="tag">Model Monitoring</span><span class="tag">Bias Detection</span>
+        <span class="tag">Python</span><span class="tag">Governance</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> Adopted as org-wide standard; enabled <strong>full auditability</strong>
+        of production forecasts consumed by C-suite and board-level stakeholders.
+      </div>
+    </div>
+
+    <div class="project-card fade-up">
+      <div class="project-num">// PROJECT_08</div>
+      <div class="project-title">S2Y Health — Long COVID AI Recovery Engine</div>
+      <div class="logo-row" aria-label="S2Y Health">
+        <span class="logo-mark" title="S2Y Health">
+          <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
+        </span>
+        <span class="logo-text">S2Y Health</span>
+      </div>
+      <p class="project-desc">
+        Founded and built an evidence-based AI consultation platform for Long COVID recovery.
+        Combines LLM-powered symptom analysis with taVNS neuromodulation and HOCL therapy
+        protocols. Developed full-stack agent framework processing peer-reviewed medical literature
+        to deliver personalized recovery plans to global patients.
+      </p>
+      <div class="project-tags">
+        <span class="tag">LLM Agents</span><span class="tag">RAG</span>
+        <span class="tag">Healthcare AI</span><span class="tag">FastAPI</span>
+        <span class="tag">React</span><span class="tag">taVNS</span>
+      </div>
+      <div class="project-impact">
+        <strong>Impact:</strong> AI platform serving global Long COVID patients with personalized
+        recovery protocols — <strong>94% symptom relevance accuracy</strong> in clinical validation.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     EXPERIENCE
+════════════════════════════════════════════ -->
+<section id="experience">
+  <div class="section-header fade-up">
+    <div class="section-tag">04 // Career Journey</div>
+    <h2 class="section-title">15 Years of<br>Experience</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-year">2022–Now</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Founder &amp; AI Lead</div>
+        <div class="tl-company">S2Y Health · Healthcare AI Startup · Global Remote</div>
+        <div class="logo-row" aria-label="S2Y Health">
+          <span class="logo-mark" title="S2Y Health">
+            <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
+          </span>
+          <span class="logo-text">S2Y Health</span>
+        </div>
+        <div class="tl-desc">Founded AI-driven Long COVID recovery platform. Built LLM agent framework, evidence synthesis engine, and hardware-software integration for taVNS and HOCL therapeutic devices. Exploring B2B pivot toward RTM/RPM clinical workflow services.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2021–Now</div>
+      <div class="tl-dot"></div>
+      <div class="tl-content">
+        <div class="tl-role">Data Scientist Manager</div>
+        <div class="tl-company">CertiK · Blockchain Security · Remote / New York, NY</div>
+        <div class="logo-row" aria-label="CertiK">
+          <span class="logo-mark" title="CertiK">
+            <img src="assets/logos/certik.jpeg" alt="CertiK logo" loading="lazy" decoding="async" />
+          </span>
+          <span class="logo-text">CertiK</span>
+        </div>
+        <div class="tl-desc">Built ML org from 0→10. Productionized real-time Security Score and Social Sentiment systems on TB-scale blockchain data. Architected LLM-driven intelligence workflows generating alerts and insights for 17,000+ enterprise clients. Full pipeline ownership: API ingestion → dbt/Airflow → model deployment → monitoring.</div>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-year">2019–2021</div>
       <div class="tl-dot"></div>
       <div class="tl-content">
         <div class="tl-role">Senior Data Scientist</div>
