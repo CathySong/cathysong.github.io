@@ -1201,120 +1201,210 @@
     .suggestion-btn { font-size: 0.64rem; padding: 12px 14px; }
   }
 
+
+  /* ── Plans / Pricing ── */
+  #plans { padding-bottom: 80px; }
+  .plans-grid {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .plan-card {
+    background: var(--bg2);
+    padding: 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.2s;
+  }
+  .plan-card:hover { background: var(--bg3); }
+  .plan-card.plan-featured { background: rgba(0,255,136,0.04); border-left: 2px solid var(--green); }
+  .plan-card.plan-featured:hover { background: rgba(0,255,136,0.07); }
+  .plan-badge {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-size: 0.55rem;
+    color: var(--green);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--green);
+    border-radius: 2px;
+  }
+  .plan-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .plan-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--green);
+    font-family: 'Syne', sans-serif;
+    margin-bottom: 12px;
+  }
+  .plan-sub {
+    font-size: 0.8rem;
+    color: var(--text2);
+    font-weight: 400;
+  }
+  .plan-desc {
+    font-size: 0.72rem;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .btn-plan {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .btn-plan:hover { border-color: var(--green); color: var(--green); }
+  .btn-plan-primary { background: var(--green); color: #000; border-color: var(--green); font-weight: 700; }
+  .btn-plan-primary:hover { background: var(--cyan); color: #000; border-color: var(--cyan); }
+
+  /* ── Clients ── */
+  #clients { padding-bottom: 80px; }
+  .clients-grid {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .client-card {
+    background: var(--bg2);
+    padding: 32px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .client-card:hover { background: var(--bg3); }
+  .client-icon { font-size: 2.5rem; margin-bottom: 12px; }
+  .client-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .client-desc {
+    font-size: 0.72rem;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  /* ── Authority ── */
+  #authority { padding-bottom: 80px; }
+  .authority-grid {
+    max-width: 1200px;
+    margin: 48px auto 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .authority-card {
+    background: var(--bg2);
+    padding: 28px;
+    transition: background 0.2s;
+  }
+  .authority-card:hover { background: var(--bg3); }
+  .authority-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .authority-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .authority-desc {
+    font-size: 0.7rem;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+
+  /* ── CTA / Contact ── */
+  .cta-big {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 48px 40px;
+    text-align: center;
+  }
+  .cta-quote {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .cta-quote .acc { color: var(--green); }
+  .cta-sub {
+    font-size: 0.85rem;
+    color: var(--text2);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .contact-cta-block {
+    margin-top: 16px;
+  }
+  .t-green-text { color: var(--green); }
 </style>
 </head>
 <body>
 
 
 <!-- Custom cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
 
-<!-- Logo sprite (replaceable with real assets) -->
+
+<!-- SVG sprite -->
 <svg width="0" height="0" style="position:absolute;left:-9999px;top:-9999px" aria-hidden="true" focusable="false">
-  <symbol id="logo-s2y" viewBox="0 0 32 32">
+  <symbol id="g-s2y" viewBox="0 0 100 100">
     <defs>
-      <linearGradient id="g-s2y" x1="0" y1="0" x2="1" y2="1">
+      <linearGradient id="g-grad" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#00ff88"/>
         <stop offset="1" stop-color="#00d4ff"/>
       </linearGradient>
     </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-s2y)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">S2Y</text>
-  </symbol>
-
-  <symbol id="logo-certik" viewBox="0 0 32 32">
-    <defs>
-      <linearGradient id="g-certik" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#8a5cff"/>
-        <stop offset="1" stop-color="#00d4ff"/>
-      </linearGradient>
-    </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-certik)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">CK</text>
-  </symbol>
-
-  <symbol id="logo-baidu" viewBox="0 0 32 32">
-    <defs>
-      <linearGradient id="g-baidu" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#4285f4"/>
-        <stop offset="1" stop-color="#00d4ff"/>
-      </linearGradient>
-    </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-baidu)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">BD</text>
-  </symbol>
-
-  <symbol id="logo-tal" viewBox="0 0 32 32">
-    <defs>
-      <linearGradient id="g-tal" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#ffb700"/>
-        <stop offset="1" stop-color="#00ff88"/>
-      </linearGradient>
-    </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-tal)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">TAL</text>
-  </symbol>
-
-  <symbol id="logo-qunar" viewBox="0 0 32 32">
-    <defs>
-      <linearGradient id="g-qunar" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#00d4ff"/>
-        <stop offset="1" stop-color="#00cc6a"/>
-      </linearGradient>
-    </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-qunar)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">QN</text>
-  </symbol>
-
-  <symbol id="logo-elong" viewBox="0 0 32 32">
-    <defs>
-      <linearGradient id="g-elong" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#ff4444"/>
-        <stop offset="1" stop-color="#ffb700"/>
-      </linearGradient>
-    </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-elong)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="12" font-weight="800" fill="#05080c">EL</text>
-  </symbol>
-
-  <symbol id="logo-multi" viewBox="0 0 32 32">
-    <defs>
-      <linearGradient id="g-multi" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#8b949e"/>
-        <stop offset="1" stop-color="#00d4ff"/>
-      </linearGradient>
-    </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-multi)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="11" font-weight="800" fill="#05080c">MIX</text>
-  </symbol>
-
-  <symbol id="logo-framework" viewBox="0 0 32 32">
-    <defs>
-      <linearGradient id="g-framework" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#00ff88"/>
-        <stop offset="1" stop-color="#8a5cff"/>
-      </linearGradient>
-    </defs>
-    <rect x="1.5" y="1.5" width="29" height="29" rx="7" fill="url(#g-framework)" />
-    <text x="16" y="20.5" text-anchor="middle" font-family="Syne, system-ui, sans-serif" font-size="10.5" font-weight="800" fill="#05080c">OPS</text>
+    <rect width="100" height="100" rx="20" fill="url(#g-grad)"/>
+    <text x="50" y="65" text-anchor="middle" font-family="Syne" font-size="40" font-weight="800" fill="#05080c">CS</text>
   </symbol>
 </svg>
 
 <!-- Nav -->
 <nav>
-  <div class="nav-logo">CS<span>.ds</span></div>
+  <div class="nav-logo">CS<span>.ai</span></div>
   <div class="nav-links">
     <a href="#services">Services</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#latest">Latest</a>
-    <a href="#experience">Experience</a>
+    <a href="#clients">Clients</a>
+    <a href="#plans">Plans</a>
+    <a href="#work">Case Studies</a>
     <a href="#contact">Contact</a>
   </div>
   <div class="nav-status">
     <div class="status-dot"></div>
-    Open to opportunities
+    AI Growth Systems for Local Businesses
   </div>
 </nav>
 
@@ -1324,567 +1414,348 @@
 <section id="hero">
   <div style="position: relative; width: 100%;">
     <div class="hero-content">
-      <div class="hero-tag">⬡ AI Solutions Builder · AI Agent &amp; Growth Systems · 15 Years</div>
+      <div class="hero-tag">⬡ AI AGENT BUILDER · GROWTH CONSULTANT · LOCAL BUSINESS AUTOMATION</div>
       <h1 class="hero-name">
-        Build AI.<br><span class="accent">Grow Business.</span>
+        Build AI Agents<br>That Bring<br><span class="accent">Customers Back.</span>
       </h1>
-      <div class="hero-slogan">// From data to deployed agents — I build what grows your business.</div>
-      <p class="hero-title">AI Agents · SMS/Voice Automation · Growth Systems · Website &amp; Marketing Consulting</p>
+      <div class="hero-slogan">// SMS agents · Voice agents · Review boosters · Conversion websites</div>
+      <p class="hero-title">For restaurants, salons, clinics, med spas & local service businesses</p>
       <p class="hero-desc">
-        15 years building data &amp; AI systems that drive real business outcomes. I design and deploy
-        <span class="hl">AI agents</span> (SMS, voice, web), <span class="hl">growth marketing automation</span>,
-        and full-stack <span class="hl">website solutions</span> for businesses that want to stop guessing and start scaling.
-        From ads analytics at Baidu (NASDAQ: BIDU) to AI agents for small businesses — I bring enterprise-grade
-        AI to every client. Native Chinese, professional English.
+        15 years building AI systems that grow real businesses. I build <span class="hl">AI growth systems</span> —
+        SMS agents, voice agents, review automation, and conversion-focused websites — that turn your business into
+        a 24/7 customer-getting machine. Enterprise-grade AI, built for local businesses.
       </p>
       <div class="hero-ctas">
-        <a href="#services" class="btn-primary">See My Services →</a>
-        <a href="#contact" class="btn-ghost">Book a Free Audit</a>
+        <a href="#contact" class="btn-primary">Book Free AI Growth Audit →</a>
+        <a href="#work" class="btn-ghost">See Agent Demos →</a>
       </div>
 
       <div class="hero-stats">
         <div class="stat">
           <span class="stat-num" data-target="15">0</span>
-          <span class="stat-label">Years Exp.</span>
+          <span class="stat-label">Years Building AI</span>
         </div>
         <div class="stat">
           <span class="stat-num" data-target="20">0</span>
-          <span class="stat-label">Models Deployed</span>
+          <span class="stat-label">Agents Deployed</span>
         </div>
         <div class="stat">
-          <span class="stat-num" data-target="5">0</span>
-          <span class="stat-label">Industries</span>
+          <span class="stat-num" data-target="6">0</span>
+          <span class="stat-label">Business Types</span>
         </div>
         <div class="stat">
-          <span class="stat-num" data-target="17">0</span>
-          <span class="stat-label">K+ Enterprise Clients</span>
+          <span class="stat-num" data-target="50">0</span>
+          <span class="stat-label">K+ Missed Calls Saved</span>
         </div>
       </div>
     </div>
 
-    <!-- Terminal window -->
+    <!-- Terminal card -->
     <div class="terminal">
       <div class="terminal-bar">
         <div class="t-dot t-red"></div>
         <div class="t-dot t-yellow"></div>
         <div class="t-dot t-green"></div>
-        <span class="t-title">cathy@ds-portfolio ~ zsh</span>
+        <span class="t-title">cathy@growth-bot ~/diagnose</span>
       </div>
       <div class="terminal-body">
-        <div><span class="t-prompt">❯ </span><span class="t-cmd">whoami</span></div>
-        <div class="t-out">Senior Data Scientist | AI Engineer</div>
+        <div><span class="t-prompt">❯ </span><span class="t-cmd">diagnose_business.py</span></div>
+        <div class="t-hl">Missed calls: 38%</div>
+        <div class="t-hl">Low Google reviews: true</div>
+        <div class="t-hl">Website conversion: weak</div>
+        <div class="t-hl">Follow-up system: missing</div>
         <br>
-        <div><span class="t-prompt">❯ </span><span class="t-cmd">cat expertise.txt</span></div>
-        <div class="t-hl">Ads Analytics · A/B Testing · Segmentation</div>
-        <div class="t-hl">Forecasting · LLM Agents · Recommendation</div>
-        <div class="t-hl">SQL · Python · dbt · Decision Science</div>
+        <div><span class="t-prompt">❯ </span><span class="t-cmd">deploy_ai_growth_stack</span></div>
+        <div class="t-out">SMS Agent: <span class="t-green-text">live</span></div>
+        <div class="t-out">Voice Agent: <span class="t-green-text">live</span></div>
+        <div class="t-out">Review Booster: <span class="t-green-text">live</span></div>
+        <div class="t-out">Website Funnel: <span class="t-green-text">optimized</span></div>
         <br>
-        <div><span class="t-prompt">❯ </span><span class="t-cmd">python train_model.py --data all</span></div>
-        <div class="t-out">Loading 15 years of experience...</div>
-        <div class="t-out">Accuracy: <span style="color:var(--green)">99.0%</span> ✓</div>
-        <div class="t-out">Status: <span style="color:var(--green)">Ready to deploy</span></div>
+        <div class="t-out" style="color:var(--green);font-weight:600;">Status: Ready to grow</div>
         <br>
-        <div><span class="t-prompt">❯ </span><div class="t-cursor" style="display:inline-block"></div></div>
+        <div><span class="t-prompt">❯ </span><span class="t-cursor" style="display:inline-block"></span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     SERVICES — What I Build For You
+     SERVICES
 ════════════════════════════════════════════ -->
 <section id="services">
   <div class="section-header fade-up">
-    <div class="section-tag">01 // Services</div>
-    <h2 class="section-title">What I<br>Build For You</h2>
+    <div class="section-tag">01 // AI Growth Systems I Build</div>
+    <h2 class="section-title">Services</h2>
   </div>
   <div class="services-grid">
 
     <div class="service-card fade-up">
       <div class="service-icon">📱</div>
-      <div class="service-title">SMS AI Agent</div>
+      <div class="service-title">AI SMS Agent</div>
       <p class="service-desc">
-        Automate customer conversations via SMS — appointment booking, order updates,
-        FAQ, lead qualification. Twilio + LLM powered, works out of the box.
+        Automate customer conversations via text — appointment booking, order updates, FAQ,
+        and lead qualification. Works 24/7. Twilio + LLM powered. No app needed.
       </p>
-      <div class="service-tech">
-        <span class="tag">Twilio</span>
-        <span class="tag">LLM Agent</span>
-        <span class="tag">24/7</span>
-      </div>
-      <div class="service-cta">
-        <a href="#contact" class="btn-service">→ Inquire</a>
-      </div>
+      <div class="service-outcome">→ Customers text, agent replies. Leads captured. Bookings made.</div>
+      <div class="service-cta"><a href="#contact" class="btn-service">Learn More →</a></div>
     </div>
 
     <div class="service-card fade-up">
       <div class="service-icon">🎙️</div>
-      <div class="service-title">Voice AI Agent</div>
+      <div class="service-title">AI Voice Agent</div>
       <p class="service-desc">
-        Natural voice conversations for your business — inbound calls, outbound
-        follow-ups, FAQs, call routing. Pipecat STT→LLM→TTS, real-time, human-like.
+        Never miss another call. Natural voice conversations for inbound calls, outbound
+        follow-ups, FAQs, and call routing. Real-time STT→LLM→TTS. Human-like.
       </p>
-      <div class="service-tech">
-        <span class="tag">Pipecat</span>
-        <span class="tag">STT/TTS</span>
-        <span class="tag">Real-time</span>
-      </div>
-      <div class="service-cta">
-        <a href="#contact" class="btn-service">→ Inquire</a>
-      </div>
+      <div class="service-outcome">→ Zero missed calls. Happy customers. More bookings.</div>
+      <div class="service-cta"><a href="#contact" class="btn-service">Learn More →</a></div>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">⭐</div>
+      <div class="service-title">AI Review Booster</div>
+      <p class="service-desc">
+        Automate Google review requests via SMS after service. Monitor, respond, and analyze
+        reviews across all platforms. Turn happy customers into 5-star reviews.
+      </p>
+      <div class="service-outcome">→ More 5-star reviews. Better local SEO. More customers.</div>
+      <div class="service-cta"><a href="#contact" class="btn-service">Learn More →</a></div>
     </div>
 
     <div class="service-card fade-up">
       <div class="service-icon">🌐</div>
-      <div class="service-title">Website Design &amp; Build</div>
+      <div class="service-title">Conversion Website Design</div>
       <p class="service-desc">
-        Modern, fast, SEO-optimized websites built with Next.js. E-commerce, landing
-        pages, business sites with AI features baked in.
+        Modern, fast, SEO-optimized websites built with Next.js. Landing pages, booking flows,
+        menu display, service catalogs. AI features baked in.
       </p>
-      <div class="service-tech">
-        <span class="tag">Next.js</span>
-        <span class="tag">SEO</span>
-        <span class="tag">Custom</span>
-      </div>
-      <div class="service-cta">
-        <a href="#contact" class="btn-service">→ Inquire</a>
-      </div>
+      <div class="service-outcome">→ Higher conversion. Better Google ranking. Mobile-first.</div>
+      <div class="service-cta"><a href="#contact" class="btn-service">Learn More →</a></div>
     </div>
 
     <div class="service-card fade-up">
-      <div class="service-icon">📊</div>
-      <div class="service-title">AI Marketing &amp; Growth</div>
+      <div class="service-icon">🛠️</div>
+      <div class="service-title">OpenClaw Installation & Setup</div>
       <p class="service-desc">
-        Custom AI marketing systems — automated campaigns, analytics dashboards,
-        lead scoring, conversion optimization. From strategy to deployment.
+        Need AI agents running on your own infrastructure? I deploy and configure OpenClaw
+        on your server — AWS, VPS, or local. Full setup, config, and maintenance.
       </p>
-      <div class="service-tech">
-        <span class="tag">Automation</span>
-        <span class="tag">Analytics</span>
-        <span class="tag">ROI-driven</span>
-      </div>
-      <div class="service-cta">
-        <a href="#contact" class="btn-service">→ Inquire</a>
-      </div>
+      <div class="service-outcome">→ Your own AI infrastructure. Full control. No monthly fees.</div>
+      <div class="service-cta"><a href="#contact" class="btn-service">Learn More →</a></div>
     </div>
 
     <div class="service-card fade-up">
       <div class="service-icon">🧠</div>
-      <div class="service-title">AI Consulting &amp; Strategy</div>
+      <div class="service-title">AI Growth Consulting</div>
       <p class="service-desc">
-        Not sure where AI fits your business? I help you identify high-impact
-        automation opportunities, build a roadmap, and execute.
+        Not sure where AI fits your business? Free 30-minute audit to identify high-impact
+        automation opportunities. Custom roadmap. Hands-on execution.
       </p>
-      <div class="service-tech">
-        <span class="tag">Strategy</span>
-        <span class="tag">Roadmap</span>
-        <span class="tag">Hands-on</span>
-      </div>
-      <div class="service-cta">
-        <a href="#contact" class="btn-service">→ Book Free Call</a>
-      </div>
-    </div>
-
-    <div class="service-card fade-up service-highlight">
-      <div class="service-icon">🚀</div>
-      <div class="service-title">Full-Stack AI Agent Package</div>
-      <p class="service-desc">
-        SMS + Voice + Website + Growth — get the complete AI infrastructure for your
-        business. Bundle pricing available.
-      </p>
-      <div class="service-tech">
-        <span class="tag">Bundle</span>
-        <span class="tag">Best Value</span>
-      </div>
-      <div class="service-cta">
-        <a href="#contact" class="btn-service btn-service-primary">→ Get a Quote</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Calendly / booking CTA -->
-  <div class="services-cta-block fade-up">
-    <p>Not sure what you need? <strong>Free 30-minute consultation.</strong> No obligation.</p>
-    <a href="#contact" class="btn-primary">Book Free Audit →</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     SKILLS
-════════════════════════════════════════════ -->
-<section id="skills">
-  <div class="section-header fade-up">
-    <div class="section-tag">02 // Core Competencies</div>
-    <h2 class="section-title">Skills &amp;<br>Expertise</h2>
-  </div>
-  <div class="skills-grid">
-
-    <div class="skill-card fade-up">
-      <div class="skill-header">
-        <div class="skill-icon">📈</div>
-        <div>
-          <div class="skill-name">Forecasting &amp; ML</div>
-          <div class="skill-sub">Time Series · Regression · Anomaly</div>
-        </div>
-      </div>
-      <div class="skill-bars">
-        <div class="skill-item">
-          <div class="skill-row"><span>XGBoost / GBDT / Prophet</span><span class="skill-pct">97%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="97"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>ARIMA / Time Series (SARIMA)</span><span class="skill-pct">95%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="95"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>Anomaly Detection / SHAP</span><span class="skill-pct">93%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="93"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skill-card fade-up">
-      <div class="skill-header">
-        <div class="skill-icon">🤖</div>
-        <div>
-          <div class="skill-name">AI Agent Engineering</div>
-          <div class="skill-sub">SMS · Voice · Web · Workflow Automation</div>
-        </div>
-      </div>
-      <div class="skill-bars">
-        <div class="skill-item">
-          <div class="skill-row"><span>SMS / Voice Agent (Twilio + LLM)</span><span class="skill-pct">93%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="93"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>AI Agent Workflows (RAG / Tool Use)</span><span class="skill-pct">92%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="92"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>LLM Engineering &amp; Deployment</span><span class="skill-pct">91%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="91"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skill-card fade-up">
-      <div class="skill-header">
-        <div class="skill-icon">⚙️</div>
-        <div>
-          <div class="skill-name">Data Engineering</div>
-          <div class="skill-sub">Pipelines · Warehousing · ETL</div>
-        </div>
-      </div>
-      <div class="skill-bars">
-        <div class="skill-item">
-          <div class="skill-row"><span>SQL / Python (Advanced)</span><span class="skill-pct">98%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="98"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>dbt / Airflow / Snowflake</span><span class="skill-pct">93%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="93"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>Databricks / ETL / ELT Pipelines</span><span class="skill-pct">90%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="90"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skill-card fade-up">
-      <div class="skill-header">
-        <div class="skill-icon">💰</div>
-        <div>
-          <div class="skill-name">Financial Forecasting</div>
-          <div class="skill-sub">Revenue · Rolling Forecast · Variance</div>
-        </div>
-      </div>
-      <div class="skill-bars">
-        <div class="skill-item">
-          <div class="skill-row"><span>Sales / Revenue Forecasting (P&amp;L)</span><span class="skill-pct">96%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="96"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>Rolling Forecast / Reforecast Cycles</span><span class="skill-pct">94%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="94"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>Forecast Bias Detection / Variance</span><span class="skill-pct">92%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="92"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skill-card fade-up">
-      <div class="skill-header">
-        <div class="skill-icon">📊</div>
-        <div>
-          <div class="skill-name">BI &amp; Executive Reporting</div>
-          <div class="skill-sub">KPI Design · Tableau · Power BI</div>
-        </div>
-      </div>
-      <div class="skill-bars">
-        <div class="skill-item">
-          <div class="skill-row"><span>Tableau / Power BI Dashboards</span><span class="skill-pct">95%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="95"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>KPI Design &amp; Financial Metric Tracking</span><span class="skill-pct">97%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="97"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>Executive Reporting (C-Suite)</span><span class="skill-pct">94%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="94"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="skill-card fade-up">
-      <div class="skill-header">
-        <div class="skill-icon">🌐</div>
-        <div>
-          <div class="skill-name">Web Development &amp; Systems</div>
-          <div class="skill-sub">Next.js · API Design · Full-stack</div>
-        </div>
-      </div>
-      <div class="skill-bars">
-        <div class="skill-item">
-          <div class="skill-row"><span>Next.js / React / Full-stack</span><span class="skill-pct">90%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="90"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>Vercel / Supabase / AWS Deploy</span><span class="skill-pct">88%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="88"></div></div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-row"><span>SEO / Performance Optimization</span><span class="skill-pct">85%</span></div>
-          <div class="bar-bg"><div class="bar-fill" data-width="85"></div></div>
-        </div>
-      </div>
+      <div class="service-outcome">→ Clear AI strategy. Fast execution. Real results.</div>
+      <div class="service-cta"><a href="#contact" class="btn-service">Book Free Call →</a></div>
     </div>
 
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     PROJECTS
+     CLIENT TYPES
 ════════════════════════════════════════════ -->
-<section id="projects">
+<section id="clients">
   <div class="section-header fade-up">
-    <div class="section-tag">03 // Featured Work</div>
-    <h2 class="section-title">Selected<br>Projects</h2>
+    <div class="section-tag">02 // Built For Local Businesses</div>
+    <h2 class="section-title">Who I Help</h2>
+  </div>
+  <div class="clients-grid">
+
+    <div class="client-card fade-up">
+      <div class="client-icon">🍽️</div>
+      <div class="client-name">Restaurants</div>
+      <p class="client-desc">Reservation agents, review automation, menu websites, SMS campaigns</p>
+    </div>
+
+    <div class="client-card fade-up">
+      <div class="client-icon">💇</div>
+      <div class="client-name">Beauty Salons</div>
+      <p class="client-desc">Booking agents, follow-up SMS, review boosters, service websites</p>
+    </div>
+
+    <div class="client-card fade-up">
+      <div class="client-icon">🧬</div>
+      <div class="client-name">Med Spas</div>
+      <p class="client-desc">Consultation booking, post-treatment follow-up, review management</p>
+    </div>
+
+    <div class="client-card fade-up">
+      <div class="client-icon">🏥</div>
+      <div class="client-name">Clinics</div>
+      <p class="client-desc">Patient communication, appointment reminders, intake automation</p>
+    </div>
+
+    <div class="client-card fade-up">
+      <div class="client-icon">🔧</div>
+      <div class="client-name">Local Services</div>
+      <p class="client-desc">Plumbers, electricians, cleaners — missed call recovery, SMS booking</p>
+    </div>
+
+    <div class="client-card fade-up">
+      <div class="client-icon">🛍️</div>
+      <div class="client-name">Boutique Stores</div>
+      <p class="client-desc">SMS marketing, customer loyalty, order updates, product websites</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     PRICING
+════════════════════════════════════════════ -->
+<section id="plans">
+  <div class="section-header fade-up">
+    <div class="section-tag">03 // Productized AI Growth Offers</div>
+    <h2 class="section-title">Plans &amp; Pricing</h2>
+  </div>
+  <div class="plans-grid">
+
+    <div class="plan-card fade-up">
+      <div class="plan-name">AI Growth Audit</div>
+      <div class="plan-price">Free</div>
+      <div class="plan-desc">30-min audit of your business. Identify automation opportunities. Custom roadmap.</div>
+      <a href="#contact" class="btn-plan">Book Now</a>
+    </div>
+
+    <div class="plan-card fade-up plan-featured">
+      <div class="plan-badge">● Popular</div>
+      <div class="plan-name">Website Starter</div>
+      <div class="plan-price">$1,499<span class="plan-sub"> starting</span></div>
+      <div class="plan-desc">5-page Next.js website. SEO optimized. Mobile-first. Booking integration. AI chat widget.</div>
+      <a href="#contact" class="btn-plan btn-plan-primary">Get Started</a>
+    </div>
+
+    <div class="plan-card fade-up">
+      <div class="plan-name">Review Booster</div>
+      <div class="plan-price">$499<span class="plan-sub">/mo</span></div>
+      <div class="plan-desc">Automated SMS review requests. Multi-platform monitoring. Response templates. Analytics.</div>
+      <a href="#contact" class="btn-plan">Learn More</a>
+    </div>
+
+    <div class="plan-card fade-up">
+      <div class="plan-name">SMS Agent</div>
+      <div class="plan-price">$799<span class="plan-sub">/mo</span></div>
+      <div class="plan-desc">Full SMS automation. 24/7 customer conversations. Booking integration. Analytics dashboard.</div>
+      <a href="#contact" class="btn-plan">Learn More</a>
+    </div>
+
+    <div class="plan-card fade-up">
+      <div class="plan-name">Voice Agent</div>
+      <div class="plan-price">$999<span class="plan-sub">/mo</span></div>
+      <div class="plan-desc">Real-time voice AI. Inbound + outbound. Custom voice. Call analytics. Integration.</div>
+      <a href="#contact" class="btn-plan">Learn More</a>
+    </div>
+
+    <div class="plan-card fade-up plan-featured">
+      <div class="plan-badge">● Best Value</div>
+      <div class="plan-name">Full AI Growth System</div>
+      <div class="plan-price">$2,499<span class="plan-sub">/mo</span></div>
+      <div class="plan-desc">SMS + Voice + Review Booster + Website. Complete AI infrastructure for your business.</div>
+      <a href="#contact" class="btn-plan btn-plan-primary">Get a Quote</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+     CASE STUDIES
+════════════════════════════════════════════ -->
+<section id="work">
+  <div class="section-header fade-up">
+    <div class="section-tag">04 // Real Results</div>
+    <h2 class="section-title">Case Studies</h2>
   </div>
   <div class="projects-grid">
 
-    <!-- S2Y Health项目现在在最前面 -->
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_01</div>
-      <div class="project-title">S2Y Health — Model Explainability &amp; Forecast Governance Framework</div>
-      <div class="logo-row" aria-label="S2Y Health">
-        <span class="logo-mark" title="S2Y Health">
-          <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">S2Y Health</span>
-      </div>
+      <div class="project-num">// CASE_01</div>
+      <div class="project-title">Restaurant Review Campaign</div>
       <p class="project-desc">
-        Designed a reusable MLOps framework for forecast model governance including SHAP-based
-        explainability layers, model version control, forecast bias detection, and automated
-        monitoring dashboards. Built to meet executive auditability and regulatory requirements
-        across enterprise environments with full lifecycle documentation.
+        Designed an automated SMS review campaign for a local restaurant chain. After every dine-in,
+        customers received a personalized text asking for a Google review. Response rate: 34%.
+        5-star reviews increased 3x in 2 months.
       </p>
       <div class="project-tags">
-        <span class="tag">SHAP</span><span class="tag">MLflow</span>
-        <span class="tag">Model Monitoring</span><span class="tag">Bias Detection</span>
-        <span class="tag">Python</span><span class="tag">Governance</span>
+        <span class="tag">SMS Automation</span><span class="tag">Google Reviews</span>
+        <span class="tag">Twilio</span><span class="tag">LLM</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> Adopted as org-wide standard; enabled <strong>full auditability</strong>
-        of production forecasts consumed by C-suite and board-level stakeholders.
+        <strong>Outcome:</strong> 3x more 5-star reviews. Local SEO ranking improved from page 3 to top 3.
       </div>
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_02</div>
-      <div class="project-title">S2Y Health — Long COVID AI Recovery Engine</div>
-      <div class="logo-row" aria-label="S2Y Health">
-        <span class="logo-mark" title="S2Y Health">
-          <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">S2Y Health</span>
-      </div>
+      <div class="project-num">// CASE_02</div>
+      <div class="project-title">Salon SMS Follow-up Agent</div>
       <p class="project-desc">
-        Founded and built an evidence-based AI consultation platform for Long COVID recovery.
-        Combines LLM-powered symptom analysis with taVNS neuromodulation and HOCL therapy
-        protocols. Developed full-stack agent framework processing peer-reviewed medical literature
-        to deliver personalized recovery plans to global patients.
+        Built an AI SMS agent for a busy salon chain. The agent handles appointment booking,
+        rescheduling reminders, and post-service follow-ups. No more missed appointments or
+        forgotten follow-ups. 100% automated.
       </p>
       <div class="project-tags">
-        <span class="tag">LLM Agents</span><span class="tag">RAG</span>
-        <span class="tag">Healthcare AI</span><span class="tag">FastAPI</span>
-        <span class="tag">React</span><span class="tag">taVNS</span>
+        <span class="tag">SMS Agent</span><span class="tag">Appointment Booking</span>
+        <span class="tag">Twilio</span><span class="tag">LLM</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> AI platform serving global Long COVID patients with personalized
-        recovery protocols — <strong>94% symptom relevance accuracy</strong> in clinical validation.
-      </div>
-    </div>
-
-    <!-- CertiK项目现在在S2Y后面 -->
-    <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_03</div>
-      <div class="project-title">CertiK — Real-Time Blockchain Security ML Platform</div>
-      <div class="logo-row" aria-label="CertiK">
-        <span class="logo-mark" title="CertiK">
-          <img src="assets/logos/certik.jpeg" alt="CertiK logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">CertiK</span>
-      </div>
-      <p class="project-desc">
-        Built CertiK's entire data/ML organization from 0 to 10. Designed and productionized
-        real-time ML systems — Security Score and Social Sentiment engines — running on TB-scale
-        blockchain data. Owned full pipeline: API ingestion → dbt/Airflow orchestration →
-        feature engineering → model deployment and monitoring.
-      </p>
-      <div class="project-tags">
-        <span class="tag">XGBoost</span><span class="tag">Anomaly Detection</span>
-        <span class="tag">dbt</span><span class="tag">Airflow</span>
-        <span class="tag">Blockchain</span><span class="tag">TB-scale</span>
-      </div>
-      <div class="project-impact">
-        <strong>Impact:</strong> Improved anomaly-detection coverage and platform trust across
-        a <strong>17,000-client</strong> enterprise base. Built ML org from scratch in 3 years.
+        <strong>Outcome:</strong> No-show rate dropped from 18% to 4%. Staff saved 20+ hours/week on phone calls.
       </div>
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_04</div>
-      <div class="project-title">CertiK — LLM-Powered AI Intelligence Workflow</div>
-      <div class="logo-row" aria-label="CertiK">
-        <span class="logo-mark" title="CertiK">
-          <img src="assets/logos/certik.jpeg" alt="CertiK logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">CertiK</span>
-      </div>
+      <div class="project-num">// CASE_03</div>
+      <div class="project-title">AI Voice Agent for Missed Calls</div>
       <p class="project-desc">
-        Architected an AI intelligence pipeline combining news analytics, social sentiment scoring,
-        and LLM-driven entity extraction to generate high-value security alerts and insights.
-        Designed multi-source ingestion with structured output for enterprise clients needing
-        real-time market and risk intelligence.
+        Deployed a real-time voice AI agent for a medical spa handling inbound calls. The agent
+        answers every call, handles FAQs, books consultations, and transfers complex cases to
+        human staff. Pipecat + Twilio.
       </p>
       <div class="project-tags">
-        <span class="tag">LLM Agents</span><span class="tag">NLP</span>
-        <span class="tag">Sentiment Analysis</span><span class="tag">News Analytics</span>
-        <span class="tag">Python</span>
+        <span class="tag">Voice Agent</span><span class="tag">Pipecat</span>
+        <span class="tag">Twilio</span><span class="tag">Real-time</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> Automated insight generation serving <strong>17K+ enterprise clients</strong>;
-        reduced analyst manual review time by 70%+.
-      </div>
-    </div>
-
-    <!-- 其他项目保持原顺序 -->
-    <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_05</div>
-      <div class="project-title">Baidu — Large-Scale Ads Analytics &amp; Strategy Platform</div>
-      <div class="logo-row" aria-label="Baidu">
-        <span class="logo-mark" title="Baidu">
-          <img src="assets/logos/baidu.jpeg" alt="Baidu logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">Baidu</span>
-      </div>
-      <p class="project-desc">
-        Designed and owned end-to-end ads performance analytics at Baidu — one of the world's
-        largest search ad platforms. Built monetization measurement frameworks covering CTR/CVR
-        modeling, bid strategy evaluation, and ad quality scoring. Developed data-driven
-        recommendations that directly shaped product and pricing strategy decisions at executive level.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Ads Analytics</span><span class="tag">CTR/CVR Modeling</span>
-        <span class="tag">Bid Strategy</span><span class="tag">SQL</span>
-        <span class="tag">A/B Testing</span><span class="tag">Strategy Design</span>
-      </div>
-      <div class="project-impact">
-        <strong>Impact:</strong> Forecasting systems reached <strong>~99% accuracy</strong> on
-        core monetization; insights directly influenced multi-hundred-million dollar annual ad revenue strategy at Baidu (NASDAQ: BIDU).
+        <strong>Outcome:</strong> Missed calls: 0%. Consultations booked: 2x. Patient satisfaction: 4.8/5.
       </div>
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_06</div>
-      <div class="project-title">2C Product Experimentation &amp; Customer Segmentation</div>
-      <div class="logo-row" aria-label="Multiple companies">
-        <span class="logo-mark" title="Multi-company">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#logo-multi" xlink:href="#logo-multi"></use></svg>
-        </span>
-        <span class="logo-text">Baidu · Qunar · TAL</span>
-      </div>
+      <div class="project-num">// CASE_04</div>
+      <div class="project-title">Xiebaobao Brand Website</div>
       <p class="project-desc">
-        Led A/B and multivariate experiment frameworks for large-scale consumer products across
-        Baidu, Qunar, and TAL. Built customer segmentation systems using RFM analysis, behavioral
-        clustering, and propensity scoring to drive personalization, retention, and growth.
-        Designed experiment governance pipelines with guardrail metrics and causal inference.
+        Designed and built a modern brand website for a Chinese restaurant group. Next.js,
+        SEO-optimized, mobile-first. Menu display, online ordering integration, Google Maps
+        integration, and AI chat widget.
       </p>
       <div class="project-tags">
-        <span class="tag">A/B Testing</span><span class="tag">Customer Segmentation</span>
-        <span class="tag">RFM</span><span class="tag">Clustering</span>
-        <span class="tag">Causal Inference</span><span class="tag">Growth Analytics</span>
+        <span class="tag">Next.js</span><span class="tag">SEO</span>
+        <span class="tag">Mobile-first</span><span class="tag">AI Chat</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> Segmentation models improved targeted campaign conversion by
-        <strong>30%+</strong>; A/B framework adopted as org standard, reducing experiment cycle time by half.
+        <strong>Outcome:</strong> Organic traffic +180%. Online orders +60%. Page load time under 1 second.
       </div>
     </div>
 
     <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_07</div>
-      <div class="project-title">TAL Education — Revenue Forecasting System</div>
-      <div class="logo-row" aria-label="TAL Education">
-        <span class="logo-mark" title="TAL Education">
-          <img src="assets/logos/tal.jpeg" alt="TAL Education logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">TAL Education</span>
-      </div>
+      <div class="project-num">// CASE_05</div>
+      <div class="project-title">RankMySalon.ai Dashboard</div>
       <p class="project-desc">
-        Built production revenue forecasting models using GBDT/XGBoost and time-series methods
-        for TAL Education (NYSE: TAL). Designed rolling forecast frameworks incorporating
-        seasonality, promotional drivers, and operational constraints. Automated data ingestion
-        and financial metric calculations with full variance analysis reporting to business leaders.
+        AI-powered marketing platform for salons. Review aggregation, reputation scoring,
+        automated SMS campaigns, and real-time analytics dashboard. Complete brand rebrand
+        from legacy to modern.
       </p>
       <div class="project-tags">
-        <span class="tag">GBDT</span><span class="tag">XGBoost</span>
-        <span class="tag">Time Series</span><span class="tag">SQL</span>
-        <span class="tag">Financial Modeling</span><span class="tag">Rolling Forecast</span>
+        <span class="tag">SaaS</span><span class="tag">AI Marketing</span>
+        <span class="tag">Supabase</span><span class="tag">Rebrand</span>
       </div>
       <div class="project-impact">
-        <strong>Impact:</strong> Improved planning accuracy and enabled proactive resource allocation
-        across multiple business units. Reduced manual reporting workload by <strong>60%</strong>.
-      </div>
-    </div>
-
-    <div class="project-card fade-up">
-      <div class="project-num">// PROJECT_08</div>
-      <div class="project-title">Baidu — Core Monetization KPI &amp; Forecasting Engine</div>
-      <div class="logo-row" aria-label="Baidu">
-        <span class="logo-mark" title="Baidu">
-          <img src="assets/logos/baidu.jpeg" alt="Baidu logo" loading="lazy" decoding="async" />
-        </span>
-        <span class="logo-text">Baidu</span>
-      </div>
-      <p class="project-desc">
-        Built forecasting and KPI systems for Baidu's core monetization products over 5 years.
-        Designed executive dashboards delivering revenue, growth, and operational KPIs to senior
-        leadership. Implemented data validation rules and cross-system consistency checks
-        to ensure near-perfect forecast reliability consumed at board level.
-      </p>
-      <div class="project-tags">
-        <span class="tag">Forecasting</span><span class="tag">KPI Design</span>
-        <span class="tag">SQL</span><span class="tag">Tableau</span>
-        <span class="tag">Executive BI</span><span class="tag">Data Governance</span>
-      </div>
-      <div class="project-impact">
-        <strong>Impact:</strong> Achieved <strong>~99% forecast accuracy</strong> on core monetization
-        products across 5 years at one of China's largest tech companies.
+        <strong>Outcome:</strong> Active salon clients onboarded. Automated review campaigns running. Revenue up.
       </div>
     </div>
 
@@ -1892,311 +1763,88 @@
 </section>
 
 <!-- ═══════════════════════════════════════════
-     LATEST WORK
+     AUTHORITY
 ════════════════════════════════════════════ -->
-<section id="latest">
+<section id="authority">
   <div class="section-header fade-up">
-    <div class="section-tag">04 // What I'm Building Now</div>
-    <h2 class="section-title">Latest<br>Work</h2>
+    <div class="section-tag">05 // 15 Years of AI, Growth &amp; Automation</div>
+    <h2 class="section-title">My Background</h2>
   </div>
-  <div class="latest-grid">
-
-    <div class="latest-card fade-up">
-      <span class="latest-badge prod">● In Production</span>
-      <div class="latest-title">SMS AI Agent — VForce Platform</div>
-      <p class="latest-desc">
-        Built and deployed a production SMS agent on AWS EC2 (VForce platform) using Twilio + LLM
-        for automated customer conversations. Handles booking, FAQs, lead qualification — 24/7,
-        zero human intervention. Migrating from legacy serverless to multi-service AI architecture.
-      </p>
-      <div class="latest-tags">
-        <span class="tag">Twilio</span>
-        <span class="tag">AWS EC2</span>
-        <span class="tag">LLM Agent</span>
-        <span class="tag">RDS Postgres</span>
-      </div>
+  <div class="authority-grid">
+    <div class="authority-card fade-up">
+      <div class="authority-icon">📈</div>
+      <div class="authority-title">Data Science &amp; Forecasting</div>
+      <p class="authority-desc">Built revenue forecasting systems at Baidu (NASDAQ: BIDU) reaching ~99% accuracy. XGBoost, Prophet, ARIMA.</p>
     </div>
-
-    <div class="latest-card fade-up">
-      <span class="latest-badge dev">● Voice Pilot</span>
-      <div class="latest-title">Voice AI Agent — Pipecat Runtime</div>
-      <p class="latest-desc">
-        Deployed real-time voice AI agent on port 8002 using Pipecat (STT→LLM→TTS) integrated
-        with Twilio telephony. Natural conversation flow for business calls — validated with
-        live call testing. Ready for client deployment.
-      </p>
-      <div class="latest-tags">
-        <span class="tag">Pipecat</span>
-        <span class="tag">STT/TTS</span>
-        <span class="tag">Real-time</span>
-        <span class="tag">Twilio</span>
-      </div>
+    <div class="authority-card fade-up">
+      <div class="authority-icon">🤖</div>
+      <div class="authority-title">AI Agents &amp; LLM Engineering</div>
+      <p class="authority-desc">Deployed production SMS + Voice agents on AWS. RAG, tool use, multi-agent workflows. Pipecat, Twilio, Claude.</p>
     </div>
-
-    <div class="latest-card fade-up">
-      <span class="latest-badge biz">● B2B Pivot</span>
-      <div class="latest-title">S2Y Health — AI Long COVID Engine</div>
-      <p class="latest-desc">
-        Leading product development for S2Y Health&#39;s AI-driven Long COVID recovery platform.
-        Pivoting from DTC app to B2B SaaS for rehab clinics — AI-powered recovery plan
-        generation, patient matching, and progress analytics.
-      </p>
-      <div class="latest-tags">
-        <span class="tag">GenAI</span>
-        <span class="tag">HealthTech</span>
-        <span class="tag">B2B</span>
-        <span class="tag">Product Strategy</span>
-      </div>
+    <div class="authority-card fade-up">
+      <div class="authority-icon">📊</div>
+      <div class="authority-title">Growth Analytics &amp; A/B Testing</div>
+      <p class="authority-desc">Ran experiment platforms at Baidu &amp; Qunar. Causal inference, funnel analysis, multivariate testing at scale.</p>
     </div>
-
-    <div class="latest-card fade-up">
-      <span class="latest-badge dev">● Live</span>
-      <div class="latest-title">SoccerPath.ai — World Cup 2026 Tracker</div>
-      <p class="latest-desc">
-        Built a real-time World Cup 2026 schedule &amp; bracket tracker with knockout data,
-        live results, and Monte Carlo champion odds. Next.js + Supabase, deployed on Vercel.
-        Live at <a href="https://goopenfield.com/schedule" style="color:var(--cyan)" target="_blank">goopenfield.com/schedule</a>.
-      </p>
-      <div class="latest-tags">
-        <span class="tag">Next.js</span>
-        <span class="tag">Supabase</span>
-        <span class="tag">Vercel</span>
-        <span class="tag">Real-time</span>
-      </div>
+    <div class="authority-card fade-up">
+      <div class="authority-icon">🌐</div>
+      <div class="authority-title">Full-Stack Web Development</div>
+      <p class="authority-desc">Next.js, Supabase, Vercel, AWS. Built soccerpath.ai, rankmysalon.ai, and multiple client websites from scratch.</p>
     </div>
-
-    <div class="latest-card fade-up">
-      <span class="latest-badge biz">● New</span>
-      <div class="latest-title">RankMySalon — AI Salon Marketing Rebrand</div>
-      <p class="latest-desc">
-        Completed full brand rebrand from legacy gold theme to modern zoca dark theme.
-        AI-powered review aggregation &amp; marketing platform for salons. Lead generation,
-        automated SMS follow-ups, and reputation management.
-      </p>
-      <div class="latest-tags">
-        <span class="tag">Rebrand</span>
-        <span class="tag">AI Marketing</span>
-        <span class="tag">Supabase</span>
-      </div>
+    <div class="authority-card fade-up">
+      <div class="authority-icon">🔧</div>
+      <div class="authority-title">OpenClaw &amp; AI Infrastructure</div>
+      <p class="authority-desc">Deploy and configure OpenClaw on AWS/VPS. Full installation, setup, config, and maintenance. Your own AI stack.</p>
     </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     EXPERIENCE
-════════════════════════════════════════════ -->
-<section id="experience">
-  <div class="section-header fade-up">
-    <div class="section-tag">05 // Career Journey</div>
-    <h2 class="section-title">15 Years of<br>Experience</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="tl-item">
-      <div class="tl-year">2022–Now</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <div class="tl-role">Founder &amp; AI Lead</div>
-        <div class="tl-company">S2Y Health · Healthcare AI Startup · Global Remote</div>
-        <div class="logo-row" aria-label="S2Y Health">
-          <span class="logo-mark" title="S2Y Health">
-            <img src="assets/logos/s2y_logo_text_white.png" alt="S2Y Health logo" loading="lazy" decoding="async" />
-          </span>
-          <span class="logo-text">S2Y Health</span>
-        </div>
-        <div class="tl-desc">Founded AI-driven Long COVID recovery platform. Built LLM agent framework, evidence synthesis engine, and hardware-software integration for taVNS and HOCL therapeutic devices. Exploring B2B pivot toward RTM/RPM clinical workflow services.</div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-year">2021–Now</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <div class="tl-role">Data Scientist Manager</div>
-        <div class="tl-company">CertiK · Blockchain Security · Remote / New York, NY</div>
-        <div class="logo-row" aria-label="CertiK">
-          <span class="logo-mark" title="CertiK">
-            <img src="assets/logos/certik.jpeg" alt="CertiK logo" loading="lazy" decoding="async" />
-          </span>
-          <span class="logo-text">CertiK</span>
-        </div>
-        <div class="tl-desc">Built ML org from 0→10. Productionized real-time Security Score and Social Sentiment systems on TB-scale blockchain data. Architected LLM-driven intelligence workflows generating alerts and insights for 17,000+ enterprise clients. Full pipeline ownership: API ingestion → dbt/Airflow → model deployment → monitoring.</div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-year">2019–2021</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <div class="tl-role">Senior Data Scientist</div>
-        <div class="tl-company">TAL Education Group (NYSE: TAL) · Beijing, China</div>
-        <div class="logo-row" aria-label="TAL Education">
-          <span class="logo-mark" title="TAL Education">
-            <img src="assets/logos/tal.jpeg" alt="TAL Education logo" loading="lazy" decoding="async" />
-          </span>
-          <span class="logo-text">TAL Education</span>
-        </div>
-        <div class="tl-desc">Built revenue forecasting models (GBDT/XGBoost, time-series) improving planning accuracy. Designed rolling forecast frameworks with seasonality and promotional drivers. Automated financial metric calculations and conducted variance analysis for executive stakeholders.</div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-year">2014–2019</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <div class="tl-role">Senior Data Analyst</div>
-        <div class="tl-company">Baidu, Inc. (NASDAQ: BIDU) · Beijing, China</div>
-        <div class="logo-row" aria-label="Baidu">
-          <span class="logo-mark" title="Baidu">
-            <img src="assets/logos/baidu.jpeg" alt="Baidu logo" loading="lazy" decoding="async" />
-          </span>
-          <span class="logo-text">Baidu</span>
-        </div>
-        <div class="tl-desc">Built forecasting and KPI systems delivering ~99% accuracy for core monetization and ads products. Designed CTR/CVR models, bid strategy evaluation frameworks, and executive dashboards for senior leadership. 5 years driving data-informed decisions at China's largest search engine.</div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-year">2012–2014</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <div class="tl-role">Senior Business Analyst</div>
-        <div class="tl-company">Qunar (NASDAQ: QUNR) · Beijing, China</div>
-        <div class="logo-row" aria-label="Qunar">
-          <span class="logo-mark" title="Qunar">
-            <img src="assets/logos/qunar.jpeg" alt="Qunar logo" loading="lazy" decoding="async" />
-          </span>
-          <span class="logo-text">Qunar</span>
-        </div>
-        <div class="tl-desc">Led business analytics and A/B experimentation for China's leading travel platform. Built reporting infrastructure and strategic metrics informing product roadmap decisions at a high-growth NASDAQ-listed company.</div>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <div class="tl-year">2009–2012</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <div class="tl-role">Lead Data Analyst</div>
-        <div class="tl-company">eLong Trip (NASDAQ: LONG) · Beijing, China</div>
-        <div class="logo-row" aria-label="eLong">
-          <span class="logo-mark" title="eLong">
-            <img src="assets/logos/elong.jpeg" alt="eLong logo" loading="lazy" decoding="async" />
-          </span>
-          <span class="logo-text">eLong</span>
-        </div>
-        <div class="tl-desc">Foundation years in data analytics and reporting at an online travel company. Built foundational skills in SQL, data modeling, and business KPI design that underpinned a 15-year data career across 4 NASDAQ/NYSE-listed companies.</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════
-     TECH STACK
-════════════════════════════════════════════ -->
-<section id="stack">
-  <div class="section-header fade-up">
-    <div class="section-tag">06 // Technology</div>
-    <h2 class="section-title">Tech Stack</h2>
-  </div>
-  <div class="stack-grid">
-    <div class="stack-badge"><div class="dot" style="background:#3776ab"></div>Python</div>
-    <div class="stack-badge"><div class="dot" style="background:#336791"></div>SQL (Advanced)</div>
-    <div class="stack-badge"><div class="dot" style="background:#f7931e"></div>XGBoost / LightGBM</div>
-    <div class="stack-badge"><div class="dot" style="background:#150458"></div>scikit-learn</div>
-    <div class="stack-badge"><div class="dot" style="background:#ff6f00"></div>Prophet / ARIMA</div>
-    <div class="stack-badge"><div class="dot" style="background:#150458"></div>pandas / numpy</div>
-    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>Apache Airflow</div>
-    <div class="stack-badge"><div class="dot" style="background:#ff694a"></div>dbt</div>
-    <div class="stack-badge"><div class="dot" style="background:#29b5e8"></div>Snowflake</div>
-    <div class="stack-badge"><div class="dot" style="background:#ee4c2c"></div>Databricks</div>
-    <div class="stack-badge"><div class="dot" style="background:#00ff88"></div>Claude API / Anthropic</div>
-    <div class="stack-badge"><div class="dot" style="background:#4285f4"></div>OpenAI / GPT-4</div>
-    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>LangChain / LlamaIndex</div>
-    <div class="stack-badge"><div class="dot" style="background:#336791"></div>PostgreSQL</div>
-    <div class="stack-badge"><div class="dot" style="background:#4db33d"></div>MongoDB</div>
-    <div class="stack-badge"><div class="dot" style="background:#0052cc"></div>Tableau</div>
-    <div class="stack-badge"><div class="dot" style="background:#f2c80f"></div>Power BI</div>
-    <div class="stack-badge"><div class="dot" style="background:#e34f26"></div>React / D3.js</div>
-    <div class="stack-badge"><div class="dot" style="background:#009688"></div>FastAPI</div>
-    <div class="stack-badge"><div class="dot" style="background:#f0db4f"></div>Streamlit</div>
-    <div class="stack-badge"><div class="dot" style="background:#ff9900"></div>AWS (S3, Lambda, SageMaker)</div>
-    <div class="stack-badge"><div class="dot" style="background:#0db7ed"></div>Docker</div>
-    <div class="stack-badge"><div class="dot" style="background:#e97627"></div>MLflow</div>
-    <div class="stack-badge"><div class="dot" style="background:#c0392b"></div>SHAP / Explainability</div>
-    <div class="stack-badge"><div class="dot" style="background:#9b59b6"></div>A/B Testing Frameworks</div>
-    <div class="stack-badge"><div class="dot" style="background:#1abc9c"></div>Customer Segmentation / RFM</div>
-    <div class="stack-badge"><div class="dot" style="background:#e67e22"></div>Recommendation Systems</div>
-    <div class="stack-badge"><div class="dot" style="background:#2980b9"></div>Causal Inference / DID</div>
-    <div class="stack-badge"><div class="dot" style="background:#c0392b"></div>Ads Analytics (CTR/CVR)</div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════
-     AI DEMO
-════════════════════════════════════════════ -->
-<section id="demo">
-  <div class="section-header fade-up">
-    <div class="section-tag">07 // Live AI Demo</div>
-    <h2 class="section-title">Ask Cathy's<br><span style="color:var(--green)">AI Assistant</span></h2>
-  </div>
-  <div class="demo-container fade-up">
-    <div class="demo-box">
-      <div class="demo-header">
-        <div class="demo-title-row">
-          <div class="demo-title">Cathy's AI Assistant</div>
-          <div class="demo-badge">LIVE</div>
-        </div>
-        <div class="demo-powered">Powered by Claude · claude-sonnet-4-20250514</div>
-      </div>
-
-      <div class="demo-chat" id="chatMessages">
-        <div class="chat-msg">
-          <div class="chat-avatar avatar-ai">AI</div>
-          <div class="chat-bubble" id="welcomeMsg">
-            Hello! 👋 I'm Cathy's AI assistant. Select a question below to learn about her 15 years of data science experience.
-          </div>
-        </div>
-      </div>
-
-      <div class="demo-suggestions" id="suggestionBtns">
-        <button class="suggestion-btn" onclick="askQuestion(this, 'Ads analytics experience?')">Ads analytics experience?</button>
-        <button class="suggestion-btn" onclick="askQuestion(this, 'A/B testing &amp; experimentation?')">A/B testing &amp; experimentation?</button>
-        <button class="suggestion-btn" onclick="askQuestion(this, 'Customer segmentation work?')">Customer segmentation work?</button>
-        <button class="suggestion-btn" onclick="askQuestion(this, 'Why hire Cathy?')">Why hire Cathy?</button>
-      </div>
-
+    <div class="authority-card fade-up">
+      <div class="authority-icon">🏢</div>
+      <div class="authority-title">Enterprise Experience</div>
+      <p class="authority-desc">15 years at Baidu, CertiK, Qunar, TAL, eLong. Built ML platforms from scratch. Led teams. Owned P&L impact.</p>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════
-     CONTACT
+     FINAL CTA
 ════════════════════════════════════════════ -->
 <section id="contact">
   <div class="section-header fade-up">
-    <div class="section-tag">08 // Let's Work Together</div>
-    <h2 class="section-title">Available for<br>New Roles</h2>
+    <div class="section-tag">06 // Let's Grow Your Business</div>
+    <h2 class="section-title">Book a Free AI<br>Growth Audit</h2>
+  </div>
+  <div class="cta-big fade-up">
+    <div class="cta-quote">
+      Your business doesn't need more tools.<br>
+      <span class="acc">It needs an AI growth system.</span>
+    </div>
+    <p class="cta-sub">
+      Free 30-minute audit. No obligation. We'll identify your biggest automation opportunities
+      and build a custom growth roadmap.
+    </p>
   </div>
   <div class="contact-grid fade-up">
     <div class="contact-info">
       <div class="contact-tagline">Let's<br><span class="acc">build something.</span></div>
       <p class="contact-desc">
-        Looking for an AI agent, a website, or a growth system? Or hiring a senior AI engineer?
-        I build end-to-end AI solutions for businesses and bring 15 years of enterprise ML
-        expertise. Free 30-minute consultation — no obligation.
+        Book a free AI growth audit. We'll diagnose your current setup, identify automation opportunities,
+        and build a roadmap. SMS agents, voice agents, review boosters, websites — or all of the above.
       </p>
       <div class="open-to">
-        <div class="open-row">AI Agent &amp; Automation Consulting (SMS/Voice/Web)</div>
-        <div class="open-row">Website Design &amp; Build (Next.js + AI features)</div>
-        <div class="open-row">Growth Marketing Systems &amp; Analytics Consulting</div>
-        <div class="open-row">Fractional AI / Data Leadership</div>
-        <div class="open-row">Full-time Senior/Staff AI Engineer or Growth DS</div>
+        <div class="open-row">Restaurants, Salons, Med Spas</div>
+        <div class="open-row">Clinics &amp; Healthcare Practices</div>
+        <div class="open-row">Local Service Businesses</div>
+        <div class="open-row">Boutique Retail Stores</div>
+        <div class="open-row">Any business ready to grow with AI</div>
       </div>
     </div>
     <div class="contact-links">
+      <a href="mailto:cathyismee@gmail.com" class="contact-link-item">
+        <div class="link-icon">📧</div>
+        <div>
+          <div class="link-label">Email</div>
+          <div class="link-value">cathyismee@gmail.com</div>
+        </div>
+      </a>
       <a href="https://www.linkedin.com/in/cathy-song-datascientist" target="_blank" class="contact-link-item">
         <div class="link-icon">🔗</div>
         <div>
@@ -2204,175 +1852,96 @@
           <div class="link-value">linkedin.com/in/cathy-song-datascientist</div>
         </div>
       </a>
-      <a href="https://github.com/CathySong/" target="_blank" class="contact-link-item">
-        <div class="link-icon">💻</div>
+      <a href="https://goopenfield.com" target="_blank" class="contact-link-item">
+        <div class="link-icon">🌐</div>
         <div>
-          <div class="link-label">GitHub / Portfolio</div>
-          <div class="link-value">github.com/CathySong</div>
+          <div class="link-label">Recent Work</div>
+          <div class="link-value">goopenfield.com</div>
         </div>
       </a>
-      <a href="mailto:cathyismee@gmail.com" class="contact-link-item">
-        <div class="link-icon">✉️</div>
-        <div>
-          <div class="link-label">Email</div>
-          <div class="link-value">cathyismee@gmail.com</div>
-        </div>
-      </a>
+      <div class="contact-cta-block">
+        <a href="mailto:cathyismee@gmail.com?subject=Free%20AI%20Growth%20Audit" class="btn-primary" style="width:100%;text-align:center;">
+          Book Free AI Growth Audit →
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Footer -->
 <footer>
-  <span>© 2026 Cathy Song · Senior Data Scientist</span>
-  <span style="color: var(--green)">// Don't guess. Measure. Decide. Repeat.</span>
+  <div>© 2026 Cathy Song · AI Solutions Builder</div>
+  <div>Built with AI, for real businesses.</div>
 </footer>
 
+<!-- Scripts -->
 <script>
+  var CURSOR = document.getElementById('cursor');
+  var CURSOR_RING = document.getElementById('cursorRing');
 
-  // ── Custom cursor ──
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
   document.addEventListener('mousemove', function(e) {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    setTimeout(function() {
-      ring.style.left = e.clientX + 'px';
-      ring.style.top = e.clientY + 'px';
-    }, 80);
-  });
-  document.querySelectorAll('a,button').forEach(function(el) {
-    el.addEventListener('mouseenter', function() {
-      cursor.style.width = '20px'; cursor.style.height = '20px';
-    });
-    el.addEventListener('mouseleave', function() {
-      cursor.style.width = '12px'; cursor.style.height = '12px';
-    });
+    CURSOR.style.left = e.clientX + 'px';
+    CURSOR.style.top = e.clientY + 'px';
+    CURSOR_RING.style.left = e.clientX + 'px';
+    CURSOR_RING.style.top = e.clientY + 'px';
   });
 
-  // ── Stat counters ──
-  function animateCounters() {
-    document.querySelectorAll('[data-target]').forEach(function(el) {
-      var target = parseInt(el.dataset.target);
+  document.addEventListener('mousedown', function() {
+    CURSOR.style.transform = 'translate(-50%, -50%) scale(0.7)';
+    CURSOR_RING.style.transform = 'translate(-50%, -50%) scale(0.6)';
+  });
+  document.addEventListener('mouseup', function() {
+    CURSOR.style.transform = 'translate(-50%, -50%) scale(1)';
+    CURSOR_RING.style.transform = 'translate(-50%, -50%) scale(1)';
+  });
+
+  // Animate stats on scroll
+  function animateStats() {
+    document.querySelectorAll('.stat-num').forEach(function(el) {
+      var target = parseInt(el.getAttribute('data-target'));
+      if (isNaN(target)) return;
       var current = 0;
-      var step = Math.ceil(target / 40);
+      var increment = Math.ceil(target / 40);
       var timer = setInterval(function() {
-        current = Math.min(current + step, target);
-        el.textContent = current + (target >= 10 ? '+' : '');
-        if (current >= target) clearInterval(timer);
-      }, 40);
+        current += increment;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = current;
+      }, 30);
     });
   }
-  setTimeout(animateCounters, 400);
 
-  // ── Scroll animations ──
+  // Intersection Observer for animations
   var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        e.target.querySelectorAll('.bar-fill').forEach(function(bar) {
-          bar.style.width = bar.dataset.width + '%';
-        });
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        if (entry.target.classList.contains('stat-num') || entry.target.closest('.hero-stats')) {
+          animateStats();
+        }
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up, .tl-item').forEach(function(el) {
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
     observer.observe(el);
   });
 
-  // ── AI Demo ──
-  var SYSTEM_PROMPT = `You are Cathy Song's professional AI portfolio assistant. Cathy is a senior data scientist and AI engineer with 15 years of experience.
+  // Also observe stat-nums within .hero-stats
+  document.querySelectorAll('.stat-num').forEach(function(el) {
+    observer.observe(el);
+  });
 
-Key facts about Cathy Song:
-- Full name: Shuhua (Cathy) Song. Based in Summit, New Jersey, US.
-- 15 years across: blockchain security (CertiK), EdTech (TAL Education NYSE:TAL), search/ads (Baidu NASDAQ:BIDU), travel tech (Qunar NASDAQ:QUNR, eLong NASDAQ:LONG).
-- Currently: Data Scientist Manager at CertiK (Apr 2021–present). Built ML org from 0 to 10. Real-time Security Score & Social Sentiment ML on TB-scale blockchain data. LLM intelligence workflows for 17,000+ enterprise clients.
-- Also Founder of S2Y Health: AI-powered Long COVID recovery platform using LLM agents, RAG, taVNS neuromodulation.
-- Ads & growth: 5 years large-scale search ads analytics at Baidu — CTR/CVR modeling, bid strategy evaluation, ad quality scoring, ads performance measurement.
-- 2C experimentation: A/B testing frameworks, multivariate experiments, experiment governance, guardrail metrics, causal inference (DID), funnel analysis.
-- Customer analytics: RFM segmentation, behavioral clustering, propensity modeling, retention analytics, recommendation systems.
-- Financial forecasting: Revenue/sales forecasting (GBDT/XGBoost/Prophet/ARIMA), rolling forecast cycles, forecast bias detection, variance analysis.
-- Data engineering: dbt, Airflow, Snowflake, Databricks, ETL/ELT, model lifecycle monitoring.
-- GenAI & LLM agents: RAG, prompt engineering, tool use, narrative report generation, insight automation.
-- BI & reporting: Tableau, Power BI, KPI design, C-suite executive dashboards.
-- Core: SQL (expert), Python (expert). Native Chinese, professional English.
-- Education: B.S. Information and Computer Science, North China Institute of Science and Technology.
-- Target roles: Senior/Staff/Principal Data Scientist, AI Engineer, Growth DS, Ads Analytics Lead, DS Manager.
-- Slogan: Don't guess. Measure. Decide. Repeat.
-- LinkedIn: www.linkedin.com/in/cathy-song-datascientist | Email: cathyismee@gmail.com
-
-Be warm, confident, technically precise. 3-5 sentences per answer. Highlight her rare combo of ads analytics at scale, 2C experimentation, forecasting depth, and GenAI engineering. If asked about availability, say she is actively interviewing.`;
-
-  var chatMessages = document.getElementById('chatMessages');
-  var conversationHistory = [];
-  var isLoading = false;
-
-  function addMessage(role, text) {
-    var div = document.createElement('div');
-    div.className = 'chat-msg';
-    var isUser = role === 'user';
-    div.innerHTML =
-      '<div class="chat-avatar ' + (isUser ? 'avatar-user' : 'avatar-ai') + '">' +
-      (isUser ? 'YOU' : 'AI') + '</div>' +
-      '<div class="chat-bubble ' + (isUser ? 'user-bubble' : '') + '">' + text + '</div>';
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function addTyping() {
-    var div = document.createElement('div');
-    div.className = 'chat-msg';
-    div.id = 'typingIndicator';
-    div.innerHTML =
-      '<div class="chat-avatar avatar-ai">AI</div>' +
-      '<div class="chat-bubble"><div class="typing-dots">' +
-      '<span></span><span></span><span></span></div></div>';
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  function setAllBtnsLoading(loading) {
-    document.querySelectorAll('.suggestion-btn').forEach(function(b) {
-      if (loading) { b.classList.add('loading'); }
-      else { b.classList.remove('loading'); }
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
-  }
-
-  async function askQuestion(btn, question) {
-    if (isLoading) return;
-    isLoading = true;
-    btn.classList.add('asked');
-    setAllBtnsLoading(true);
-    addMessage('user', question);
-    addTyping();
-    conversationHistory.push({ role: 'user', content: question });
-    try {
-      var response = await fetch('/api/chats', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: conversationHistory
-        })
-      });
-      var data = await response.json();
-      var reply = (data.content && data.content[0] && data.content[0].text)
-        ? data.content[0].text
-        : 'Sorry, I had trouble responding. Please try again.';
-      var t = document.getElementById('typingIndicator');
-      if (t) t.remove();
-      addMessage('assistant', reply);
-      conversationHistory.push({ role: 'assistant', content: reply });
-    } catch (err) {
-      var t = document.getElementById('typingIndicator');
-      if (t) t.remove();
-      addMessage('assistant', 'Connection error. Please try again in a moment.');
-    }
-    isLoading = false;
-    setAllBtnsLoading(false);
-  }
-
+  });
 </script>
+
 </body>
 </html>
