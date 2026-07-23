@@ -539,16 +539,20 @@ nav {
 /* ABOUT */
 .about-section { padding: 96px 0; background: #fff; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
-.about-photo-wrap { position: relative; }
+.about-photo-wrap { position: relative; max-width: 380px; }
 .about-photo {
-  width: 100%; aspect-ratio: 4/5; border-radius: var(--radius);
+  width: 100%; max-width: 380px; aspect-ratio: 1 / 1; border-radius: var(--radius);
   background: linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 96px; box-shadow: var(--shadow-xl); overflow: hidden; position: relative;
+  display: block; box-shadow: var(--shadow-xl); overflow: hidden; position: relative;
+}
+.about-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
 }
 .about-photo::after {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
-  background: linear-gradient(to top, rgba(14,165,164,0.12), transparent);
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+  background: linear-gradient(to top, rgba(14,165,164,0.14), transparent);
+  pointer-events: none;
 }
 .about-stat-card {
   position: absolute; bottom: -20px; right: -20px;
@@ -906,11 +910,12 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 
 <!-- ═══════════════════════════════════════ ABOUT -->
 <section class="about-section" id="about">
+  <div id="services" style="position:relative;top:-88px;height:0;pointer-events:none;" aria-hidden="true"></div>
   <div class="container">
     <div class="about-grid">
       <div class="about-photo-wrap">
         <div class="about-photo">
-          <span style="position:relative;z-index:1;font-size:80px;">👩‍💻</span>
+          <img src="/assets/cathy-founder.jpg" alt="Cathy Song, Founder of CS.AI Growth Studio" width="1200" height="1200" loading="lazy" decoding="async" />
         </div>
         <div class="about-stat-card">
           <div class="about-stat-val">15+</div>
