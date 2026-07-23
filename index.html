@@ -507,18 +507,26 @@ nav {
 }
 .case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .case-image {
-  height: 160px; display: flex; align-items: center; justify-content: center; font-size: 56px;
+  height: 180px; display: flex; align-items: flex-end; justify-content: flex-start;
+  font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff; padding: 16px 18px; position: relative; overflow: hidden;
+  background-size: cover; background-position: center; background-repeat: no-repeat;
 }
-.case-image.art { background: linear-gradient(135deg, #C9A96E, #C4785A); }
-.case-image.beauty { background: linear-gradient(135deg, #DB2777, #F59E0B); }
-.case-image.saas { background: linear-gradient(135deg, #0EA5A4, #2563EB); }
-.case-image.marketplace { background: linear-gradient(135deg, #8B5CF6, #0EA5A4); }
-.case-image.food { background: linear-gradient(135deg, #F59E0B, #DC2626); }
-.case-image.retail { background: linear-gradient(135deg, #7C3AED, #DB2777); }
-.case-image.restaurant { background: linear-gradient(135deg, #7C3AED, #DB2777); }
-.case-image.salon { background: linear-gradient(135deg, #DB2777, #F59E0B); }
-.case-image.dental { background: linear-gradient(135deg, #0EA5A4, #2563EB); }
-.case-image.medspa { background: linear-gradient(135deg, #8B5CF6, #0EA5A4); }
+.case-image::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15,23,42,0.05) 0%, rgba(15,23,42,0.18) 45%, rgba(15,23,42,0.62) 100%);
+}
+.case-image span { position: relative; z-index: 1; text-shadow: 0 1px 8px rgba(0,0,0,0.35); }
+.case-image.art { background-image: linear-gradient(135deg, rgba(201,169,110,0.28), rgba(196,120,90,0.22)), url('/assets/cases/luna.jpg'); }
+.case-image.beauty { background-image: linear-gradient(135deg, rgba(219,39,119,0.18), rgba(245,158,11,0.12)), url('/assets/cases/vpro.jpg'); }
+.case-image.saas { background-image: linear-gradient(135deg, rgba(14,165,164,0.18), rgba(37,99,235,0.16)), url('/assets/cases/rankmysalon.jpg'); }
+.case-image.marketplace { background-image: linear-gradient(135deg, rgba(139,92,246,0.16), rgba(236,72,153,0.14)), url('/assets/cases/gobeauty.jpg'); }
+.case-image.food { background-image: linear-gradient(135deg, rgba(245,158,11,0.16), rgba(220,38,38,0.16)), url('/assets/cases/eatadvisor.jpg'); }
+.case-image.retail { background-image: linear-gradient(135deg, rgba(124,58,237,0.14), rgba(219,39,119,0.14)), url('/assets/cases/xiebaobao.jpg'); }
+.case-image.restaurant { background-image: linear-gradient(135deg, #7C3AED, #DB2777); }
+.case-image.salon { background-image: linear-gradient(135deg, #DB2777, #F59E0B); }
+.case-image.dental { background-image: linear-gradient(135deg, #0EA5A4, #2563EB); }
+.case-image.medspa { background-image: linear-gradient(135deg, #8B5CF6, #0EA5A4); }
 .case-body { padding: 24px; }
 .case-type { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
 .case-name { font-size: 19px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; margin-bottom: 4px; }
@@ -815,7 +823,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
     <div class="cases-scroll" id="casesScroll">
 
       <div class="case-card">
-        <div class="case-image art">🎨</div>
+        <div class="case-image art" role="img" aria-label="Luna Art Studio"><span>Luna Art Studio</span></div>
         <div class="case-body">
           <div class="case-type">Art Studio · Warren, NJ</div>
           <div class="case-name">Luna Art Studio</div>
@@ -828,7 +836,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
         </div>
       </div>
       <div class="case-card">
-        <div class="case-image beauty">💆</div>
+        <div class="case-image beauty" role="img" aria-label="VPRO Beauty SPA"><span>VPRO Beauty SPA</span></div>
         <div class="case-body">
           <div class="case-type">Beauty SPA · Local Service</div>
           <div class="case-name">VPRO Beauty SPA</div>
@@ -841,7 +849,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
         </div>
       </div>
       <div class="case-card">
-        <div class="case-image saas">📈</div>
+        <div class="case-image saas" role="img" aria-label="RankMySalon"><span>RankMySalon</span></div>
         <div class="case-body">
           <div class="case-type">Salon Growth SaaS</div>
           <div class="case-name">RankMySalon</div>
@@ -854,7 +862,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
         </div>
       </div>
       <div class="case-card">
-        <div class="case-image marketplace">✨</div>
+        <div class="case-image marketplace" role="img" aria-label="GoBeauty"><span>GoBeauty</span></div>
         <div class="case-body">
           <div class="case-type">Beauty Marketplace</div>
           <div class="case-name">GoBeauty</div>
@@ -867,7 +875,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
         </div>
       </div>
       <div class="case-card">
-        <div class="case-image food">🍽️</div>
+        <div class="case-image food" role="img" aria-label="EatAdvisor"><span>EatAdvisor</span></div>
         <div class="case-body">
           <div class="case-type">Restaurant Intelligence</div>
           <div class="case-name">EatAdvisor</div>
@@ -880,7 +888,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
         </div>
       </div>
       <div class="case-card">
-        <div class="case-image retail">🛍️</div>
+        <div class="case-image retail" role="img" aria-label="XieBaoBao"><span>XieBaoBao</span></div>
         <div class="case-body">
           <div class="case-type">DTC Brand · E-commerce</div>
           <div class="case-name">XieBaoBao</div>
