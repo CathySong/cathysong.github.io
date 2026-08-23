@@ -268,21 +268,37 @@ nav {
   position: relative; height: 172px; padding: 22px 24px;
   display: flex; flex-direction: column; justify-content: flex-end;
   overflow: hidden; isolation: isolate;
+}
+.svc-banner-graphic {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 62%; z-index: 0;
   background-size: cover; background-position: center;
 }
 .svc-banner::before {
   content: ''; position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.10) 45%, rgba(0,0,0,0.62) 100%);
 }
 .svc-banner-content { position: relative; z-index: 2; }
 .svc-body { padding: 24px 28px 28px; }
 
-.svc-banner.c-teal   { background-image: url('/assets/services/ai-automation.jpg'); }
-.svc-banner.c-blue   { background-image: url('/assets/services/website.jpg'); }
-.svc-banner.c-green  { background-image: url('/assets/services/growth-marketing.jpg'); }
-.svc-banner.c-amber  { background-image: url('/assets/services/seo-geo.jpg'); }
-.svc-banner.c-purple { background-image: url('/assets/services/private-ai-agents.jpg'); }
-.svc-banner.c-indigo { background-image: url('/assets/services/consulting.jpg'); }
+.svc-banner.c-teal   { background: linear-gradient(135deg, #052e2d 0%, #0b3d3a 55%, #062421 100%); }
+.svc-banner.c-blue   { background: linear-gradient(135deg, #0a1440 0%, #101b52 55%, #060b28 100%); }
+.svc-banner.c-green  { background: linear-gradient(135deg, #06210f 0%, #0a2e14 55%, #04170a 100%); }
+.svc-banner.c-amber  { background: linear-gradient(135deg, #2b1204 0%, #3a1a05 55%, #1a0a02 100%); }
+.svc-banner.c-purple { background: linear-gradient(135deg, #150b33 0%, #1d0f47 55%, #0c0620 100%); }
+.svc-banner.c-indigo { background: linear-gradient(135deg, #1c0b30 0%, #290f45 55%, #100620 100%); }
+
+.svc-banner.c-teal .svc-banner-graphic   { background-image: url('/assets/services/ai-automation-graphic.jpg'); }
+.svc-banner.c-blue .svc-banner-graphic   { background-image: url('/assets/services/website-graphic.jpg'); }
+.svc-banner.c-green .svc-banner-graphic  { background-image: url('/assets/services/growth-marketing-graphic.jpg'); }
+.svc-banner.c-amber .svc-banner-graphic  { background-image: url('/assets/services/seo-geo-graphic.jpg'); }
+.svc-banner.c-purple .svc-banner-graphic { background-image: url('/assets/services/private-ai-agents-graphic.jpg'); }
+.svc-banner.c-indigo .svc-banner-graphic { background-image: url('/assets/services/consulting-graphic.jpg'); }
+
+.svc-banner.c-teal::before   { background: linear-gradient(90deg, #052e2d 0%, rgba(5,46,45,0.65) 30%, rgba(5,46,45,0) 62%), linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); }
+.svc-banner.c-blue::before   { background: linear-gradient(90deg, #0a1440 0%, rgba(10,20,64,0.65) 30%, rgba(10,20,64,0) 62%), linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); }
+.svc-banner.c-green::before  { background: linear-gradient(90deg, #06210f 0%, rgba(6,33,15,0.65) 30%, rgba(6,33,15,0) 62%), linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); }
+.svc-banner.c-amber::before  { background: linear-gradient(90deg, #2b1204 0%, rgba(43,18,4,0.65) 30%, rgba(43,18,4,0) 62%), linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); }
+.svc-banner.c-purple::before { background: linear-gradient(90deg, #150b33 0%, rgba(21,11,51,0.65) 30%, rgba(21,11,51,0) 62%), linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); }
+.svc-banner.c-indigo::before { background: linear-gradient(90deg, #1c0b30 0%, rgba(28,11,48,0.65) 30%, rgba(28,11,48,0) 62%), linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%); }
 
 .svc-cat {
   font-size: 10.5px; font-weight: 700; letter-spacing: 1.4px;
@@ -678,6 +694,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <!-- AI Automation -->
       <div class="svc-card c-teal fade-up">
         <div class="svc-banner c-teal">
+          <div class="svc-banner-graphic"></div>
           <div class="svc-banner-content">
             <div class="svc-cat c-teal">AI Automation</div>
             <div class="svc-title">AI Agents &amp; Outreach Systems</div>
@@ -708,6 +725,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <!-- Website & Digital Presence -->
       <div class="svc-card c-blue fade-up">
         <div class="svc-banner c-blue">
+          <div class="svc-banner-graphic"></div>
           <div class="svc-banner-content">
             <div class="svc-cat c-blue">Website &amp; Digital Presence</div>
             <div class="svc-title">Sites That Convert</div>
@@ -734,6 +752,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <!-- Growth Marketing -->
       <div class="svc-card c-green fade-up">
         <div class="svc-banner c-green">
+          <div class="svc-banner-graphic"></div>
           <div class="svc-banner-content">
             <div class="svc-cat c-green">Growth Marketing</div>
             <div class="svc-title">Systematic, Measurable Growth</div>
@@ -760,6 +779,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <!-- SEO · SEM · GEO -->
       <div class="svc-card c-amber fade-up">
         <div class="svc-banner c-amber">
+          <div class="svc-banner-graphic"></div>
           <div class="svc-banner-content">
             <div class="svc-cat c-amber">SEO · SEM · GEO</div>
             <div class="svc-title">Search &amp; AI Discovery</div>
@@ -790,6 +810,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <!-- Private AI Agents -->
       <div class="svc-card c-purple fade-up">
         <div class="svc-banner c-purple">
+          <div class="svc-banner-graphic"></div>
           <div class="svc-banner-content">
             <div class="svc-cat c-purple">Private AI Agents</div>
             <div class="svc-title">Your Own AI Stack</div>
@@ -820,6 +841,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <!-- AI & Data Consulting -->
       <div class="svc-card c-indigo fade-up">
         <div class="svc-banner c-indigo">
+          <div class="svc-banner-graphic"></div>
           <div class="svc-banner-content">
             <div class="svc-cat c-indigo">AI &amp; Data Consulting</div>
             <div class="svc-title">Expert Brain on Demand</div>
