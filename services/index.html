@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — CS. AI Growth Studio</title>
+<meta name="description" content="AI automation, growth marketing, SEO, private AI agents, and consulting. Enterprise-level thinking. Startup-friendly pricing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ── DESIGN TOKENS (mirror index.html exactly) ── */
+:root {
+  --bg: #F8FAFC;
+  --card: #FFFFFF;
+  --text: #0F172A;
+  --muted: #64748B;
+  --teal: #0EA5A4;
+  --teal2: #0D9492;
+  --blue: #2563EB;
+  --success: #16A34A;
+  --purple: #8B5CF6;
+  --border: rgba(15,23,42,0.08);
+  --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+  --shadow-md: 0 4px 16px rgba(15,23,42,0.08), 0 2px 8px rgba(15,23,42,0.04);
+  --shadow-lg: 0 12px 40px rgba(15,23,42,0.10), 0 4px 16px rgba(15,23,42,0.06);
+  --shadow-xl: 0 24px 64px rgba(15,23,42,0.12), 0 8px 24px rgba(15,23,42,0.08);
+  --radius: 24px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(14,165,164,0.3); border-radius: 2px; }
+.container { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(248,250,252,0.88);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s;
+}
+.nav-inner {
+  max-width: 1320px; margin: 0 auto; padding: 0 32px;
+  height: 64px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-size: 20px; font-weight: 800; letter-spacing: -0.5px;
+  color: var(--text); text-decoration: none;
+  display: flex; align-items: baseline; gap: 2px;
+}
+.nav-logo .dot { color: var(--teal); }
+.nav-logo small { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.8px; margin-left: 6px; text-transform: uppercase; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-links a.active { font-weight: 600; }
+.nav-cta {
+  background: var(--text); color: #fff;
+  padding: 9px 20px; border-radius: 10px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: all 0.2s; letter-spacing: -0.2px;
+}
+.nav-cta:hover { background: #1e293b; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  background: linear-gradient(135deg, var(--teal) 0%, #0891b2 100%);
+  color: #fff; padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; font-weight: 600; text-decoration: none; letter-spacing: -0.2px;
+  transition: all 0.25s; box-shadow: 0 4px 16px rgba(14,165,164,0.3);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(14,165,164,0.4); }
+.btn-secondary {
+  background: var(--card); color: var(--text);
+  padding: 14px 28px; border-radius: 12px;
+  font-size: 15px; font-weight: 600; text-decoration: none; letter-spacing: -0.2px;
+  border: 1px solid var(--border); transition: all 0.25s;
+  display: inline-flex; align-items: center; gap: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: rgba(15,23,42,0.15); }
+
+/* ── SHARED SECTION ELEMENTS ── */
+.section-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 700; color: var(--teal);
+  letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(32px, 4vw, 52px); font-weight: 800;
+  letter-spacing: -2px; line-height: 1.08; color: var(--text);
+  margin-bottom: 16px;
+}
+.section-sub { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; }
+
+/* ── HERO ── */
+.hero-services {
+  padding: 144px 0 96px;
+  position: relative; overflow: hidden;
+  min-height: 60vh; display: flex; align-items: center;
+}
+.hero-services::before {
+  content: ''; position: absolute; top: -200px; right: -200px;
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(14,165,164,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-services::after {
+  content: ''; position: absolute; bottom: -100px; left: -150px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(37,99,235,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(14,165,164,0.08); border: 1px solid rgba(14,165,164,0.2);
+  border-radius: 100px; padding: 6px 14px; margin-bottom: 28px;
+}
+.hero-badge-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+.hero-badge-text { font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--teal); text-transform: uppercase; }
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+
+.hero-tagline {
+  font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-headline {
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 800; line-height: 1.03; letter-spacing: -3.5px;
+  color: var(--text); margin-bottom: 24px;
+}
+.hero-headline .highlight {
+  background: linear-gradient(135deg, var(--teal) 0%, #06b6d4 50%, var(--teal2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: 19px; color: var(--muted); line-height: 1.7;
+  max-width: 540px; font-weight: 400; margin-bottom: 40px;
+}
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ── SERVICES GRID ── */
+.services-section { padding: 100px 0; }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 64px;
+}
+.svc-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 32px;
+  box-shadow: var(--shadow-sm); transition: all 0.3s;
+  position: relative; overflow: hidden;
+}
+.svc-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  opacity: 0; transition: opacity 0.3s;
+}
+.svc-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(14,165,164,0.18); }
+.svc-card:hover::after { opacity: 1; }
+.svc-card.c-teal::after  { background: linear-gradient(90deg, var(--teal), #06b6d4); }
+.svc-card.c-blue::after  { background: linear-gradient(90deg, var(--blue), #7c3aed); }
+.svc-card.c-green::after { background: linear-gradient(90deg, var(--success), #06b6d4); }
+.svc-card.c-amber::after { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+.svc-card.c-purple::after{ background: linear-gradient(90deg, var(--purple), #ec4899); }
+.svc-card.c-indigo::after{ background: linear-gradient(90deg, #6366f1, var(--blue)); }
+
+.svc-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 20px;
+}
+.svc-icon.c-teal   { background: rgba(14,165,164,0.10); }
+.svc-icon.c-blue   { background: rgba(37,99,235,0.08); }
+.svc-icon.c-green  { background: rgba(22,163,74,0.08); }
+.svc-icon.c-amber  { background: rgba(245,158,11,0.10); }
+.svc-icon.c-purple { background: rgba(139,92,246,0.08); }
+.svc-icon.c-indigo { background: rgba(99,102,241,0.08); }
+
+.svc-cat {
+  font-size: 10px; font-weight: 700; letter-spacing: 1.4px;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+.svc-cat.c-teal   { color: var(--teal); }
+.svc-cat.c-blue   { color: var(--blue); }
+.svc-cat.c-green  { color: var(--success); }
+.svc-cat.c-amber  { color: #d97706; }
+.svc-cat.c-purple { color: var(--purple); }
+.svc-cat.c-indigo { color: #6366f1; }
+
+.svc-title { font-size: 17px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); margin-bottom: 20px; line-height: 1.3; }
+
+.svc-items { display: flex; flex-direction: column; gap: 8px; }
+.svc-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; background: var(--bg);
+  border: 1px solid var(--border); border-radius: var(--radius-xs);
+  transition: border-color 0.2s, background 0.2s;
+}
+.svc-item:hover { border-color: rgba(14,165,164,0.22); background: rgba(14,165,164,0.02); }
+.svc-item-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.svc-price {
+  font-size: 12px; font-weight: 700; color: var(--teal);
+  background: rgba(14,165,164,0.08); border-radius: 100px;
+  padding: 3px 10px; white-space: nowrap; margin-left: 10px; flex-shrink: 0;
+}
+
+/* Consulting card rates */
+.consult-rates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.consult-rate {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-xs); padding: 18px 14px; text-align: center;
+}
+.consult-rate-price { font-size: 28px; font-weight: 900; color: var(--text); letter-spacing: -1.5px; line-height: 1; }
+.consult-rate-unit  { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 4px; }
+
+/* ── BUNDLES ── */
+.bundles-section { padding: 100px 0; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.bundles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; }
+
+.bundle-card {
+  border-radius: var(--radius); padding: 40px 32px;
+  border: 1px solid var(--border); background: var(--bg);
+  position: relative; transition: all 0.3s;
+}
+.bundle-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); }
+.bundle-card.featured {
+  background: var(--card);
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal), var(--shadow-md);
+}
+.bundle-card.featured:hover { box-shadow: 0 0 0 1px var(--teal), var(--shadow-xl); }
+
+.bundle-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 100px; margin-bottom: 20px;
+}
+.bundle-badge.b-launch  { background: rgba(37,99,235,0.07); color: var(--blue); border: 1px solid rgba(37,99,235,0.18); }
+.bundle-badge.b-auto   { background: rgba(139,92,246,0.08); color: var(--purple); border: 1px solid rgba(139,92,246,0.22); }
+.bundle-badge.b-growth { background: rgba(14,165,164,0.08); color: var(--teal); border: 1px solid rgba(14,165,164,0.25); }
+
+.bundle-name { font-size: 22px; font-weight: 800; letter-spacing: -0.8px; color: var(--text); margin-bottom: 12px; }
+.bundle-price { font-size: 52px; font-weight: 900; letter-spacing: -3px; color: var(--text); line-height: 1; }
+.bundle-price sup { font-size: 26px; font-weight: 700; letter-spacing: 0; vertical-align: top; margin-top: 10px; margin-right: 2px; }
+.bundle-price-note { font-size: 13px; color: var(--muted); margin-top: 8px; margin-bottom: 28px; font-weight: 500; }
+
+.bundle-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
+.bundle-includes-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+.bundle-items { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.bundle-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--text); font-weight: 500; }
+.bundle-check {
+  width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+  background: rgba(22,163,74,0.08); border: 1px solid rgba(22,163,74,0.22);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--success); font-weight: 700;
+}
+
+.bundle-cta {
+  display: block; text-align: center; padding: 14px 24px; border-radius: 12px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  transition: all 0.25s; letter-spacing: -0.2px;
+}
+.bundle-cta.primary {
+  background: linear-gradient(135deg, var(--teal), #0891b2);
+  color: #fff; box-shadow: 0 4px 16px rgba(14,165,164,0.3);
+}
+.bundle-cta.primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(14,165,164,0.4); }
+.bundle-cta.ghost {
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border); box-shadow: var(--shadow-sm);
+}
+.bundle-cta.ghost:hover { background: var(--card); border-color: rgba(15,23,42,0.18); box-shadow: var(--shadow-md); }
+
+/* ── PRICING PHILOSOPHY ── */
+.philosophy-section { padding: 100px 0; }
+.philosophy-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 72px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: center; box-shadow: var(--shadow-md);
+}
+.philosophy-headline {
+  font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+  letter-spacing: -1.8px; color: var(--text); line-height: 1.12; margin-bottom: 32px;
+}
+.philosophy-points { display: flex; flex-direction: column; gap: 20px; }
+.philosophy-point { display: flex; gap: 16px; align-items: flex-start; }
+.philo-icon {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(14,165,164,0.08); border: 1px solid rgba(14,165,164,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; color: var(--teal);
+}
+.philosophy-point-text { font-size: 15px; color: var(--muted); line-height: 1.65; padding-top: 3px; }
+.philosophy-point-text strong { color: var(--text); font-weight: 600; }
+
+.philosophy-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.philosophy-stat {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 24px;
+}
+.philosophy-stat-val { font-size: 38px; font-weight: 900; color: var(--teal); letter-spacing: -2px; line-height: 1; margin-bottom: 6px; }
+.philosophy-stat-label { font-size: 13px; color: var(--muted); font-weight: 500; line-height: 1.4; }
+
+/* ── CONSULT BAND ── */
+.consult-section {
+  padding: 88px 0; background: var(--card);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.consult-inner {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 80px; align-items: center; max-width: 960px; margin: 0 auto;
+}
+.consult-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+.consult-headline { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; letter-spacing: -2px; color: var(--text); line-height: 1.1; margin-bottom: 16px; }
+.consult-body { font-size: 16px; color: var(--muted); line-height: 1.7; margin-bottom: 28px; max-width: 500px; }
+.consult-price-card {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 36px 40px;
+  text-align: center; box-shadow: var(--shadow-lg); min-width: 220px;
+}
+.consult-price-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.consult-price-val { font-size: 52px; font-weight: 900; color: var(--text); letter-spacing: -3px; line-height: 1; }
+.consult-price-unit { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+
+/* ── FAQ ── */
+.faq-section { padding: 100px 0; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 64px; }
+.faq-item {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 28px 32px;
+  box-shadow: var(--shadow-sm); transition: box-shadow 0.25s;
+}
+.faq-item:hover { box-shadow: var(--shadow-md); }
+.faq-q { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: -0.2px; }
+.faq-a { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* ── FINAL CTA ── */
+.cta-section { padding: 80px 0 120px; }
+.cta-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 32px; padding: 80px; text-align: center;
+  box-shadow: var(--shadow-xl); position: relative; overflow: hidden;
+  max-width: 900px; margin: 0 auto;
+}
+.cta-glow {
+  position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(14,165,164,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-headline { font-size: clamp(36px, 4.5vw, 56px); font-weight: 800; letter-spacing: -2.5px; color: var(--text); line-height: 1.08; margin-bottom: 16px; }
+.cta-sub { font-size: 17px; color: var(--muted); margin-bottom: 40px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+.cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.cta-guarantee { font-size: 13px; color: var(--muted); margin-top: 20px; font-weight: 500; }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(--card); }
+.footer-inner {
+  max-width: 1320px; margin: 0 auto; padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-logo { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+.footer-logo .dot { color: var(--teal); }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: var(--muted); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .bundles-grid  { grid-template-columns: repeat(2, 1fr); }
+  .philosophy-card { grid-template-columns: 1fr; gap: 48px; padding: 48px; }
+  .consult-inner { grid-template-columns: 1fr; gap: 40px; }
+  .faq-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .nav-links { display: none; }
+  .services-grid  { grid-template-columns: 1fr; }
+  .bundles-grid   { grid-template-columns: 1fr; }
+  .philosophy-stats { grid-template-columns: 1fr 1fr; }
+  .philosophy-card { padding: 32px 24px; }
+  .cta-card { padding: 48px 24px; }
+  .hero-services { padding: 108px 0 64px; }
+  .hero-headline { letter-spacing: -2px; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .footer-links { justify-content: center; }
+  .consult-inner { max-width: 100%; }
+  .consult-price-card { min-width: 0; width: 100%; max-width: 260px; }
+}
+
+/* ── ENTRANCE ANIMATIONS ── */
+.fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">CS<span class="dot">.</span><small>AI Growth Studio</small></a>
+    <div class="nav-links">
+      <a href="/services" class="active">Services</a>
+      <a href="/#cases">Results</a>
+      <a href="/#about">About</a>
+    </div>
+    <a href="https://cal.com/cozyfamily/free-ai-audit" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Free AI Audit →</a>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero-services">
+  <div class="container">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">AI · Automation · Growth · Data</span>
+    </div>
+    <p class="hero-tagline">Enterprise-level thinking. Startup-friendly pricing.</p>
+    <h1 class="hero-headline">AI Systems<br>for <span class="highlight">Growth.</span></h1>
+    <p class="hero-sub">I build practical AI systems that help businesses get customers, automate work, and grow online.</p>
+    <div class="hero-buttons">
+      <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Consultation →</a>
+      <a href="#services" class="btn-secondary">Explore Services ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SERVICES ═══════════════ -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-eyebrow">— What I Build</div>
+    <h2 class="section-title">Six Ways to<br>Grow Your Business</h2>
+    <p class="section-sub">Choose what you need. Combine for maximum impact. Every engagement is fixed-price with clear scope.</p>
+
+    <div class="services-grid">
+
+      <!-- AI Automation -->
+      <div class="svc-card c-teal fade-up">
+        <div class="svc-icon c-teal">🤖</div>
+        <div class="svc-cat c-teal">AI Automation</div>
+        <div class="svc-title">AI Agents &amp; Outreach Systems</div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <span class="svc-item-name">SMS Outreach Agent</span>
+            <span class="svc-price">$499 setup</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Email Agent</span>
+            <span class="svc-price">$399 setup</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Voice Agent</span>
+            <span class="svc-price">$799 setup</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">AI Outreach Starter</span>
+            <span class="svc-price">$1,199</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Website & Digital Presence -->
+      <div class="svc-card c-blue fade-up">
+        <div class="svc-icon c-blue">🌐</div>
+        <div class="svc-cat c-blue">Website &amp; Digital Presence</div>
+        <div class="svc-title">Sites That Convert</div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <span class="svc-item-name">Starter Website</span>
+            <span class="svc-price">$699</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Business Website</span>
+            <span class="svc-price">$1,199</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Website + AI</span>
+            <span class="svc-price">$1,699</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Growth Marketing -->
+      <div class="svc-card c-green fade-up">
+        <div class="svc-icon c-green">📈</div>
+        <div class="svc-cat c-green">Growth Marketing</div>
+        <div class="svc-title">Systematic, Measurable Growth</div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <span class="svc-item-name">Growth Setup</span>
+            <span class="svc-price">$499</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Growth Engine</span>
+            <span class="svc-price">$799 / mo</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Growth + AI</span>
+            <span class="svc-price">$1,199 / mo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO · SEM · GEO -->
+      <div class="svc-card c-amber fade-up">
+        <div class="svc-icon c-amber">🔍</div>
+        <div class="svc-cat c-amber">SEO · SEM · GEO</div>
+        <div class="svc-title">Search &amp; AI Discovery</div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <span class="svc-item-name">SEO Starter</span>
+            <span class="svc-price">$399</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">SEO Growth</span>
+            <span class="svc-price">$699 / mo</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">GEO / AI Search</span>
+            <span class="svc-price">$599</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">SEO + GEO</span>
+            <span class="svc-price">$899 / mo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Private AI Agents -->
+      <div class="svc-card c-purple fade-up">
+        <div class="svc-icon c-purple">⚡</div>
+        <div class="svc-cat c-purple">Private AI Agents</div>
+        <div class="svc-title">Your Own AI Stack</div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <span class="svc-item-name">OpenClaw Deployment</span>
+            <span class="svc-price">$499</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Hermes Deployment</span>
+            <span class="svc-price">$499</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">OpenClaw → Hermes</span>
+            <span class="svc-price">$399</span>
+          </div>
+          <div class="svc-item">
+            <span class="svc-item-name">Custom AI Agent</span>
+            <span class="svc-price">from $799</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI & Data Consulting -->
+      <div class="svc-card c-indigo fade-up">
+        <div class="svc-icon c-indigo">🧠</div>
+        <div class="svc-cat c-indigo">AI &amp; Data Consulting</div>
+        <div class="svc-title">Expert Brain on Demand</div>
+        <div class="consult-rates">
+          <div class="consult-rate">
+            <div class="consult-rate-price">$100</div>
+            <div class="consult-rate-unit">30 minutes</div>
+          </div>
+          <div class="consult-rate">
+            <div class="consult-rate-price">$200</div>
+            <div class="consult-rate-unit">60 minutes</div>
+          </div>
+        </div>
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" style="justify-content:center;font-size:14px;padding:12px 20px;" target="_blank" rel="noopener noreferrer">Book a Session →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BUNDLES ═══════════════ -->
+<section class="bundles-section" id="bundles">
+  <div class="container">
+    <div class="section-eyebrow">— Featured Packages</div>
+    <h2 class="section-title">Built-to-Convert<br>Bundles</h2>
+    <p class="section-sub">The most common combinations, priced to save you time and money versus piecing it together.</p>
+
+    <div class="bundles-grid">
+
+      <!-- Launch -->
+      <div class="bundle-card fade-up">
+        <div class="bundle-badge b-launch">🚀 Best for New Businesses</div>
+        <div class="bundle-name">Launch</div>
+        <div class="bundle-price"><sup>$</sup>999</div>
+        <div class="bundle-price-note">One-time · Fixed scope · No surprises</div>
+        <div class="bundle-divider"></div>
+        <div class="bundle-includes-label">What's included</div>
+        <ul class="bundle-items">
+          <li class="bundle-item"><span class="bundle-check">✓</span>Business Website</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>SEO Starter Setup</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>Analytics Configuration</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>Lead Capture Form</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>Basic AI Integration</li>
+        </ul>
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="bundle-cta ghost" target="_blank" rel="noopener noreferrer">Get Started →</a>
+      </div>
+
+      <!-- Automate (featured) -->
+      <div class="bundle-card featured fade-up">
+        <div class="bundle-badge b-auto">⚡ Best for Automation</div>
+        <div class="bundle-name">Automate</div>
+        <div class="bundle-price"><sup>$</sup>1,499</div>
+        <div class="bundle-price-note">One-time · Fixed scope · No surprises</div>
+        <div class="bundle-divider"></div>
+        <div class="bundle-includes-label">What's included</div>
+        <ul class="bundle-items">
+          <li class="bundle-item"><span class="bundle-check">✓</span>SMS Outreach Agent</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>Email Agent</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>Lead Qualification Flow</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>Follow-up Automation</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>OpenClaw or Hermes Deployment</li>
+        </ul>
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="bundle-cta primary" target="_blank" rel="noopener noreferrer">Get Started →</a>
+      </div>
+
+      <!-- Growth -->
+      <div class="bundle-card fade-up">
+        <div class="bundle-badge b-growth">🏆 Best Value</div>
+        <div class="bundle-name">Growth</div>
+        <div class="bundle-price"><sup>$</sup>1,999</div>
+        <div class="bundle-price-note">One-time · Fixed scope · No surprises</div>
+        <div class="bundle-divider"></div>
+        <div class="bundle-includes-label">What's included</div>
+        <ul class="bundle-items">
+          <li class="bundle-item"><span class="bundle-check">✓</span>Website Optimization</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>SEO + GEO / AI Search</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>SMS + Email Agents</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>AI Lead Agent</li>
+          <li class="bundle-item"><span class="bundle-check">✓</span>90-Day Growth Strategy</li>
+        </ul>
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="bundle-cta ghost" target="_blank" rel="noopener noreferrer">Get Started →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ PRICING PHILOSOPHY ═══════════════ -->
+<section class="philosophy-section" id="pricing">
+  <div class="container">
+    <div class="philosophy-card fade-up">
+      <div>
+        <div class="section-eyebrow">— Pricing Philosophy</div>
+        <h2 class="philosophy-headline">Simple. Transparent.<br>No Agency Games.</h2>
+        <div class="philosophy-points">
+          <div class="philosophy-point">
+            <div class="philo-icon">✦</div>
+            <p class="philosophy-point-text"><strong>Fixed-price projects.</strong> Clear scope. No surprise invoices. You know exactly what you're paying before we start.</p>
+          </div>
+          <div class="philosophy-point">
+            <div class="philo-icon">✦</div>
+            <p class="philosophy-point-text"><strong>Senior AI and data expertise</strong> without the traditional agency price tag — 15+ years of ML, NLP, and growth systems experience.</p>
+          </div>
+          <div class="philosophy-point">
+            <div class="philo-icon">✦</div>
+            <p class="philosophy-point-text"><strong>No retainers for setup work.</strong> Monthly plans are for ongoing growth, not for charging you while we figure things out.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="philosophy-stats">
+          <div class="philosophy-stat">
+            <div class="philosophy-stat-val">15+</div>
+            <div class="philosophy-stat-label">Years in AI &amp; Data Science</div>
+          </div>
+          <div class="philosophy-stat">
+            <div class="philosophy-stat-val">90</div>
+            <div class="philosophy-stat-label">Day results guarantee</div>
+          </div>
+          <div class="philosophy-stat">
+            <div class="philosophy-stat-val">$0</div>
+            <div class="philosophy-stat-label">Free discovery / AI audit call</div>
+          </div>
+          <div class="philosophy-stat">
+            <div class="philosophy-stat-val">100%</div>
+            <div class="philosophy-stat-label">Fixed-price, no surprises</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONSULT BAND ═══════════════ -->
+<section class="consult-section">
+  <div class="container">
+    <div class="consult-inner">
+      <div>
+        <div class="consult-eyebrow">— Expert on Demand</div>
+        <h2 class="consult-headline">Need an Expert Brain?</h2>
+        <p class="consult-body">Sometimes you don't need a full project. You need 30 minutes with someone who genuinely understands AI, data, automation, and growth — and can give you a clear, honest answer.</p>
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Consultation →</a>
+      </div>
+      <div class="consult-price-card">
+        <div class="consult-price-label">Starting at</div>
+        <div class="consult-price-val">$100</div>
+        <div class="consult-price-unit">per 30-minute session</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-eyebrow">— FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+
+    <div class="faq-grid">
+      <div class="faq-item fade-up">
+        <div class="faq-q">How do fixed-price projects work?</div>
+        <div class="faq-a">We agree on scope before anything starts. You get a clear deliverables list, a fixed price, and a timeline. No hourly billing, no scope creep surprises.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">What if my project doesn't fit a listed package?</div>
+        <div class="faq-a">Most projects do — but if yours is unusual, book a free AI audit. We'll scope it together and give you a custom quote within 24 hours.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">How fast can you deliver?</div>
+        <div class="faq-a">Most setup projects (websites, AI agents) deliver within 1–2 weeks. Larger bundles take 2–4 weeks. Timeline is always confirmed upfront.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">Do you work with non-technical founders?</div>
+        <div class="faq-a">Yes — most clients are non-technical. I handle the infrastructure, integrations, and AI layer. You stay focused on your business.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">What does the 90-day guarantee mean?</div>
+        <div class="faq-a">If we don't hit the growth milestones we set together in 90 days, I keep working at no extra charge until we get there.</div>
+      </div>
+      <div class="faq-item fade-up">
+        <div class="faq-q">Can I start with a consultation and upgrade later?</div>
+        <div class="faq-a">Absolutely. Many clients book a 30-minute session first to map the strategy, then move into a project. Consultation fees are credited toward any project.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FINAL CTA ═══════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card fade-up">
+      <div class="cta-glow"></div>
+      <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px;">— Let's Build Together</div>
+      <h2 class="cta-headline">Let's Build Something<br>Useful.</h2>
+      <p class="cta-sub">Tell me what you're trying to accomplish. I'll help you figure out what to build — and what <em>not</em> to build.</p>
+      <div class="cta-buttons">
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" style="font-size:16px;padding:16px 32px;" target="_blank" rel="noopener noreferrer">Book a Consultation →</a>
+        <a href="mailto:hello@csai.studio" class="btn-secondary" style="font-size:16px;padding:16px 32px;">Start a Project</a>
+      </div>
+      <p class="cta-guarantee">✓ Free discovery call &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Results in 90 days or we keep working</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">CS<span class="dot">.</span> AI Growth Studio</div>
+    <div class="footer-links">
+      <a href="/services">Services</a>
+      <a href="/#cases">Results</a>
+      <a href="/#about">About</a>
+      <a href="mailto:hello@csai.studio">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 CS. AI Growth Studio. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll shadow
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').style.boxShadow =
+    window.scrollY > 10 ? '0 2px 20px rgba(15,23,42,0.06)' : 'none';
+}, { passive: true });
+
+// Entrance animations
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+<!-- Vercel Web Analytics -->
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
