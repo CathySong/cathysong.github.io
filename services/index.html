@@ -164,25 +164,16 @@ nav {
   gap: 32px; align-items: center; position: relative; z-index: 1;
 }
 
-.flow-diagram { display: flex; gap: 12px; width: 100%; }
+.flow-diagram { display: flex; gap: 12px; width: 100%; position: relative; z-index: 1; }
+
+.flow-connector-svg { position: absolute; top: 0; left: 0; overflow: visible; pointer-events: none; z-index: 0; }
 
 .flow-labels {
   width: 64px; flex-shrink: 0; position: relative;
   display: flex; flex-direction: column; justify-content: space-between;
   padding: 40px 0;
 }
-.flow-label-line {
-  position: absolute; top: 10px; bottom: 10px; left: 50%;
-  width: 0; border-left: 1.5px dotted rgba(15,23,42,0.22); transform: translateX(-50%);
-  z-index: 0;
-}
-.flow-loop-arrow {
-  position: absolute; left: 50%; width: 14px; height: 14px;
-  transform: translateX(-50%); z-index: 1; color: rgba(15,23,42,0.28);
-}
-.flow-loop-arrow.top { top: -5px; }
-.flow-loop-arrow.bottom { bottom: -5px; }
-.flow-loop-arrow svg { width: 100%; height: 100%; }
+.flow-connector-line { fill: none; stroke: rgba(15,23,42,0.30); stroke-width: 1.5; stroke-dasharray: 3 3; stroke-linecap: round; }
 .flow-label {
   position: relative; z-index: 1; background: var(--bg);
   font-size: 11px; font-weight: 700; color: var(--muted);
@@ -190,7 +181,7 @@ nav {
   padding: 4px 3px;
 }
 
-.flow-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.flow-main { flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; z-index: 1; }
 
 .flow-row { display: flex; align-items: center; gap: 12px; }
 .flow-step-card {
@@ -540,18 +531,28 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
         <p class="hero-audit-note"><strong>Free AI Growth Audit:</strong> find where you're losing leads, customers, and revenue — and identify what AI can automate.</p>
       </div>
 
-      <div class="flow-diagram">
-        <div class="flow-labels">
-          <div class="flow-label-line"></div>
-          <div class="flow-loop-arrow top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></div>
-          <div class="flow-label">Data &amp;<br>Insights</div>
-          <div class="flow-label">Continuous<br>Optimization</div>
-          <div class="flow-loop-arrow bottom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
+      <div class="flow-diagram" id="flowDiagram">
+        <svg class="flow-connector-svg" id="flowConnectorSvg">
+          <defs>
+            <marker id="flowArrowEnd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" fill="rgba(15,23,42,0.42)"/>
+            </marker>
+            <marker id="flowArrowDouble" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="rgba(15,23,42,0.42)"/>
+            </marker>
+          </defs>
+          <path class="flow-connector-line" id="flowPathA"></path>
+          <path class="flow-connector-line" id="flowPathB" marker-start="url(#flowArrowDouble)" marker-end="url(#flowArrowEnd)"></path>
+          <path class="flow-connector-line" id="flowPathC" marker-end="url(#flowArrowEnd)"></path>
+        </svg>
+        <div class="flow-labels" id="flowLabels">
+          <div class="flow-label" id="lblDataInsights">Data &amp;<br>Insights</div>
+          <div class="flow-label" id="lblContinuousOpt">Continuous<br>Optimization</div>
         </div>
 
         <div class="flow-main">
           <div class="flow-row">
-            <div class="flow-step-card">
+            <div class="flow-step-card" id="stepCard1">
               <div class="flow-step-icon c-teal"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
               <div class="flow-step-body">
                 <div class="flow-step-title">1. FIND</div>
@@ -631,7 +632,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
           </div>
 
           <div class="flow-row">
-            <div class="flow-step-card">
+            <div class="flow-step-card" id="stepCard5">
               <div class="flow-step-icon c-green"><svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
               <div class="flow-step-body">
                 <div class="flow-step-title">5. GROW</div>
@@ -1004,6 +1005,68 @@ window.addEventListener('scroll', () => {
   document.getElementById('navbar').style.boxShadow =
     window.scrollY > 10 ? '0 2px 20px rgba(15,23,42,0.06)' : 'none';
 }, { passive: true });
+
+// Flow diagram connector: box5 -> left -> up -> "Continuous Optimization" ->
+// double-arrow -> "Data & Insights" -> up -> right -> box1
+function layoutFlowConnector() {
+  const diagram = document.getElementById('flowDiagram');
+  if (!diagram) return;
+  const svg = document.getElementById('flowConnectorSvg');
+  const card1 = document.getElementById('stepCard1');
+  const card5 = document.getElementById('stepCard5');
+  const lblData = document.getElementById('lblDataInsights');
+  const lblCont = document.getElementById('lblContinuousOpt');
+  if (!svg || !card1 || !card5 || !lblData || !lblCont) return;
+
+  const dRect = diagram.getBoundingClientRect();
+  const rel = (r) => ({
+    left: r.left - dRect.left, right: r.right - dRect.left,
+    top: r.top - dRect.top, bottom: r.bottom - dRect.top,
+    midY: (r.top - dRect.top) + r.height / 2,
+    midX: (r.left - dRect.left) + r.width / 2
+  });
+
+  const c1 = rel(card1.getBoundingClientRect());
+  const c5 = rel(card5.getBoundingClientRect());
+  const ld = rel(lblData.getBoundingClientRect());
+  const lc = rel(lblCont.getBoundingClientRect());
+
+  svg.setAttribute('width', dRect.width);
+  svg.setAttribute('height', dRect.height);
+  svg.setAttribute('viewBox', `0 0 ${dRect.width} ${dRect.height}`);
+
+  const colX = ld.midX;
+  const r = 8;
+
+  // Rounded elbow helper: straight -> quarter-round corner -> straight
+  const elbow = (x0, y0, cx, cy, x1, y1) => {
+    const d0x = Math.sign(cx - x0), d0y = Math.sign(cy - y0);
+    const d1x = Math.sign(x1 - cx), d1y = Math.sign(y1 - cy);
+    const p1x = cx - d0x * r, p1y = cy - d0y * r;
+    const p2x = cx + d1x * r, p2y = cy + d1y * r;
+    return `M ${x0} ${y0} L ${p1x} ${p1y} Q ${cx} ${cy} ${p2x} ${p2y} L ${x1} ${y1}`;
+  };
+
+  // Path A: box5 left-mid -> left -> rounded turn up -> "Continuous Optimization" bottom edge
+  const y5 = c5.midY;
+  const pathA = elbow(c5.left, y5, colX, y5, colX, lc.bottom);
+
+  // Path B: double-arrow straight segment between the two labels
+  const pathB = `M ${colX} ${lc.top} L ${colX} ${ld.bottom}`;
+
+  // Path C: "Data & Insights" top edge -> up -> rounded turn right -> box1 left-mid (arrow in)
+  const y1 = c1.midY;
+  const pathC = elbow(colX, ld.top, colX, y1, c1.left, y1);
+
+  document.getElementById('flowPathA').setAttribute('d', pathA);
+  document.getElementById('flowPathB').setAttribute('d', pathB);
+  document.getElementById('flowPathC').setAttribute('d', pathC);
+}
+
+window.addEventListener('load', layoutFlowConnector);
+window.addEventListener('resize', layoutFlowConnector);
+if (document.readyState === 'complete') layoutFlowConnector();
+else document.addEventListener('DOMContentLoaded', layoutFlowConnector);
 
 // Entrance animations
 const observer = new IntersectionObserver(entries => {
