@@ -160,79 +160,88 @@ nav {
 
 /* ── HERO GRID + FLOW DIAGRAM ── */
 .hero-grid-wrap {
-  display: grid; grid-template-columns: 1fr 1.08fr;
-  gap: 40px; align-items: center; position: relative; z-index: 1;
+  display: grid; grid-template-columns: 0.92fr 1.2fr;
+  gap: 32px; align-items: center; position: relative; z-index: 1;
 }
 
-.flow-diagram { display: flex; gap: 10px; }
+.flow-diagram { display: flex; gap: 12px; width: 100%; }
 
 .flow-labels {
-  width: 44px; flex-shrink: 0; position: relative;
+  width: 64px; flex-shrink: 0; position: relative;
   display: flex; flex-direction: column; justify-content: space-between;
-  padding: 6px 0;
+  padding: 40px 0;
 }
 .flow-label-line {
-  position: absolute; top: 22px; bottom: 22px; left: 50%;
-  width: 0; border-left: 2px dotted rgba(15,23,42,0.16); transform: translateX(-50%);
+  position: absolute; top: 10px; bottom: 10px; left: 50%;
+  width: 0; border-left: 1.5px dotted rgba(15,23,42,0.22); transform: translateX(-50%);
   z-index: 0;
 }
+.flow-loop-arrow {
+  position: absolute; left: 50%; width: 14px; height: 14px;
+  transform: translateX(-50%); z-index: 1; color: rgba(15,23,42,0.28);
+}
+.flow-loop-arrow.top { top: -5px; }
+.flow-loop-arrow.bottom { bottom: -5px; }
+.flow-loop-arrow svg { width: 100%; height: 100%; }
 .flow-label {
   position: relative; z-index: 1; background: var(--bg);
-  font-size: 9.5px; font-weight: 700; color: var(--muted);
+  font-size: 11px; font-weight: 700; color: var(--muted);
   text-align: center; line-height: 1.35; letter-spacing: 0.2px;
-  padding: 4px 2px;
+  padding: 4px 3px;
 }
 
 .flow-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
 
-.flow-row { display: flex; align-items: center; gap: 8px; }
+.flow-row { display: flex; align-items: center; gap: 12px; }
 .flow-step-card {
-  flex: 1 1 60%; min-width: 0; display: flex; align-items: flex-start; gap: 10px;
+  flex: 1 1 62%; min-width: 0; display: flex; align-items: flex-start; gap: 14px;
   background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 10px 12px;
+  border-radius: var(--radius-sm); padding: 16px 18px;
   box-shadow: var(--shadow-sm); transition: box-shadow 0.2s, transform 0.2s;
 }
 .flow-step-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
 .flow-step-icon {
-  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 14px;
+  width: 44px; height: 44px; border-radius: 11px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
-.flow-step-icon.c-teal   { background: rgba(14,165,164,0.10); }
-.flow-step-icon.c-blue   { background: rgba(37,99,235,0.08); }
-.flow-step-icon.c-purple { background: rgba(139,92,246,0.08); }
-.flow-step-icon.c-indigo { background: rgba(99,102,241,0.08); }
-.flow-step-icon.c-green  { background: rgba(22,163,74,0.08); }
+.flow-step-icon svg { width: 21px; height: 21px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.flow-step-icon.c-teal   { background: rgba(14,165,164,0.12); color: var(--teal); }
+.flow-step-icon.c-blue   { background: rgba(37,99,235,0.10); color: var(--blue); }
+.flow-step-icon.c-purple { background: rgba(139,92,246,0.10); color: var(--purple); }
+.flow-step-icon.c-indigo { background: rgba(99,102,241,0.10); color: #6366F1; }
+.flow-step-icon.c-green  { background: rgba(22,163,74,0.10); color: var(--success); }
 .flow-step-body { min-width: 0; }
-.flow-step-title { font-size: 10.5px; font-weight: 800; letter-spacing: 0.3px; color: var(--text); margin-bottom: 2px; white-space: nowrap; }
-.flow-step-desc { font-size: 10px; color: var(--muted); line-height: 1.4; }
+.flow-step-title { font-size: 14px; font-weight: 800; letter-spacing: 0.2px; color: var(--text); margin-bottom: 4px; white-space: nowrap; }
+.flow-step-desc { font-size: 12.5px; color: var(--muted); line-height: 1.45; }
 
-.flow-connector-dots { flex: 0 0 16px; height: 0; border-top: 2px dotted rgba(15,23,42,0.14); }
+.flow-connector-dots { flex: 0 0 22px; height: 0; border-top: 2px dotted rgba(15,23,42,0.16); }
 
-.flow-outcome { flex: 1 1 36%; min-width: 0; display: flex; align-items: center; gap: 7px; }
+.flow-outcome { flex: 1 1 34%; min-width: 0; display: flex; align-items: center; gap: 10px; }
 .flow-outcome-icon {
-  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
 }
+.flow-outcome-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .flow-outcome-icon.c-green  { background: rgba(22,163,74,0.10); color: var(--success); }
 .flow-outcome-icon.c-blue   { background: rgba(37,99,235,0.10); color: var(--blue); }
 .flow-outcome-icon.c-purple { background: rgba(139,92,246,0.10); color: var(--purple); }
 .flow-outcome-icon.c-amber  { background: rgba(245,158,11,0.12); color: #d97706; }
-.flow-outcome-text { font-size: 10px; font-weight: 700; line-height: 1.3; }
+.flow-outcome-text { font-size: 12.5px; font-weight: 700; line-height: 1.35; }
 .flow-outcome-text.c-green  { color: var(--success); }
 .flow-outcome-text.c-blue   { color: var(--blue); }
 .flow-outcome-text.c-purple { color: var(--purple); }
 .flow-outcome-text.c-amber  { color: #d97706; }
 
-.flow-arrow-row { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
-.flow-arrow-slot { flex: 1 1 60%; text-align: center; color: var(--muted); opacity: 0.45; font-size: 12px; line-height: 1; }
-.flow-arrow-spacer-dot { flex: 0 0 16px; }
-.flow-arrow-spacer { flex: 1 1 36%; }
+.flow-arrow-row { display: flex; align-items: center; gap: 12px; padding: 4px 0; }
+.flow-arrow-slot { flex: 1 1 62%; text-align: center; color: var(--muted); opacity: 0.45; font-size: 15px; line-height: 1; }
+.flow-arrow-spacer-dot { flex: 0 0 22px; }
+.flow-arrow-spacer { flex: 1 1 34%; }
 
 .flow-banner {
-  margin-top: 18px;
+  margin-top: 22px;
   background: rgba(14,165,164,0.06); border: 1px solid rgba(14,165,164,0.16);
-  border-radius: var(--radius-sm); padding: 12px 18px; text-align: center;
-  font-size: 11.5px; font-weight: 600; color: var(--muted); line-height: 1.5;
+  border-radius: var(--radius-sm); padding: 16px 22px; text-align: center;
+  font-size: 13.5px; font-weight: 600; color: var(--muted); line-height: 1.55;
 }
 .flow-banner .spark { color: var(--teal); }
 
@@ -467,7 +476,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .hero-grid-wrap { grid-template-columns: 1fr; gap: 48px; }
-  .engine-panel { max-width: 460px; }
+  .flow-diagram { max-width: 560px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .bundles-grid  { grid-template-columns: repeat(2, 1fr); }
   .philosophy-card { grid-template-columns: 1fr; gap: 48px; padding: 48px; }
@@ -477,7 +486,9 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
   .nav-links { display: none; }
-  .engine-panel { max-width: 100%; padding: 20px; animation: none; }
+  .flow-diagram { max-width: 100%; }
+  .flow-step-desc { display: none; }
+  .flow-outcome-text { font-size: 11px; }
   .services-grid  { grid-template-columns: 1fr; }
   .bundles-grid   { grid-template-columns: 1fr; }
   .philosophy-stats { grid-template-columns: 1fr 1fr; }
@@ -532,14 +543,16 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <div class="flow-diagram">
         <div class="flow-labels">
           <div class="flow-label-line"></div>
+          <div class="flow-loop-arrow top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg></div>
           <div class="flow-label">Data &amp;<br>Insights</div>
           <div class="flow-label">Continuous<br>Optimization</div>
+          <div class="flow-loop-arrow bottom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div>
         </div>
 
         <div class="flow-main">
           <div class="flow-row">
             <div class="flow-step-card">
-              <div class="flow-step-icon c-teal">🔍</div>
+              <div class="flow-step-icon c-teal"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
               <div class="flow-step-body">
                 <div class="flow-step-title">1. FIND</div>
                 <div class="flow-step-desc">We identify and discover your ideal customers.</div>
@@ -547,7 +560,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
             </div>
             <div class="flow-connector-dots"></div>
             <div class="flow-outcome">
-              <div class="flow-outcome-icon c-green">👥</div>
+              <div class="flow-outcome-icon c-green"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
               <div class="flow-outcome-text c-green">More qualified prospects</div>
             </div>
           </div>
@@ -559,7 +572,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 
           <div class="flow-row">
             <div class="flow-step-card">
-              <div class="flow-step-icon c-blue">✈️</div>
+              <div class="flow-step-icon c-blue"><svg viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
               <div class="flow-step-body">
                 <div class="flow-step-title">2. REACH</div>
                 <div class="flow-step-desc">AI-powered outreach via SMS, Email, and Voice.</div>
@@ -567,7 +580,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
             </div>
             <div class="flow-connector-dots"></div>
             <div class="flow-outcome">
-              <div class="flow-outcome-icon c-blue">💬</div>
+              <div class="flow-outcome-icon c-blue"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
               <div class="flow-outcome-text c-blue">More conversations started</div>
             </div>
           </div>
@@ -579,7 +592,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 
           <div class="flow-row">
             <div class="flow-step-card">
-              <div class="flow-step-icon c-purple">🤖</div>
+              <div class="flow-step-icon c-purple"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><path d="M8 16h.01"/><path d="M16 16h.01"/></svg></div>
               <div class="flow-step-body">
                 <div class="flow-step-title">3. FOLLOW UP</div>
                 <div class="flow-step-desc">Automated, personalized follow-ups. Never let leads go cold.</div>
@@ -587,7 +600,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
             </div>
             <div class="flow-connector-dots"></div>
             <div class="flow-outcome">
-              <div class="flow-outcome-icon c-purple">🔄</div>
+              <div class="flow-outcome-icon c-purple"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
               <div class="flow-outcome-text c-purple">Higher reply and response rate</div>
             </div>
           </div>
@@ -599,7 +612,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 
           <div class="flow-row">
             <div class="flow-step-card">
-              <div class="flow-step-icon c-indigo">👤</div>
+              <div class="flow-step-icon c-indigo"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></div>
               <div class="flow-step-body">
                 <div class="flow-step-title">4. CONVERT</div>
                 <div class="flow-step-desc">AI qualifies leads and books appointments.</div>
@@ -607,7 +620,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
             </div>
             <div class="flow-connector-dots"></div>
             <div class="flow-outcome">
-              <div class="flow-outcome-icon c-amber">📅</div>
+              <div class="flow-outcome-icon c-amber"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></div>
               <div class="flow-outcome-text c-amber">More qualified appointments</div>
             </div>
           </div>
@@ -619,7 +632,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 
           <div class="flow-row">
             <div class="flow-step-card">
-              <div class="flow-step-icon c-green">📈</div>
+              <div class="flow-step-icon c-green"><svg viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg></div>
               <div class="flow-step-body">
                 <div class="flow-step-title">5. GROW</div>
                 <div class="flow-step-desc">More customers. More revenue. Less manual work for you.</div>
