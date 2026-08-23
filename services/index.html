@@ -156,70 +156,6 @@ nav {
 }
 .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* ── HERO GRID + PRICE PANEL ── */
-.hero-services > .container { width: 100%; }
-.hero-grid-wrap {
-  display: grid; grid-template-columns: 1.05fr 0.95fr;
-  gap: 64px; align-items: center; position: relative; z-index: 1;
-}
-.price-panel {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 24px;
-  box-shadow: var(--shadow-xl); position: relative;
-  animation: panelFloat 6s ease-in-out infinite;
-}
-@keyframes panelFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-.price-panel::before {
-  content: ''; position: absolute; top: -1px; left: 24px; right: 24px; height: 1px;
-  background: linear-gradient(90deg, transparent, var(--teal), transparent);
-}
-.price-panel-header {
-  display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px;
-}
-.price-panel-title { font-size: 13px; font-weight: 700; color: var(--text); letter-spacing: -0.2px; }
-.price-panel-note { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
-.price-panel-status {
-  display: flex; align-items: center; gap: 6px;
-  background: rgba(22,163,74,0.08); border: 1px solid rgba(22,163,74,0.2);
-  border-radius: 100px; padding: 4px 10px;
-}
-.price-panel-status-dot { width: 6px; height: 6px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
-.price-panel-status-text { font-size: 11px; font-weight: 600; color: var(--success); }
-
-.price-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-.price-row {
-  display: flex; align-items: center; gap: 12px;
-  background: var(--bg); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 12px 14px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.price-row:hover { border-color: rgba(14,165,164,0.22); transform: translateX(2px); }
-.price-row-icon {
-  width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 15px;
-}
-.price-row-icon.c-teal   { background: rgba(14,165,164,0.10); }
-.price-row-icon.c-blue   { background: rgba(37,99,235,0.08); }
-.price-row-icon.c-green  { background: rgba(22,163,74,0.08); }
-.price-row-icon.c-amber  { background: rgba(245,158,11,0.10); }
-.price-row-icon.c-purple { background: rgba(139,92,246,0.08); }
-.price-row-icon.c-indigo { background: rgba(99,102,241,0.08); }
-.price-row-body { flex: 1; min-width: 0; }
-.price-row-name { font-size: 12.5px; font-weight: 700; color: var(--text); letter-spacing: -0.1px; }
-.price-row-range { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 1px; }
-.price-row-arrow { font-size: 13px; color: var(--muted); flex-shrink: 0; }
-
-.price-panel-highlight {
-  background: linear-gradient(135deg, rgba(14,165,164,0.06), rgba(37,99,235,0.04));
-  border: 1px solid rgba(14,165,164,0.22);
-  border-radius: var(--radius-sm); padding: 16px 18px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
-.price-panel-highlight-label { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--teal); margin-bottom: 3px; }
-.price-panel-highlight-name { font-size: 14px; font-weight: 800; color: var(--text); letter-spacing: -0.3px; }
-.price-panel-highlight-price { font-size: 20px; font-weight: 900; color: var(--text); letter-spacing: -0.8px; white-space: nowrap; }
-.price-panel-highlight-price span { font-size: 11px; color: var(--muted); font-weight: 600; }
-
 /* ── SERVICES GRID ── */
 .services-section { padding: 100px 0; }
 .services-grid {
@@ -450,8 +386,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
-  .hero-grid-wrap { grid-template-columns: 1fr; gap: 48px; }
-  .price-panel { max-width: 460px; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
   .bundles-grid  { grid-template-columns: repeat(2, 1fr); }
   .philosophy-card { grid-template-columns: 1fr; gap: 48px; padding: 48px; }
@@ -461,8 +395,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
   .nav-links { display: none; }
-  .price-panel { max-width: 100%; padding: 20px; animation: none; }
-  .price-panel-highlight { flex-wrap: wrap; }
   .services-grid  { grid-template-columns: 1fr; }
   .bundles-grid   { grid-template-columns: 1fr; }
   .philosophy-stats { grid-template-columns: 1fr 1fr; }
@@ -499,84 +431,16 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="hero-services">
   <div class="container">
-    <div class="hero-grid-wrap">
-      <div>
-        <div class="hero-badge">
-          <div class="hero-badge-dot"></div>
-          <span class="hero-badge-text">AI · Automation · Growth · Data</span>
-        </div>
-        <p class="hero-tagline">Enterprise-level thinking. Startup-friendly pricing.</p>
-        <h1 class="hero-headline">AI Systems<br>for <span class="highlight">Growth.</span></h1>
-        <p class="hero-sub">I build practical AI systems that help businesses get customers, automate work, and grow online.</p>
-        <div class="hero-buttons">
-          <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Consultation →</a>
-          <a href="#services" class="btn-secondary">Explore Services ↓</a>
-        </div>
-      </div>
-
-      <div class="price-panel">
-        <div class="price-panel-header">
-          <div>
-            <div class="price-panel-title">Service Menu</div>
-            <div class="price-panel-note">Fixed-price · Updated 2026</div>
-          </div>
-          <div class="price-panel-status">
-            <div class="price-panel-status-dot"></div>
-            <span class="price-panel-status-text">Booking Open</span>
-          </div>
-        </div>
-
-        <div class="price-rows">
-          <div class="price-row">
-            <div class="price-row-icon c-teal">🤖</div>
-            <div class="price-row-body">
-              <div class="price-row-name">AI Automation</div>
-              <div class="price-row-range">$399 – $1,199 setup</div>
-            </div>
-            <div class="price-row-arrow">→</div>
-          </div>
-          <div class="price-row">
-            <div class="price-row-icon c-blue">🌐</div>
-            <div class="price-row-body">
-              <div class="price-row-name">Website &amp; Digital Presence</div>
-              <div class="price-row-range">$699 – $1,699</div>
-            </div>
-            <div class="price-row-arrow">→</div>
-          </div>
-          <div class="price-row">
-            <div class="price-row-icon c-green">📈</div>
-            <div class="price-row-body">
-              <div class="price-row-name">Growth Marketing</div>
-              <div class="price-row-range">$499 – $1,199/mo</div>
-            </div>
-            <div class="price-row-arrow">→</div>
-          </div>
-          <div class="price-row">
-            <div class="price-row-icon c-amber">🔍</div>
-            <div class="price-row-body">
-              <div class="price-row-name">SEO · SEM · GEO</div>
-              <div class="price-row-range">$399 – $899/mo</div>
-            </div>
-            <div class="price-row-arrow">→</div>
-          </div>
-          <div class="price-row">
-            <div class="price-row-icon c-purple">⚡</div>
-            <div class="price-row-body">
-              <div class="price-row-name">Private AI Agents</div>
-              <div class="price-row-range">from $399</div>
-            </div>
-            <div class="price-row-arrow">→</div>
-          </div>
-        </div>
-
-        <div class="price-panel-highlight">
-          <div>
-            <div class="price-panel-highlight-label">Most Popular Bundle</div>
-            <div class="price-panel-highlight-name">Automate</div>
-          </div>
-          <div class="price-panel-highlight-price">$1,499 <span>one-time</span></div>
-        </div>
-      </div>
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">AI · Automation · Growth · Data</span>
+    </div>
+    <p class="hero-tagline">Enterprise-level thinking. Startup-friendly pricing.</p>
+    <h1 class="hero-headline">AI Systems<br>for <span class="highlight">Growth.</span></h1>
+    <p class="hero-sub">I build practical AI systems that help businesses get customers, automate work, and grow online.</p>
+    <div class="hero-buttons">
+      <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" target="_blank" rel="noopener noreferrer">Book a Consultation →</a>
+      <a href="#services" class="btn-secondary">Explore Services ↓</a>
     </div>
   </div>
 </section>
