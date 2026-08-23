@@ -433,19 +433,148 @@ nav {
 .consult-price-unit { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
 
 /* ── FAQ ── */
-.faq-section { padding: 100px 0; }
-.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 64px; }
-.faq-item {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); padding: 28px 32px;
-  box-shadow: var(--shadow-sm); transition: box-shadow 0.25s;
-}
-.faq-item:hover { box-shadow: var(--shadow-md); }
-.faq-q { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 10px; letter-spacing: -0.2px; }
-.faq-a { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.faq-section { padding: 100px 0 40px; }
+.faq-header { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+.faq-header .section-eyebrow { justify-content: center; }
+.faq-header .section-title { margin-bottom: 14px; }
+.faq-header-sub { font-size: 16px; color: var(--muted); line-height: 1.65; }
 
-/* ── FINAL CTA ── */
-.cta-section { padding: 80px 0 120px; }
+.faq-cat-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 14px;
+}
+.faq-cat-card {
+  border-radius: 18px; padding: 28px 28px 26px;
+  color: #fff; min-height: 118px;
+  box-shadow: var(--shadow-md);
+}
+.faq-cat-card.teal {
+  background: linear-gradient(145deg, #0f766e 0%, #115e59 45%, #134e4a 100%);
+}
+.faq-cat-card.purple {
+  background: linear-gradient(145deg, #5b21b6 0%, #4c1d95 50%, #3b0764 100%);
+}
+.faq-cat-title {
+  font-size: 18px; font-weight: 800; letter-spacing: -0.4px;
+  margin-bottom: 8px; line-height: 1.2;
+}
+.faq-cat-desc { font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.78); max-width: 280px; }
+
+.faq-cols {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 28px; align-items: start;
+}
+.faq-col { display: flex; flex-direction: column; gap: 10px; }
+
+.faq-acc {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: var(--shadow-sm); transition: box-shadow 0.2s, border-color 0.2s;
+}
+.faq-acc:hover { box-shadow: var(--shadow-md); border-color: #dbe3ee; }
+.faq-acc[open] { border-color: rgba(14,165,164,0.28); box-shadow: var(--shadow-md); }
+.faq-acc summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 20px; font-size: 14.5px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.2px; line-height: 1.35;
+}
+.faq-acc summary::-webkit-details-marker { display: none; }
+.faq-acc-q { flex: 1; }
+.faq-acc-icon {
+  flex: 0 0 auto; width: 28px; height: 28px; border-radius: 999px;
+  border: 1px solid var(--border); background: #f8fafc;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--muted); font-size: 18px; font-weight: 500; line-height: 1;
+  transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+}
+.faq-acc[open] .faq-acc-icon {
+  transform: rotate(45deg); background: rgba(14,165,164,0.1);
+  border-color: rgba(14,165,164,0.28); color: var(--teal);
+}
+.faq-acc-a {
+  padding: 0 20px 18px; font-size: 14px; color: var(--muted); line-height: 1.7;
+}
+.faq-acc-a p + p { margin-top: 10px; }
+.faq-acc-a ul {
+  margin: 12px 0 0; padding: 0; list-style: none;
+  display: grid; gap: 8px;
+}
+.faq-acc-a li {
+  position: relative; padding-left: 14px;
+  color: var(--text); font-weight: 500;
+}
+.faq-acc-a li::before {
+  content: ''; position: absolute; left: 0; top: 8px;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--teal);
+}
+.faq-note { color: var(--muted); font-weight: 400; }
+
+.faq-process {
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  border: 1px solid var(--border); border-radius: 22px;
+  padding: 28px 28px 22px; margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+.faq-process-head {
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 18px; padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+.faq-process-icon {
+  width: 42px; height: 42px; border-radius: 12px; flex: 0 0 auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(145deg, rgba(14,165,164,0.14), rgba(14,165,164,0.05));
+  color: var(--teal); border: 1px solid rgba(14,165,164,0.18);
+}
+.faq-process-title { font-size: 22px; font-weight: 800; letter-spacing: -0.6px; color: var(--text); margin-bottom: 4px; }
+.faq-process-desc { font-size: 14px; color: var(--muted); line-height: 1.5; }
+.faq-process-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-acc-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 999px; flex: 0 0 auto;
+  background: rgba(14,165,164,0.1); color: var(--teal);
+  font-size: 12px; font-weight: 800; margin-right: 10px;
+}
+.faq-acc summary .faq-acc-q { display: flex; align-items: center; }
+
+/* FAQ CTA */
+.faq-cta {
+  background: linear-gradient(145deg, #e8f7f6 0%, #f0fbfb 45%, #eef8ff 100%);
+  border: 1px solid rgba(14,165,164,0.18);
+  border-radius: 24px; padding: 40px 36px 36px;
+  text-align: center; box-shadow: var(--shadow-md);
+  margin-bottom: 36px;
+}
+.faq-cta-title {
+  font-size: clamp(24px, 3vw, 32px); font-weight: 800;
+  letter-spacing: -1px; color: var(--text); line-height: 1.2; margin-bottom: 10px;
+}
+.faq-cta-sub { font-size: 15px; color: var(--muted); margin-bottom: 18px; }
+.faq-cta-chips {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-bottom: 24px;
+}
+.faq-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 12px; border-radius: 999px;
+  background: rgba(255,255,255,0.78); border: 1px solid rgba(15,23,42,0.06);
+  font-size: 12.5px; font-weight: 600; color: var(--text);
+}
+.faq-chip span { color: var(--teal); font-weight: 800; }
+.faq-trust {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  max-width: 980px; margin: 0 auto 20px;
+}
+.faq-trust-item { text-align: center; padding: 8px 12px; }
+.faq-trust-title {
+  font-size: 15px; font-weight: 800; color: var(--text);
+  letter-spacing: -0.2px; margin-bottom: 8px;
+}
+.faq-trust-desc { font-size: 13.5px; color: var(--muted); line-height: 1.55; max-width: 240px; margin: 0 auto; }
+
+/* ── FINAL CTA (kept for compatibility; FAQ includes primary CTA) ── */
+.cta-section { display: none; }
 .cta-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 32px; padding: 80px; text-align: center;
@@ -484,7 +613,9 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
   .bundles-grid  { grid-template-columns: repeat(2, 1fr); }
   .philosophy-card { grid-template-columns: 1fr; gap: 48px; padding: 48px; }
   .consult-inner { grid-template-columns: 1fr; gap: 40px; }
-  .faq-grid { grid-template-columns: 1fr; }
+  .faq-cat-grid { grid-template-columns: 1fr; }
+  .faq-cols { grid-template-columns: 1fr; }
+  .faq-trust { grid-template-columns: 1fr; gap: 20px; }
 }
 @media (max-width: 768px) {
   .container { padding: 0 20px; }
@@ -986,51 +1117,178 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
 <!-- ═══════════════ FAQ ═══════════════ -->
 <section class="faq-section" id="faq">
   <div class="container">
-    <div class="section-eyebrow">— FAQ</div>
-    <h2 class="section-title">Common Questions</h2>
+    <div class="faq-header fade-up">
+      <div class="section-eyebrow">— Common Questions</div>
+      <h2 class="section-title">Answers before you get started</h2>
+      <p class="faq-header-sub">Clear answers about AI automation, SEO/GEO, pricing, and how we work.</p>
+    </div>
 
-    <div class="faq-grid">
-      <div class="faq-item fade-up">
-        <div class="faq-q">How do fixed-price projects work?</div>
-        <div class="faq-a">We agree on scope before anything starts. You get a clear deliverables list, a fixed price, and a timeline. No hourly billing, no scope creep surprises.</div>
+    <!-- Category headers -->
+    <div class="faq-cat-grid fade-up">
+      <div class="faq-cat-card teal">
+        <div class="faq-cat-title">AI Growth & Automation</div>
+        <div class="faq-cat-desc">AI systems that find, reach, and convert more customers for you.</div>
       </div>
-      <div class="faq-item fade-up">
-        <div class="faq-q">What if my project doesn't fit a listed package?</div>
-        <div class="faq-a">Most projects do — but if yours is unusual, book a free AI audit. We'll scope it together and give you a custom quote within 24 hours.</div>
-      </div>
-      <div class="faq-item fade-up">
-        <div class="faq-q">How fast can you deliver?</div>
-        <div class="faq-a">Most setup projects (websites, AI agents) deliver within 1–2 weeks. Larger bundles take 2–4 weeks. Timeline is always confirmed upfront.</div>
-      </div>
-      <div class="faq-item fade-up">
-        <div class="faq-q">Do you work with non-technical founders?</div>
-        <div class="faq-a">Yes — most clients are non-technical. I handle the infrastructure, integrations, and AI layer. You stay focused on your business.</div>
-      </div>
-      <div class="faq-item fade-up">
-        <div class="faq-q">What does the 90-day guarantee mean?</div>
-        <div class="faq-a">If we don't hit the growth milestones we set together in 90 days, I keep working at no extra charge until we get there.</div>
-      </div>
-      <div class="faq-item fade-up">
-        <div class="faq-q">Can I start with a consultation and upgrade later?</div>
-        <div class="faq-a">Absolutely. Many clients book a 30-minute session first to map the strategy, then move into a project. Consultation fees are credited toward any project.</div>
+      <div class="faq-cat-card purple">
+        <div class="faq-cat-title">SEO, GEO & AI Search</div>
+        <div class="faq-cat-desc">Be visible in Google search and AI-powered search engines.</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════════ FINAL CTA ═══════════════ -->
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-card fade-up">
-      <div class="cta-glow"></div>
-      <div class="section-eyebrow" style="justify-content:center;margin-bottom:20px;">— Let's Build Together</div>
-      <h2 class="cta-headline">Let's Build Something<br>Useful.</h2>
-      <p class="cta-sub">Tell me what you're trying to accomplish. I'll help you figure out what to build — and what <em>not</em> to build.</p>
-      <div class="cta-buttons">
-        <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" style="font-size:16px;padding:16px 32px;" target="_blank" rel="noopener noreferrer">Book a Consultation →</a>
-        <a href="mailto:hello@csai.studio" class="btn-secondary" style="font-size:16px;padding:16px 32px;">Start a Project</a>
+    <!-- Two-column accordion Q&A -->
+    <div class="faq-cols fade-up">
+      <div class="faq-col">
+        <details class="faq-acc">
+          <summary><span class="faq-acc-q">What is an AI Growth System?</span><span class="faq-acc-icon" aria-hidden="true">+</span></summary>
+          <div class="faq-acc-a">An AI Growth System connects customer discovery, outreach, follow-up, lead qualification, and conversion into one automated workflow. Instead of relying on disconnected marketing tools, I build practical systems that help businesses find customers, reach them, follow up, and grow revenue.</div>
+        </details>
+        <details class="faq-acc">
+          <summary><span class="faq-acc-q">Can AI help me find new customers?</span><span class="faq-acc-icon" aria-hidden="true">+</span></summary>
+          <div class="faq-acc-a">
+            <p>Yes. I can build AI-powered customer discovery and outreach workflows that identify potential customers, segment prospects, and initiate personalized conversations through channels such as SMS, email, and voice.</p>
+            <p class="faq-note">The exact approach depends on your industry, customer profile, available data, and outreach requirements.</p>
+          </div>
+        </details>
+        <details class="faq-acc">
+          <summary><span class="faq-acc-q">Can AI automatically reach out to potential customers?</span><span class="faq-acc-icon" aria-hidden="true">+</span></summary>
+          <div class="faq-acc-a">
+            <p>Yes. I build SMS, email, and voice outreach agents that can personalize messages, manage follow-ups, qualify responses, and route qualified leads to you or your sales workflow.</p>
+            <p class="faq-note">Messaging, email, and telephony platform fees are separate from the implementation fee.</p>
+          </div>
+        </details>
+        <details class="faq-acc">
+          <summary><span class="faq-acc-q">Can AI follow up with leads automatically?</span><span class="faq-acc-icon" aria-hidden="true">+</span></summary>
+          <div class="faq-acc-a">Yes. Automated follow-up is one of the most useful applications of AI for customer growth. The system can track conversations, trigger personalized follow-ups, classify responses, and help prevent qualified leads from going cold.</div>
+        </details>
       </div>
-      <p class="cta-guarantee">✓ Free discovery call &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Results in 90 days or we keep working</p>
+
+      <div class="faq-col">
+        <details class="faq-acc">
+          <summary><span class="faq-acc-q">What is GEO and how is it different from SEO?</span><span class="faq-acc-icon" aria-hidden="true">+</span></summary>
+          <div class="faq-acc-a">
+            <p>SEO helps your business become more discoverable in traditional search engines such as Google. GEO — Generative Engine Optimization — focuses on making your business and content easier for AI-powered search and answer systems to understand, retrieve, and reference.</p>
+            <p class="faq-note">A strong GEO strategy starts with strong SEO fundamentals, useful original content, clear entities, structured information, and technically accessible pages.</p>
+          </div>
+        </details>
+        <details class="faq-acc">
+          <summary><span class="faq-acc-q">Can you optimize my website for Google and AI search?</span><span class="faq-acc-icon" aria-hidden="true">+</span></summary>
+          <div class="faq-acc-a">
+            <p>Yes. SEO and GEO services can include technical SEO, content structure, local search optimization, schema markup, entity clarity, internal linking, search intent optimization, and AI-search visibility analysis.</p>
+            <p class="faq-note">The goal is not simply to add keywords, but to make your business easier for both people and search systems to understand.</p>
+          </div>
+        </details>
+        <details class="faq-acc">
+          <summary><span class="faq-acc-q">Can you help my business appear in ChatGPT, Gemini, or other AI search results?</span><span class="faq-acc-icon" aria-hidden="true">+</span></summary>
+          <div class="faq-acc-a">
+            <p>I can audit your current AI-search visibility and identify technical, content, authority, and entity-level opportunities.</p>
+            <p class="faq-note">AI search visibility cannot be guaranteed, because search and AI systems continuously change. The focus is on building strong, useful, technically accessible content that gives these systems better information to understand your business.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- Pricing & Process -->
+    <div class="faq-process fade-up">
+      <div class="faq-process-head">
+        <div class="faq-process-icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div>
+          <div class="faq-process-title">Pricing & Process</div>
+          <div class="faq-process-desc">Transparent pricing, timelines, and how we work together.</div>
+        </div>
+      </div>
+      <div class="faq-process-list">
+        <details class="faq-acc">
+          <summary>
+            <span class="faq-acc-q"><span class="faq-acc-num">1</span>How much does AI automation cost?</span>
+            <span class="faq-acc-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-acc-a">
+            <p>Services are offered with transparent, fixed-price starting points.</p>
+            <ul>
+              <li>SMS Outreach Agent — $499 setup</li>
+              <li>Email Agent — $399 setup</li>
+              <li>Voice Agent — $799 setup</li>
+              <li>Website + AI — $1,699</li>
+              <li>SEO + GEO — $899/month</li>
+              <li>OpenClaw Deployment — $499</li>
+              <li>Hermes Deployment — $499</li>
+            </ul>
+            <p style="margin-top:12px;">Custom AI agent implementations start at $799.</p>
+            <p class="faq-note">Third-party software, API, hosting, messaging, and usage fees are separate.</p>
+          </div>
+        </details>
+        <details class="faq-acc">
+          <summary>
+            <span class="faq-acc-q"><span class="faq-acc-num">2</span>Do I need a technical background to use your AI systems?</span>
+            <span class="faq-acc-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-acc-a">No. I handle the technical setup, integrations, infrastructure, and AI layer. You can focus on your business while the system handles the repetitive work.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>
+            <span class="faq-acc-q"><span class="faq-acc-num">3</span>How long does an AI automation or website project take?</span>
+            <span class="faq-acc-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-acc-a">
+            <p>Most focused setup projects can be completed within 1–2 weeks. Larger implementations may take 2–4 weeks depending on integrations, data, and scope.</p>
+            <p class="faq-note">The exact timeline is confirmed before the project starts.</p>
+          </div>
+        </details>
+        <details class="faq-acc">
+          <summary>
+            <span class="faq-acc-q"><span class="faq-acc-num">4</span>Can I start with a consultation before committing to a project?</span>
+            <span class="faq-acc-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-acc-a">
+            <p>Yes. You can start with a $100 / 30-minute consultation or $200 / 60-minute session.</p>
+            <p>We can identify your biggest growth bottleneck, determine what should be automated, and decide whether a larger implementation makes sense.</p>
+            <p class="faq-note">Consultation fees can be credited toward an eligible project.</p>
+          </div>
+        </details>
+        <details class="faq-acc">
+          <summary>
+            <span class="faq-acc-q"><span class="faq-acc-num">5</span>Can you build something that is not listed on the Services page?</span>
+            <span class="faq-acc-icon" aria-hidden="true">+</span>
+          </summary>
+          <div class="faq-acc-a">
+            <p>Yes. The listed services are common starting points, but custom AI agents, automation workflows, data systems, websites, and growth solutions are available when your needs go beyond a standard package.</p>
+            <p class="faq-note">For custom projects, start with an AI Growth Audit or consultation.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- FAQ CTA -->
+    <div class="faq-cta fade-up">
+      <h3 class="faq-cta-title">Not sure where you're losing customers?</h3>
+      <p class="faq-cta-sub">Get a free AI Growth Audit to identify opportunities across:</p>
+      <div class="faq-cta-chips">
+        <span class="faq-chip"><span>/</span> Customer Discovery</span>
+        <span class="faq-chip"><span>/</span> Outreach</span>
+        <span class="faq-chip"><span>/</span> Follow-Up</span>
+        <span class="faq-chip"><span>/</span> Conversion</span>
+        <span class="faq-chip"><span>/</span> SEO & GEO</span>
+        <span class="faq-chip"><span>/</span> Retention</span>
+      </div>
+      <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" style="font-size:15px;padding:14px 28px;" target="_blank" rel="noopener noreferrer">Get a Free AI Growth Audit →</a>
+    </div>
+
+    <!-- Trust points -->
+    <div class="faq-trust fade-up">
+      <div class="faq-trust-item">
+        <div class="faq-trust-title">Transparent</div>
+        <div class="faq-trust-desc">Clear pricing and honest recommendations.</div>
+      </div>
+      <div class="faq-trust-item">
+        <div class="faq-trust-title">Results-Focused</div>
+        <div class="faq-trust-desc">Systems built to get customers, not just deliver features.</div>
+      </div>
+      <div class="faq-trust-item">
+        <div class="faq-trust-title">Ongoing Support</div>
+        <div class="faq-trust-desc">We're here after launch to help you grow.</div>
+      </div>
     </div>
   </div>
 </section>
