@@ -130,7 +130,15 @@ nav {
   font-size: 18px; color: var(--muted); line-height: 1.7; margin-bottom: 40px;
   max-width: 480px; font-weight: 400;
 }
-.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.hero-journey-note { margin: 0 0 28px; font-size: 14px; font-weight: 600; }
+.hero-journey-note a { color: var(--teal); text-decoration: none; }
+.hero-journey-note a:hover { text-decoration: underline; }
+.section-next-links {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  margin-top: 28px;
+}
+.about-next-links { justify-content: flex-start; margin-top: 32px; }
 .btn-primary {
   background: linear-gradient(135deg, var(--teal) 0%, #0891b2 100%);
   color: #fff; padding: 14px 28px; border-radius: 12px;
@@ -256,6 +264,7 @@ nav {
   color: var(--text); line-height: 1.1; margin-bottom: 16px;
 }
 .section-sub { font-size: 17px; color: var(--muted); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+.tabs-header .section-next-links { margin-top: 24px; }
 
 .tab-nav-wrap {
   position: sticky; top: 64px; z-index: 90;
@@ -657,7 +666,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <a href="#cases">Results</a>
       <a href="#about">About</a>
     </div>
-    <a href="https://cal.com/cozyfamily/free-ai-audit" class="nav-cta" target="_blank" rel="noopener noreferrer">Book Free AI Audit →</a>
+    <a href="https://cal.com/cozyfamily/free-ai-audit" class="nav-cta" target="_blank" rel="noopener noreferrer">Get a Free AI Growth Audit →</a>
   </div>
 </nav>
 
@@ -681,9 +690,10 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
           Helping local businesses automate customer conversations, capture more leads, increase reviews, and convert more visitors into paying customers.
         </p>
         <div class="hero-buttons">
-          <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" target="_blank" rel="noopener noreferrer">Book Free AI Audit →</a>
-          <a href="/services" class="btn-secondary">See Live Demo</a>
+          <a href="#cases" class="btn-primary">See Results →</a>
+          <a href="/services" class="btn-secondary">Explore Services →</a>
         </div>
+        <p class="hero-journey-note"><a href="https://cal.com/cozyfamily/free-ai-audit" target="_blank" rel="noopener noreferrer">Get a Free AI Growth Audit →</a></p>
         <div class="hero-social">
           <span class="hero-stars">★★★★★</span>
           <span class="hero-social-text">Trusted by local businesses across the U.S.</span>
@@ -824,6 +834,10 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <div class="section-eyebrow">— Client Results</div>
       <h2 class="section-headline">Real Businesses. Real Numbers.</h2>
       <p class="section-sub">These aren't projections. They're outcomes from businesses just like yours.</p>
+      <div class="section-next-links">
+        <a href="/services" class="btn-secondary">Explore Services →</a>
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" target="_blank" rel="noopener noreferrer">Get a Free AI Growth Audit →</a>
+      </div>
     </div>
     <div class="cases-scroll" id="casesScroll">
 
@@ -984,6 +998,10 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
           <span class="chip">Automation</span>
           <span class="chip">CRM Systems</span>
         </div>
+        <div class="section-next-links about-next-links">
+          <a href="/services" class="btn-secondary">Explore Services →</a>
+          <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" target="_blank" rel="noopener noreferrer">Get a Free AI Growth Audit →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -998,8 +1016,8 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <h2 class="cta-headline">Let's Build Your<br>AI Growth Engine.</h2>
       <p class="cta-sub">Book a free 30-minute AI audit. We'll map out exactly how AI can grow your revenue in the next 90 days — no pitch, no pressure.</p>
       <div class="cta-buttons">
-        <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" style="font-size:16px;padding:16px 32px;" target="_blank" rel="noopener noreferrer">Book Free AI Audit →</a>
-        <a href="https://cal.com/cozyfamily/ai-growth-demo" class="btn-secondary" style="font-size:16px;padding:16px 32px;" target="_blank" rel="noopener noreferrer">Schedule a Demo</a>
+        <a href="https://cal.com/cozyfamily/free-ai-audit" class="btn-primary" style="font-size:16px;padding:16px 32px;" target="_blank" rel="noopener noreferrer">Get a Free AI Growth Audit →</a>
+        <a href="/services" class="btn-secondary" style="font-size:16px;padding:16px 32px;">Explore Services →</a>
       </div>
       <p class="cta-guarantee">✓ Free &nbsp;·&nbsp; No commitment &nbsp;·&nbsp; Results in 90 days or we keep working</p>
     </div>
@@ -1014,6 +1032,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; background: var(-
       <a href="/services">Services</a>
       <a href="#cases">Results</a>
       <a href="#about">About</a>
+      <a href="https://cal.com/cozyfamily/free-ai-audit" target="_blank" rel="noopener noreferrer">Free AI Growth Audit</a>
       <a href="mailto:hello@csai.studio">Contact</a>
     </div>
     <div class="footer-copy">© 2026 CS. AI Growth Studio. All rights reserved.</div>
